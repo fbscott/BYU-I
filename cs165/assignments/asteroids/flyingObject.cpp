@@ -12,20 +12,33 @@
 #include <cassert>
 
 /*****************************************************************************
- * DRAW OBJECT
- ****************************************************************************/
-// void FlyingObject :: draw()
-// {
-//    drawCircle(getPoint(), 15);
-// }
-
-/*****************************************************************************
  * KILL OBJECT
  ****************************************************************************/
 void FlyingObject :: advance(int screenSize)
 {
    point.addX(velocity.getDx());
    point.addY(velocity.getDy());
+
+   // wrap asteroids when they go off screen
+   if (point.getX() > screenSize / 2)
+   {
+      point.addX(-screenSize);
+   }
+
+   if (point.getX() < -screenSize / 2)
+   {
+      point.addX(screenSize);
+   }
+
+   if (point.getY() > screenSize / 2)
+   {
+      point.addY(-screenSize);
+   }
+
+   if (point.getY() < -screenSize / 2)
+   {
+      point.addY(screenSize);
+   }
 }
 
 /*****************************************************************************

@@ -50,12 +50,12 @@ Game :: Game(Point tl, Point br)
 
 /***************************************
  * GAME :: ADVANCE
- * advance the game one unit of time
+ * Advance the game one unit of time
  ***************************************/
 void Game :: advance()
 {
    // advanceBullets();
-   // advanceRock();
+   advanceRocks();
    // handleCollisions();
    // cleanUpZombies();
 }
@@ -85,42 +85,10 @@ void Game :: advance()
 // }
 
 /**************************************************************************
- * GAME :: ADVANCE ROCK
- *
- * 1. If there is no rock, create one with some probability
- * 2. If there is a rock, and it's alive, advance it
- * 3. Check if the rock has gone of the screen, and if so, "kill" it
+ * GAME :: ADVANCE ROCKS
  **************************************************************************/
 void Game :: advanceRocks()
 {
-   // if (rock == NULL)
-   // {
-   //    // there is no rock right now, possibly create one
-      
-   //    // "resurrect" it will some random chance
-   //    if (random(0, 30) == 0)
-   //    {
-   //       // create a new rock
-   //       rock = createRock();
-   //    }
-   // }
-   // else
-   // {
-   //    // we have a rock, make sure it's alive
-   //    if (rock -> isAlive())
-   //    {
-   //       // move it forward
-   //       rock -> advance();
-         
-   //       // check if the rock has gone off the screen
-   //       if (!isOnScreen(rock -> getPoint()))
-   //       {
-   //          // We have missed the rock
-   //          rock -> kill();
-   //       }
-   //    }
-   // }
-
     vector<Rock*> :: iterator it;
     for (it = rocks.begin(); it < rocks.end(); ++it)
     {
@@ -130,8 +98,7 @@ void Game :: advanceRocks()
 }
 
 /**********************************************************
- * CREATE BIG ROCK
- *   creates the medium rock
+ * GAME :: CREATE BIG ROCK
  **********************************************************/
 // Rock* Game :: createBigRock()
 void Game :: createBigRock()
@@ -143,8 +110,7 @@ void Game :: createBigRock()
 }
 
 /***********************************************************
- * CREATE MEDIUM ROCK
- *   this creates the medium rock
+ * GAME :: CREATE MEDIUM ROCK
  ***********************************************************/
 void Game :: createMediumRock(Point bPoint, int mRock)
 {
@@ -153,8 +119,7 @@ void Game :: createMediumRock(Point bPoint, int mRock)
 }
 
 /***********************************************************
- * CREATE SMALL ROCK
- *   this creates the small rock
+ * GAME :: CREATE SMALL ROCK
  ***********************************************************/
 void Game :: createSmallRock(Point bPoint, int sRock)
 {

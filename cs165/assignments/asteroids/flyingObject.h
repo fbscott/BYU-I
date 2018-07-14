@@ -21,9 +21,10 @@
 class FlyingObject
 {
    protected:
-      Point point;       // base object point
-      Velocity velocity; // base object velocity
-      bool alive;        // base state: alive/dead
+      // base objects
+      Point point; 
+      Velocity velocity;
+      bool alive;
 
    public:
       // getters
