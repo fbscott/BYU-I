@@ -39,7 +39,7 @@ class FlyingObject
 
       // pure virtual functions
       virtual void draw() =0;
-      virtual void hit() =0;
+      // virtual void hit() =0;
 
       // methods
       void advance(int);

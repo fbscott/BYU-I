@@ -7,6 +7,8 @@
  *    Rock class. Children will inherit from this class.
  ****************************************************************************/
 
+#define DISTENCE_FROM_CENTER 200
+
 #include "rocks.h"
 
 /*****************************************************************************
@@ -31,16 +33,16 @@ BigRock :: BigRock()
 
    if (rand == 2)
    {
-      x = -200;
+      x = -DISTENCE_FROM_CENTER;
       dx = 1;
-      y = random( -200, 200);
+      y = random( -DISTENCE_FROM_CENTER, DISTENCE_FROM_CENTER );
       dy = 1;
    }
    else
    {
-      x = 200;
+      x = DISTENCE_FROM_CENTER;
       dx = -1;
-      y = random( -200, 200);
+      y = random( -DISTENCE_FROM_CENTER, DISTENCE_FROM_CENTER );
       dy = -1;
    }
 
@@ -60,7 +62,7 @@ BigRock :: BigRock()
    setPoint(point);
    setAlive(true);
    setRockID(1);
-   setRadius(17);
+   setRadius(BIG_ROCK_SIZE);
    rotation = 2;
 }
 
@@ -88,26 +90,25 @@ void BigRock :: hit()
  ******************************************************************/
 MediumRock :: MediumRock(Point bPoint, int mRock)
 {
+   int dx = 2;
+   int dy = 2;
 
-    int dx = 2;
-    int dy = 2;
-    
-    if (mRock == 2)
-    {
-        dx = -2;
-        dy = -2;
-    }
-    
-    Velocity velocity(dx,dy);
-    setVelocity(velocity);
-    
-    Point point(bPoint.getX(),bPoint.getY());
-    setPoint(point);
-    
-    setAlive(true);
-    setRockID(2);
-    setRadius(9);
-    rotation = 0;
+   if (mRock == 2)
+   {
+      dx = -2;
+      dy = -2;
+   }
+
+   Velocity velocity(dx,dy);
+   setVelocity(velocity);
+
+   Point point(bPoint.getX(),bPoint.getY());
+   setPoint(point);
+
+   setAlive(true);
+   setRockID(2);
+   setRadius(MEDIUM_ROCK_SIZE);
+   rotation = 0;
 
 }
 
@@ -116,11 +117,12 @@ MediumRock :: MediumRock(Point bPoint, int mRock)
  ******************************************************************/
 void MediumRock :: draw()
 {
-    drawMediumAsteroid(point, rotation);
-    
-    for (int i = 0; i < 5; i++)
-        ++rotation;
-    
+   drawMediumAsteroid(point, rotation);
+
+   for (int i = 0; i < 5; i++)
+   {
+     ++rotation;
+   }
 }
 
 /******************************************************************
@@ -154,7 +156,7 @@ SmallRock :: SmallRock(Point sPoint, int sRock)
     
     setAlive(true);
     setRockID(3);
-    setRadius(5);
+    setRadius(SMALL_ROCK_SIZE);
     rotation = 0;
     
 }
@@ -164,10 +166,12 @@ SmallRock :: SmallRock(Point sPoint, int sRock)
  ******************************************************************/
 void SmallRock :: draw()
 {
-    drawSmallAsteroid(point, rotation);
-    
-    for (int i = 0; i < 10; i++)
-        rotation++;
+   drawSmallAsteroid(point, rotation);
+
+   for (int i = 0; i < 10; i++)
+   {
+      rotation++;
+   }
 }
 
 /******************************************************************

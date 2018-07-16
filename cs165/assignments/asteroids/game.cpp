@@ -6,47 +6,26 @@
  *********************************************************************/
 
 #include "game.h"
-
 #include "uiDraw.h"
 #include "uiInteract.h"
-#include "point.h"
-
-#include <cassert>
-#include <vector>
-
-#define OFF_SCREEN_BORDER_AMOUNT 5
-#define SCREEN_SIZE 400
 
 // These are needed for the getClosestDistance function...
 #include <limits>
 #include <algorithm>
+
+#define OFF_SCREEN_BORDER_AMOUNT 5
+#define SCREEN_SIZE 400
+
 using namespace std;
-
-
 
 /***************************************
  * GAME CONSTRUCTOR
  ***************************************/
-Game :: Game(Point tl, Point br)
- // : topLeft(tl), bottomRight(br)
+Game :: Game(Point topLeft, Point bottomRight)
 {
+   ship = NULL;
    createBigRock();
 }
-
-/****************************************
- * GAME DESTRUCTOR
- ****************************************/
-// Game :: ~Game()
-// {
-//    // TODO: Check to see if there is currently a rock allocated
-//    //       and if so, delete it.
-//    if(rock != NULL)
-//    {
-//       delete rock;
-//       rock = NULL;
-//    }
-
-// }
 
 /***************************************
  * GAME :: ADVANCE
@@ -54,35 +33,12 @@ Game :: Game(Point tl, Point br)
  ***************************************/
 void Game :: advance()
 {
-   // advanceBullets();
    advanceRocks();
+   advanceShip();
+   // advanceBullets();
    // handleCollisions();
    // cleanUpZombies();
 }
-
-/***************************************
- * GAME :: ADVANCE BULLETS
- * Go through each bullet and advance it.
- ***************************************/
-// void Game :: advanceBullets()
-// {
-//    // Move each of the bullets forward if it is alive
-//    for (int i = 0; i < bullets.size(); i++)
-//    {
-//       if (bullets[i].isAlive())
-//       {
-//          // this bullet is alive, so tell it to move forward
-//          bullets[i].advance();
-         
-//          if (!isOnScreen(bullets[i].getPoint()))
-//          {
-//             // the bullet has left the screen
-//             bullets[i].kill();
-//          }
-         
-//       }
-//    }
-// }
 
 /**************************************************************************
  * GAME :: ADVANCE ROCKS
@@ -125,6 +81,47 @@ void Game :: createSmallRock(Point bPoint, int sRock)
 {
     rocks.push_back(new SmallRock(bPoint, sRock));
 }
+
+/**********************************************************
+ * GAME :: ADVANCE SHIP
+ **********************************************************/
+void Game :: advanceShip()
+{
+   // if no ship exists
+   if (ship == NULL)
+   {
+      ship = new Ship;
+   }
+   // move the ship
+   else
+   {
+      ship -> advance(SCREEN_SIZE);
+   }
+}
+
+/***************************************
+ * GAME :: ADVANCE BULLETS
+ * Go through each bullet and advance it.
+ ***************************************/
+// void Game :: advanceBullets()
+// {
+//    // Move each of the bullets forward if it is alive
+//    for (int i = 0; i < bullets.size(); i++)
+//    {
+//       if (bullets[i].isAlive())
+//       {
+//          // this bullet is alive, so tell it to move forward
+//          bullets[i].advance();
+         
+//          if (!isOnScreen(bullets[i].getPoint()))
+//          {
+//             // the bullet has left the screen
+//             bullets[i].kill();
+//          }
+         
+//       }
+//    }
+// }
 
 /**************************************************************************
  * GAME :: IS ON SCREEN
@@ -230,30 +227,38 @@ bool Game :: isOnScreen(const Point & point)
  * GAME :: HANDLE INPUT
  * accept input from the user
  ***************************************/
-// void Game :: handleInput(const Interface & ui)
-// {
-//    // Change the direction of the rifle
-//    if (ui.isLeft())
-//    {
-//       rifle.moveLeft();
-//    }
+void Game :: handleInput(const Interface & ui)
+{
+   if (ui.isLeft())
+   {
+      ship -> thrustLeft();
+   }
    
-//    if (ui.isRight())
-//    {
-//       rifle.moveRight();
-//    }
+   if (ui.isRight())
+   {
+      ship -> thrustRight();
+   }
    
-//    // Check for "Spacebar
-//    if (ui.isSpace())
-//    {
-//       Bullet newBullet;
-//       newBullet.fire(rifle.getPoint(), rifle.getAngle());
+   if (ui.isUp())
+   {
+      ship -> thrustBottom();
+   }
+   else
+   {
+      ship -> thrust = false;
+   }
 
-//       roundsFired++;
+   // Check for "Spacebar
+   // if (ui.isSpace())
+   // {
+   //    Bullet newBullet;
+   //    newBullet.fire(ship.getPoint(), ship.getAngle());
+
+   //    roundsFired++;
       
-//       bullets.push_back(newBullet);
-//    }
-// }
+   //    bullets.push_back(newBullet);
+   // }
+}
 
 /*********************************************
  * GAME :: DRAW
@@ -263,18 +268,21 @@ void Game :: draw(const Interface & ui)
 {
     //check if you have a valid rock and if it's alive
     // then call it's draw method
-    vector<Rock*> :: iterator it;
-    for (it = rocks.begin(); it < rocks.end(); ++it)
-    {
-        if ((*it)->isAlive())
-            (*it)->draw();
-    }
+   vector<Rock*> :: iterator it;
+   for (it = rocks.begin(); it < rocks.end(); ++it)
+   {
+      if ((*it) -> isAlive())
+      {
+         (*it) -> draw();
+      }
+   }
     
     //check if you have a valid ship and if it's alive
     // then call it's draw method
-    // if (ship != NULL)
-    //     if (ship->isAlive())
-    //         ship->draw();
+   if (ship != NULL && ship -> isAlive())
+   {
+      ship->draw();
+   }
     
     // draw the bullets, if they are alive
     // vector<Bullet*> :: iterator bit;
@@ -308,7 +316,6 @@ void Game :: draw(const Interface & ui)
  * Description: Determine how close these two objects will
  *   get in between the frames.
  **********************************************************/
-/*
 float Game :: getClosestDistance(const FlyingObject &obj1, const FlyingObject &obj2) const
 {
    // find the maximum distance traveled
@@ -335,4 +342,4 @@ float Game :: getClosestDistance(const FlyingObject &obj1, const FlyingObject &o
    
    return sqrt(distMin);
 }
-*/
+
