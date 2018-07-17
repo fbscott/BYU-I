@@ -129,10 +129,10 @@ void Game :: advanceShip()
  **************************************************************************/
 bool Game :: isOnScreen(const Point & point)
 {
-   return (point.getX() >= topLeft.getX() - OFF_SCREEN_BORDER_AMOUNT
-      && point.getX() <= bottomRight.getX() + OFF_SCREEN_BORDER_AMOUNT
-      && point.getY() >= bottomRight.getY() - OFF_SCREEN_BORDER_AMOUNT
-      && point.getY() <= topLeft.getY() + OFF_SCREEN_BORDER_AMOUNT);
+   return (point.getX() >= topLeft.getX()     - OFF_SCREEN_BORDER_AMOUNT
+        && point.getX() <= bottomRight.getX() + OFF_SCREEN_BORDER_AMOUNT
+        && point.getY() >= bottomRight.getY() - OFF_SCREEN_BORDER_AMOUNT
+        && point.getY() <= topLeft.getY()     + OFF_SCREEN_BORDER_AMOUNT);
 }
 
 /**************************************************************************

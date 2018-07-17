@@ -14,9 +14,10 @@
 #define SHIP_SPIN 6
 #define SHIP_THRUST 0.5
 
-#include "uiInteract.h"
-#include "uiDraw.h"
 #include "flyingObject.h"
+#include "uiDraw.h"
+#include "uiInteract.h"
+#include <cmath>
 
 class Ship : public FlyingObject
 {

@@ -28,9 +28,9 @@ class FlyingObject
 
    public:
       // getters
-      Point getPoint()        const { return point; }
+      Point getPoint()        const { return point;    }
       Velocity getVelocity()  const { return velocity; }
-      bool isAlive()          const { return alive; }
+      bool isAlive()                { return alive;    }
 
       // setters
       void setPoint(Point point)          { this -> point    = point;    }

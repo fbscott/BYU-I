@@ -88,21 +88,21 @@ void BigRock :: hit()
 /******************************************************************
  * MEDIUM ROCK - CONSTRUCTOR
  ******************************************************************/
-MediumRock :: MediumRock(Point bPoint, int mRock)
+MediumRock :: MediumRock(Point medPoint, int medRock)
 {
    int dx = 2;
    int dy = 2;
 
-   if (mRock == 2)
+   if (medRock == 2)
    {
       dx = -2;
       dy = -2;
    }
 
-   Velocity velocity(dx,dy);
+   Velocity velocity(dx, dy);
    setVelocity(velocity);
 
-   Point point(bPoint.getX(),bPoint.getY());
+   Point point(medPoint.getX(), medPoint.getY());
    setPoint(point);
 
    setAlive(true);
@@ -136,22 +136,22 @@ void MediumRock :: hit()
 /******************************************************************
  * SMALL ROCK - CONSTRUCTOR
  ******************************************************************/
-SmallRock :: SmallRock(Point sPoint, int sRock)
+SmallRock :: SmallRock(Point smallPoint, int smallRock)
 {
     
     int dx = 3;
     int dy = 3;
     
-    if (sRock == 2)
+    if (smallRock == 2)
     {
         dx = -3;
         dy = -3;
     }
 
-    Velocity velocity(dx,dy);
+    Velocity velocity(dx, dy);
     setVelocity(velocity);
     
-    Point point(sPoint.getX(),sPoint.getY());
+    Point point(smallPoint.getX(), smallPoint.getY());
     setPoint(point);
     
     setAlive(true);
