@@ -1,9 +1,9 @@
 ###############################################################
 # Program:
 #     Checkpoint 13a, Destructors
-#     Brother {Burton, Falin, Ercanbrack}, CS165
+#     Brother Walker, CS165
 # Author:
-#     your name here
+#     Scott Currell
 # Summary:
 #     Summaries are not necessary for checkpoint assignments.
 ###############################################################

@@ -38,4 +38,3 @@ int main()
    cout << "Finishing program.\n";
    return 0;
 }
-
