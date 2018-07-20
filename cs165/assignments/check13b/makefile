@@ -1,9 +1,9 @@
 ###############################################################
 # Program:
 #     Checkpoint 13b, Rule of Three
-#     Brother {Burton, Falin, Ercanbrack}, CS165
+#     Brother Walker, CS165
 # Author:
-#     your name here
+#     Scott Currell
 # Summary:
 #     Summaries are not necessary for checkpoint assignments.
 ###############################################################

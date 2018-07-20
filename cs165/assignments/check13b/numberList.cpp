@@ -7,7 +7,7 @@ using namespace std;
  * Function: getNumber
  * Description: Returns the number at the given index.
  ******************************************************/
-int NumberList::getNumber(int index) const
+int NumberList :: getNumber(int index) const
 {
    int number = -1;
 
@@ -23,7 +23,7 @@ int NumberList::getNumber(int index) const
  * Function: setNumber
  * Description: Sets the value to the array at the given index.
  ******************************************************/
-void NumberList::setNumber(int index, int value)
+void NumberList :: setNumber(int index, int value)
 {
    if (index >= 0 && index < size)
    {
@@ -35,7 +35,7 @@ void NumberList::setNumber(int index, int value)
  * Function: displayList
  * Description: displays the list
  ******************************************************/
-void NumberList::displayList() const
+void NumberList :: displayList() const
 {
    for (int i = 0; i < size; i++)
    {
@@ -44,4 +44,3 @@ void NumberList::displayList() const
 
    cout << endl;
 }
-
