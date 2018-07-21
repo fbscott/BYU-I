@@ -32,12 +32,12 @@ class Game
       Point bottomRight;
       
       std::vector<Rock*> rocks;
+      std::vector<Bullet*> bullets;
       // declare a new ship object
       Ship * ship;
-      // std::vector<Bullet*> bullets;
 
       bool isOnScreen(const Point & point);
-      // void advanceBullets();
+      void advanceBullets();
       void advanceRocks();
       // void handleCollisions();
       // void cleanUpZombies();

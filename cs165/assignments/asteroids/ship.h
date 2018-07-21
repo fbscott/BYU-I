@@ -28,8 +28,9 @@ class Ship : public FlyingObject
    public:
       Ship();
 
-      float getAngle() const { return angle; }
-      Point getPoint() const { return point; }
+      float getAngle() const       { return angle;    }
+      Point getPoint() const       { return point;    }
+      Velocity getVelocity() const { return velocity; }
 
       void draw();
       void kill();

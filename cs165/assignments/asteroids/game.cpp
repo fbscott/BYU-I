@@ -35,7 +35,7 @@ void Game :: advance()
 {
    advanceRocks();
    advanceShip();
-   // advanceBullets();
+   advanceBullets();
    // handleCollisions();
    // cleanUpZombies();
 }
@@ -59,7 +59,7 @@ void Game :: advanceRocks()
 // Rock* Game :: createBigRock()
 void Game :: createBigRock()
 {
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 1; i++) // swc change back to 5
     {
         rocks.push_back(new BigRock);
     }
@@ -103,25 +103,16 @@ void Game :: advanceShip()
  * GAME :: ADVANCE BULLETS
  * Go through each bullet and advance it.
  ***************************************/
-// void Game :: advanceBullets()
-// {
-//    // Move each of the bullets forward if it is alive
-//    for (int i = 0; i < bullets.size(); i++)
-//    {
-//       if (bullets[i].isAlive())
-//       {
-//          // this bullet is alive, so tell it to move forward
-//          bullets[i].advance();
-         
-//          if (!isOnScreen(bullets[i].getPoint()))
-//          {
-//             // the bullet has left the screen
-//             bullets[i].kill();
-//          }
-         
-//       }
-//    }
-// }
+void Game :: advanceBullets()
+{
+   vector<Bullet*> :: iterator bit;
+
+   for (bit = bullets.begin(); bit < bullets.end(); ++bit)
+   {
+   if ((*bit) -> isAlive())
+      (*bit) -> advance(SCREEN_SIZE);
+   }
+}
 
 /**************************************************************************
  * GAME :: IS ON SCREEN
@@ -231,12 +222,12 @@ void Game :: handleInput(const Interface & ui)
 {
    if (ui.isLeft())
    {
-      ship -> thrustLeft();
+      ship -> thrustRight();
    }
    
    if (ui.isRight())
    {
-      ship -> thrustRight();
+      ship -> thrustLeft();
    }
    
    if (ui.isUp())
@@ -249,15 +240,14 @@ void Game :: handleInput(const Interface & ui)
    }
 
    // Check for "Spacebar
-   // if (ui.isSpace())
-   // {
-   //    Bullet newBullet;
-   //    newBullet.fire(ship.getPoint(), ship.getAngle());
+    if (ui.isSpace())
+    {
+        Bullet *newBullet = new Bullet;
 
-   //    roundsFired++;
-      
-   //    bullets.push_back(newBullet);
-   // }
+        newBullet -> fire(ship -> getPoint(), ship -> getAngle(), ship -> getVelocity());
+        
+        bullets.push_back(newBullet);
+    }
 }
 
 /*********************************************
@@ -285,12 +275,12 @@ void Game :: draw(const Interface & ui)
    }
     
     // draw the bullets, if they are alive
-    // vector<Bullet*> :: iterator bit;
-    // for (bit = bullets.begin(); bit < bullets.end(); ++bit)
-    // {
-    //     if ((*bit)->isAlive())
-    //         (*bit)->draw();
-    // }
+   vector<Bullet*> :: iterator bit;
+   for (bit = bullets.begin(); bit < bullets.end(); ++bit)
+   {
+   if ((*bit) -> isAlive())
+      (*bit) -> draw();
+   }
     
     // if (score == 40 & level == 1)
     // {
