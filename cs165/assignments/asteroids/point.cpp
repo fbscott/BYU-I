@@ -12,7 +12,7 @@
 #include <cassert>
 
 /******************************************
- * POINT : CONSTRUCTOR WITH X,Y
+ * POINT : CONSTRUCTOR WITH X, Y
  * Initialize the point to the passed position
  *****************************************/
 Point::Point(float x, float y) : x(0.0), y(0.0)
@@ -27,7 +27,7 @@ Point::Point(float x, float y) : x(0.0), y(0.0)
  *******************************************/
 void Point::setX(float x)
 {
-   this->x = x;
+   this -> x = x;
 }
 
 /*******************************************
@@ -36,7 +36,7 @@ void Point::setX(float x)
  *******************************************/
 void Point::setY(float y)
 {
-   this->y = y;
+   this -> y = y;
 } 
 
 /******************************************

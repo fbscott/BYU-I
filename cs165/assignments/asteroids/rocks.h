@@ -26,28 +26,27 @@
  ****************************************************************************/
 class Rock : public FlyingObject
 {
-private:
-   int radius;
-   int rockID;
+   private:
+      int radius;
+      int rockID;
 
-public:
-   // constructor
-   Rock();
+   public:
+      // constructor
+      Rock();
 
-   // getters
-   int getRadius() const { return radius; }
-   int getRockID() const { return rockID; }
+      // getters
+      int getRadius() const { return radius; }
+      int getRockID() const { return rockID; }
 
-   // setters
-   void setRadius(int radius) { this -> radius = radius; }
-   void setRockID(int rockID) { this -> rockID = rockID; }
+      // setters
+      void setRadius(int radius) { this -> radius = radius; }
+      void setRockID(int rockID) { this -> rockID = rockID; }
 
-   // pure virtual functions
-   // virtual void draw() =0;
-   // virtual void hit() =0;
+      // pure virtual functions
+      virtual void hit() =0;
 
-   // methods
-   // virtual void kill();
+      // methods
+      virtual void kill();
 };
 
 /*****************************************************************************

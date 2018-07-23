@@ -1,15 +1,14 @@
 ###############################################################
 # Program:
-#     Milestone 13, Asteroids
+#     Project 13, Asteroids
 #     Brother Walker, CS165
 # Author:
 #     Scott Currell
 # Summary:
 #     Put your summary code here... 
 # Above and Beyond
-#     When you submit your final project (not for milestones),
-#     list anything here that you did to go above and beyond
-#     the base requirements for your project.
+#     I had a hard enough time getting to this point. I didn't
+#		go above and beyond :(
 ###############################################################
 
 

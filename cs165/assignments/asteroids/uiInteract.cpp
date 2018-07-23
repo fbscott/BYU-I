@@ -316,11 +316,10 @@ void Interface::initialize(int argc, char ** argv, const char * title, Point top
 void Interface::run(void (*callBack)(const Interface *, void *), void *p)
 {
    // setup the callbacks
-   this->p = p;
-   this->callBack = callBack;
+   this -> p = p;
+   this -> callBack = callBack;
 
    glutMainLoop();
 
    return;
 }
-
