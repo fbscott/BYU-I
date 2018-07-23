@@ -2,7 +2,6 @@
  * File: game.cpp
  * Description: Contains the implementaiton of the game class
  *  methods.
- *
  *********************************************************************/
 
 #include "game.h"
@@ -18,26 +17,25 @@
 
 using namespace std;
 
-/***************************************
+/**************************************************************************
  * GAME CONSTRUCTOR
- ***************************************/
+ **************************************************************************/
 Game :: Game(Point topLeft, Point bottomRight)
 {
    ship = NULL;
    createBigRock();
 }
 
-/***************************************
+/**************************************************************************
  * GAME :: ADVANCE
- * Advance the game one unit of time
- ***************************************/
+ **************************************************************************/
 void Game :: advance()
 {
    advanceRocks();
    advanceShip();
    advanceBullets();
-   // handleCollisions();
-   // cleanUpZombies();
+   handleCollisions();
+   cleanUpZombies();
 }
 
 /**************************************************************************
@@ -45,46 +43,47 @@ void Game :: advance()
  **************************************************************************/
 void Game :: advanceRocks()
 {
-    vector<Rock*> :: iterator it;
-    for (it = rocks.begin(); it < rocks.end(); ++it)
-    {
-        if ((*it) -> isAlive())
-            (*it) -> advance(SCREEN_SIZE);
-    }
+   vector<Rock*> :: iterator it;
+
+   for (it = rocks.begin(); it < rocks.end(); ++it)
+   {
+      if ((*it) -> isAlive()) {
+         (*it) -> advance(SCREEN_SIZE);
+      }
+   }
 }
 
-/**********************************************************
+/**************************************************************************
  * GAME :: CREATE BIG ROCK
- **********************************************************/
+ **************************************************************************/
 // Rock* Game :: createBigRock()
 void Game :: createBigRock()
 {
-    for (int i = 0; i < 1; i++) // swc change back to 5
-    {
-        rocks.push_back(new BigRock);
-    }
+   for (int i = 0; i < 5; i++)
+   {
+      rocks.push_back(new BigRock);
+   }
 }
 
-/***********************************************************
+/**************************************************************************
  * GAME :: CREATE MEDIUM ROCK
- ***********************************************************/
+ **************************************************************************/
 void Game :: createMediumRock(Point bPoint, int mRock)
 {
-    rocks.push_back(new MediumRock(bPoint, mRock));
-    
+   rocks.push_back(new MediumRock(bPoint, mRock));
 }
 
-/***********************************************************
+/**************************************************************************
  * GAME :: CREATE SMALL ROCK
- ***********************************************************/
+ **************************************************************************/
 void Game :: createSmallRock(Point bPoint, int sRock)
 {
-    rocks.push_back(new SmallRock(bPoint, sRock));
+   rocks.push_back(new SmallRock(bPoint, sRock));
 }
 
-/**********************************************************
+/**************************************************************************
  * GAME :: ADVANCE SHIP
- **********************************************************/
+ **************************************************************************/
 void Game :: advanceShip()
 {
    // if no ship exists
@@ -99,10 +98,9 @@ void Game :: advanceShip()
    }
 }
 
-/***************************************
+/**************************************************************************
  * GAME :: ADVANCE BULLETS
- * Go through each bullet and advance it.
- ***************************************/
+ **************************************************************************/
 void Game :: advanceBullets()
 {
    vector<Bullet*> :: iterator bit;
@@ -116,7 +114,6 @@ void Game :: advanceBullets()
 
 /**************************************************************************
  * GAME :: IS ON SCREEN
- * Determines if a given point is on the screen.
  **************************************************************************/
 bool Game :: isOnScreen(const Point & point)
 {
@@ -128,96 +125,96 @@ bool Game :: isOnScreen(const Point & point)
 
 /**************************************************************************
  * GAME :: HANDLE COLLISIONS
- * Check for a collision between a rock and a bullet.
  **************************************************************************/
-// void Game :: handleCollisions()
-// {
-//    // now check for a hit (if it is close enough to any live bullets)
-//    for (int i = 0; i < bullets.size(); i++)
-//    {
-//       if (bullets[i].isAlive())
-//       {
-//          // this bullet is alive, see if its too close
+void Game :: handleCollisions()
+{
+    
+   vector<Rock*> :: iterator rit;
 
-//          // check if the rock is at this point (in case it was hit)
-//          if (rock != NULL && rock -> isAlive())
-//          {
-//             // BTW, this logic could be more sophisiticated, but this will
-//             // get the job done for now...
-//             if (fabs(bullets[i].getPoint().getX() - rock -> getPoint().getX()) < CLOSE_ENOUGH
-//                 && fabs(bullets[i].getPoint().getY() - rock -> getPoint().getY()) < CLOSE_ENOUGH)
-//             {
-//                //we have a hit!
-               
-//                // hit the rock
-//                int points = rock -> hit();
-//                score += points;
-               
-//                // the bullet is dead as well
-//                bullets[i].kill();
+   for (rit = rocks.begin(); rit != rocks.end(); rit++)
+   {
+      if (ship -> isAlive() && getClosestDistance(*ship, (**rit)) < (*rit) -> getRadius())
+      {
+         ship -> kill();
+         (*rit) -> hit();
+      }
+   }
+    
+   vector<Bullet*> :: iterator bit;
 
-//                // hit count (NOT POINTS!!!)
-//                ++hitCount;
+   for (bit = bullets.begin(); bit != bullets.end(); bit++)
+   {
+      vector<Rock*> :: iterator rit = rocks.begin();
+      for (rit = rocks.begin(); rit != rocks.end(); rit++)
+      {
+         if ((*bit) -> isAlive() && getClosestDistance((**bit), (**rit)) < (*rit) -> getRadius())
+         {
+            (*rit) -> hit();
 
-//                // accuracy
+            //create two medium rocks and a small rock
+            if ((*rit) -> getRockID() == 1)
+            {
+               createMediumRock((*rit) -> getPoint(), 1);
+               createMediumRock((*rit) -> getPoint(), 2);
+               createSmallRock((*rit) -> getPoint(), 1);
+            }
 
-//                if (hitCount)
-//                {
-//                   assert(hitCount > 0);
-//                   accuracy = hitCount / roundsFired * 100;
-//                }
-//             }
-//          }
-//       } // if bullet is alive
-      
-//    } // for bullets
-// }
+            //create a small rock
+            if ((*rit) -> getRockID() == 2)
+            {
+               createSmallRock((*rit) -> getPoint(), 1);
+               createSmallRock((*rit) -> getPoint(), 2);
+            }
+
+            // the bullet is dead as well
+            (*bit) -> kill();
+            break;
+         }
+      }
+   }
+}
 
 /**************************************************************************
  * GAME :: CLEAN UP ZOMBIES
- * Remove any dead objects (take bullets out of the list, deallocate rock)
  **************************************************************************/
-// void Game :: cleanUpZombies()
-// {
-//    // check for dead rock
-//    if (rock != NULL && !rock -> isAlive())
-//    {
-//       // the rock is dead, but the memory is not freed up yet
-      
-//       // TODO: Clean up the memory used by the rock
-//       delete rock;
-//       rock = NULL;   
-//    }
-   
-//    // Look for dead bullets
-//    vector<Bullet>::iterator bulletIt = bullets.begin();
-//    while (bulletIt != bullets.end())
-//    {
-//       Bullet bullet = *bulletIt;
-//       // Asteroids Hint:
-//       // If we had a list of pointers, we would need this line instead:
-//       //Bullet* pBullet = *bulletIt;
-      
-//       if (!bullet.isAlive())
-//       {
-//          // If we had a list of pointers, we would need to delete the memory here...
-         
-         
-//          // remove from list and advance
-//          bulletIt = bullets.erase(bulletIt);
-//       }
-//       else
-//       {
-//          bulletIt++; // advance
-//       }
-//    }
-   
-// }
+void Game :: cleanUpZombies()
+{
+    
+   vector<Rock*> :: iterator rit;
 
-/***************************************
+   for (rit = rocks.begin(); rit != rocks.end();)
+   {
+      if ((*rit) -> isAlive() == false)
+      {
+         delete *rit;
+         *rit = NULL;
+         rit = rocks.erase(rit);
+      }
+      else rit++;
+   }
+
+   if (ship != NULL && !ship -> isAlive())
+   {
+      delete ship;
+   }
+
+    vector<Bullet*> :: iterator bit;
+
+    for (bit = bullets.begin(); bit != bullets.end();)
+    {
+      if ((*bit) -> isAlive() == false)
+      {
+         delete *bit;
+         *bit = NULL;
+         bit = bullets.erase(bit);
+      }
+      else bit++;
+    }
+}
+
+/**************************************************************************
  * GAME :: HANDLE INPUT
- * accept input from the user
- ***************************************/
+ **************************************************************************/
 void Game :: handleInput(const Interface & ui)
 {
    if (ui.isLeft())
@@ -239,25 +236,21 @@ void Game :: handleInput(const Interface & ui)
       ship -> thrust = false;
    }
 
-   // Check for "Spacebar
-    if (ui.isSpace())
-    {
-        Bullet *newBullet = new Bullet;
+   if (ui.isSpace() && ship -> isAlive())
+   {
+      Bullet *newBullet = new Bullet;
 
-        newBullet -> fire(ship -> getPoint(), ship -> getAngle(), ship -> getVelocity());
-        
-        bullets.push_back(newBullet);
-    }
+      newBullet -> fire(ship -> getPoint(), ship -> getAngle(), ship -> getVelocity());
+
+      bullets.push_back(newBullet);
+   }
 }
 
-/*********************************************
+/**************************************************************************
  * GAME :: DRAW
- * Draw everything on the screen
- *********************************************/
+ **************************************************************************/
 void Game :: draw(const Interface & ui)
 {
-    //check if you have a valid rock and if it's alive
-    // then call it's draw method
    vector<Rock*> :: iterator it;
    for (it = rocks.begin(); it < rocks.end(); ++it)
    {
@@ -266,46 +259,27 @@ void Game :: draw(const Interface & ui)
          (*it) -> draw();
       }
    }
-    
-    //check if you have a valid ship and if it's alive
-    // then call it's draw method
+
    if (ship != NULL && ship -> isAlive())
    {
-      ship->draw();
+      ship -> draw();
    }
     
-    // draw the bullets, if they are alive
    vector<Bullet*> :: iterator bit;
    for (bit = bullets.begin(); bit < bullets.end(); ++bit)
    {
    if ((*bit) -> isAlive())
       (*bit) -> draw();
    }
-    
-    // if (score == 40 & level == 1)
-    // {
-    //     for (int i = 0; i < 4; i++)
-    //         createUltraShip();
-        
-    //     level = 2;
-    // }
-    
-    // Put the score on the screen
-    // Point scoreLocation;
-    // scoreLocation.setX(-195);
-    // scoreLocation.setY(195);
-    
-    // drawNumber(scoreLocation, score);
-
 }
 
 // You may find this function helpful...
 
-/**********************************************************
+/**************************************************************************
  * Function: getClosestDistance
  * Description: Determine how close these two objects will
  *   get in between the frames.
- **********************************************************/
+ **************************************************************************/
 float Game :: getClosestDistance(const FlyingObject &obj1, const FlyingObject &obj2) const
 {
    // find the maximum distance traveled
@@ -332,4 +306,3 @@ float Game :: getClosestDistance(const FlyingObject &obj1, const FlyingObject &o
    
    return sqrt(distMin);
 }
-

@@ -23,13 +23,12 @@ class Ship : public FlyingObject
 {
    private:
       float angle;
-      int bottom;
 
    public:
       Ship();
 
-      float getAngle() const       { return angle;    }
-      Point getPoint() const       { return point;    }
+      float getAngle()       const { return angle;    }
+      Point getPoint()       const { return point;    }
       Velocity getVelocity() const { return velocity; }
 
       void draw();

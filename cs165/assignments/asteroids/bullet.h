@@ -29,7 +29,7 @@ class Bullet : public FlyingObject
       void draw();
       // get ship's position, angle, and velocity
       void fire(Point, float, Velocity);
-      int lives;
+      int frames;
 };
 
 #endif /* bullet_h */

@@ -43,11 +43,10 @@ class Rock : public FlyingObject
       void setRockID(int rockID) { this -> rockID = rockID; }
 
       // pure virtual functions
-      // virtual void draw() =0;
-      // virtual void hit() =0;
+      virtual void hit() =0;
 
       // methods
-      // virtual void kill();
+      virtual void kill();
 };
 
 /*****************************************************************************

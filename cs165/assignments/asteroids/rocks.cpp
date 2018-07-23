@@ -21,44 +21,52 @@ Rock :: Rock()
 }
 
 /*****************************************************************************
+ * ROCK - KILL
+ ****************************************************************************/
+void Rock :: kill()
+{
+    setAlive(false);
+}
+
+/*****************************************************************************
  * BIG ROCK CONSTRUCTOR
  ****************************************************************************/
 BigRock :: BigRock()
 {
-   int rand = random(1,3);
-   int dx = 0;
-   int dy = 0;
-   int x = 0;
-   int y = 0;
+   int rand = random(1, 3);
+   int x    = 0;
+   int y    = 0;
+   int dx   = 0;
+   int dy   = 0;
 
    if (rand == 2)
    {
-      x = -DISTENCE_FROM_CENTER;
+      x  = -DISTENCE_FROM_CENTER;
+      y  = random( -DISTENCE_FROM_CENTER, DISTENCE_FROM_CENTER );
       dx = 1;
-      y = random( -DISTENCE_FROM_CENTER, DISTENCE_FROM_CENTER );
       dy = 1;
    }
    else
    {
-      x = DISTENCE_FROM_CENTER;
+      x  = DISTENCE_FROM_CENTER;
+      y  = random( -DISTENCE_FROM_CENTER, DISTENCE_FROM_CENTER );
       dx = -1;
-      y = random( -DISTENCE_FROM_CENTER, DISTENCE_FROM_CENTER );
       dy = -1;
    }
 
    if (y >= 0)
    {
-      Velocity velocity(dx,-dy);
+      Velocity velocity(dx, -dy);
       setVelocity(velocity);
    }
 
    if (y < 0)
    {
-      Velocity velocity(dx,dy);
+      Velocity velocity(dx, dy);
       setVelocity(velocity);
    }
 
-   Point point(x,y);
+   Point point(x, y);
    setPoint(point);
    setAlive(true);
    setRockID(1);
@@ -71,10 +79,10 @@ BigRock :: BigRock()
  *****************************************************************/
 void BigRock :: draw()
 {
-    drawLargeAsteroid(point, rotation);
+   drawLargeAsteroid(point, rotation);
 
-    for (int i = 0; i < 2; i++)
-    ++rotation;
+   for (int i = 0; i < 2; i++)
+   ++rotation;
 }
 
 /******************************************************************
@@ -82,7 +90,7 @@ void BigRock :: draw()
  ******************************************************************/
 void BigRock :: hit()
 {
-    kill();
+   kill();
 }
 
 /******************************************************************
@@ -138,27 +146,25 @@ void MediumRock :: hit()
  ******************************************************************/
 SmallRock :: SmallRock(Point smallPoint, int smallRock)
 {
-    
-    int dx = 3;
-    int dy = 3;
-    
-    if (smallRock == 2)
-    {
-        dx = -3;
-        dy = -3;
-    }
+   int dx = 3;
+   int dy = 3;
 
-    Velocity velocity(dx, dy);
-    setVelocity(velocity);
-    
-    Point point(smallPoint.getX(), smallPoint.getY());
-    setPoint(point);
-    
-    setAlive(true);
-    setRockID(3);
-    setRadius(SMALL_ROCK_SIZE);
-    rotation = 0;
-    
+   if (smallRock == 2)
+   {
+      dx = -3;
+      dy = -3;
+   }
+
+   Velocity velocity(dx, dy);
+   setVelocity(velocity);
+
+   Point point(smallPoint.getX(), smallPoint.getY());
+   setPoint(point);
+
+   setAlive(true);
+   setRockID(3);
+   setRadius(SMALL_ROCK_SIZE);
+   rotation = 0;
 }
 
 /******************************************************************

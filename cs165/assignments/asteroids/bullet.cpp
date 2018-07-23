@@ -24,7 +24,7 @@ Bullet :: Bullet()
 void Bullet :: kill()
 {
    setAlive(false);
-   lives = 0;
+   frames = 0; // bullet lifespan
 }
 
 /*********************************
@@ -34,12 +34,12 @@ void Bullet :: draw()
 {
    drawDot(getPoint());
 
-   if (lives == (BULLET_LIFE - 1))
+   if (frames == (BULLET_LIFE - 1))
    {
       kill();
    }
 
-   lives++;
+   frames++;
 }
 
 /*********************************

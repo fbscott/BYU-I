@@ -23,10 +23,6 @@
 class Game
 {
    private:
-      // int score;
-      // int roundsFired;
-      // int hitCount;
-      // int accuracy;
       // The coordinates of the screen
       Point topLeft;
       Point bottomRight;
@@ -39,8 +35,8 @@ class Game
       bool isOnScreen(const Point & point);
       void advanceBullets();
       void advanceRocks();
-      // void handleCollisions();
-      // void cleanUpZombies();
+      void handleCollisions();
+      void cleanUpZombies();
       void createBigRock();
       void createMediumRock(Point, int);
       void createSmallRock(Point, int);
