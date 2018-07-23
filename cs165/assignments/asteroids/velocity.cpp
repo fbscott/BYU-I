@@ -1,5 +1,5 @@
 /***********************************************************************
- * Implementation File:
+ * Source File:
  *    VELOCITY : A class representing the lander's velocity
  * Author:
  *    Scott Currell

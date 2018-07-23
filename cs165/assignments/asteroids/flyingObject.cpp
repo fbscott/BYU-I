@@ -12,52 +12,33 @@
 #include <cassert>
 
 /*****************************************************************************
- * SET POINT
- ****************************************************************************/
-void FlyingObject :: setPoint(Point point)
-{
-   this -> point = point;
-}
-
-/*****************************************************************************
- * SET VELOCITY
- ****************************************************************************/
-void FlyingObject :: setVelocity(Velocity velocity)
-{
-   this -> velocity = velocity;
-} 
-
-/*****************************************************************************
- * SET ALIVE
- ****************************************************************************/
-void FlyingObject :: setAlive(bool alive)
-{
-   this -> alive = alive;
-}
-
-/*****************************************************************************
- * DRAW OBJECT
- ****************************************************************************/
-void FlyingObject :: draw()
-{
-   drawCircle(getPoint(), 15);
-}
-
-/*****************************************************************************
  * KILL OBJECT
  ****************************************************************************/
-void FlyingObject :: advance()
+void FlyingObject :: advance(int screenSize)
 {
    point.addX(velocity.getDx());
    point.addY(velocity.getDy());
-}
 
-/*****************************************************************************
- * ROTATE OBJECT
- ****************************************************************************/
-void FlyingObject :: rotate()
-{
-   // TODO: make rocks rotate
+   // wrap asteroids when they go off screen
+   if (point.getX() > screenSize / 2)
+   {
+      point.addX(-screenSize);
+   }
+
+   if (point.getX() < -screenSize / 2)
+   {
+      point.addX(screenSize);
+   }
+
+   if (point.getY() > screenSize / 2)
+   {
+      point.addY(-screenSize);
+   }
+
+   if (point.getY() < -screenSize / 2)
+   {
+      point.addY(screenSize);
+   }
 }
 
 /*****************************************************************************

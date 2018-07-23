@@ -8,8 +8,8 @@
  *    it's moving in along the X and Y axes.
  ************************************************************************/
 
-#ifndef VELOCITY_H
-#define VELOCITY_H
+#ifndef velocity_h
+#define velocity_h
 
 // #include "point.h"
 
@@ -37,4 +37,4 @@ class Velocity
       void setDy(float);
 };
 
-#endif // VELOCITY_H
+#endif // velocity_h
