@@ -8,10 +8,13 @@
  *    the location and the bounds.
  ************************************************************************/
 
+
 #ifndef POINT_H
 #define POINT_H
 
+
 #include <iostream>
+#include "velocity.h"
 
 /*********************************************
  * POINT
@@ -34,6 +37,14 @@ public:
    void setY(float y);
    void addX(float dx)      { setX(getX() + dx);     }
    void addY(float dy)      { setY(getY() + dy);     }
+
+/*************************     PART 3    **********************************/
+/**************************************************************************/
+   // *this
+Point & operator += (/* *this ,*/const Velocity & rhs);
+
+/*************************     PART 3    **********************************/
+/**************************************************************************/
 
 private:
    float x;           // horizontal position
