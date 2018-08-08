@@ -1,16 +1,14 @@
 /*****************************************************************************
  * Header File:
- *    Rocks : The representation of a rock
+ *    Rock : The representation of a rock
  * Author:
  *    Scott Currell
  * Summary:
- *    Child of FlyingObject class.
+ *    Rock class. Children will inherit from this class.
  ****************************************************************************/
 
 #ifndef rocks_h
 #define rocks_h
-
-#include "flyingObject.h"
 
 #define BIG_ROCK_SIZE 16
 #define MEDIUM_ROCK_SIZE 8
@@ -20,30 +18,80 @@
 #define MEDIUM_ROCK_SPIN 5
 #define SMALL_ROCK_SPIN 10
 
-// Define the following classes here:
+#include "flyingObject.h"
+#include "uiDraw.h"
+
 /*****************************************************************************
- * Rock
+ * ROCK
  ****************************************************************************/
 class Rock : public FlyingObject
 {
-   public:
-      Rock();
-      Rock(Point);
+   private:
+      int radius;
+      int rockID;
 
-      virtual void draw();
-      virtual int hit();
+   public:
+      // constructor
+      Rock();
+
+      // getters
+      int getRadius() const { return radius; }
+      int getRockID() const { return rockID; }
+
+      // setters
+      void setRadius(int radius) { this -> radius = radius; }
+      void setRockID(int rockID) { this -> rockID = rockID; }
+
+      // pure virtual functions
+      virtual void hit() =0;
+
+      // methods
+      virtual void kill();
 };
 
 /*****************************************************************************
- * BigRock
+ * BIG ROCK
  ****************************************************************************/
+class BigRock : public Rock
+{
+   private:
+      int angle;
+      int rotation;
+
+   public:
+      BigRock();
+      virtual void draw();
+      virtual void hit();
+      int hits;
+};
 
 /*****************************************************************************
- * MediumRock
+ * MEDIUM ROCK
  ****************************************************************************/
+class MediumRock : public Rock
+{
+   private:
+      int angle;
+      int rotation;
+
+   public:
+      MediumRock(Point, int);
+      virtual void draw();
+      virtual void hit();
+};
 
 /*****************************************************************************
- * SmallRock
+ * SMALL ROCK
  ****************************************************************************/
+class SmallRock : public Rock
+{
+   private:
+      int rotation;
+
+   public:
+      SmallRock(Point, int);
+      virtual void draw();
+      virtual void hit();
+};
 
 #endif /* rocks_h */

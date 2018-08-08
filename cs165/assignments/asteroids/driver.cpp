@@ -26,7 +26,6 @@ void callBack(const Interface *pUI, void *p)
    pGame -> draw(*pUI);
 }
 
-
 /*********************************
  * Main is pretty sparse.  Just initialize
  * the game and call the display engine.

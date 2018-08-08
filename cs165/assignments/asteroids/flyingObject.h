@@ -13,35 +13,37 @@
 
 #include "point.h"
 #include "velocity.h"
-#include "uiDraw.h"
 
 /*****************************************************************************
  * POINT
  * A single position.  
  ****************************************************************************/
-class FlyingObject : public Point, public Velocity
+class FlyingObject
 {
-   private:
-      Point point;       // base object point
-      Velocity velocity; // base object velocity
-      bool alive;        // base object state (alive/dead)
+   protected:
+      // base objects
+      Point point; 
+      Velocity velocity;
+      bool alive;
 
    public:
       // getters
-      Point getPoint()        const { return point; }
+      Point getPoint()        const { return point;    }
       Velocity getVelocity()  const { return velocity; }
-      bool isAlive()          const { return alive; }
+      bool isAlive()                { return alive;    }
 
       // setters
-      void setPoint(Point);
-      void setVelocity(Velocity);
-      void setAlive(bool);
+      void setPoint(Point point)          { this -> point    = point;    }
+      void setVelocity(Velocity velocity) { this -> velocity = velocity; }
+      void setAlive(bool alive)           { this -> alive    = alive;    }
+
+      // pure virtual functions
+      virtual void draw() =0;
+      // virtual void hit() =0;
 
       // methods
-      virtual void draw();
-      virtual void advance();
-      virtual void rotate();
+      void advance(int);
       virtual void kill();
 };
 
-#endif /* flyingObject_h */
+#endif // flyingObject_h
