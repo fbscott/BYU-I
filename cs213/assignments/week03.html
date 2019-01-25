@@ -3,18 +3,35 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <style> /* #0 */
-     body { font-size:36px; }
-  </style>
+      body {
+        font-size:16px;
+        background: linear-gradient(to right, red, orange , yellow, green, blue, indigo, violet); /* Scott Currell: rainbow background; */
+      }
+    </style>
     <style> /* #1 */
-     body { font-size:16px; }
-  </style>
+      body {
+        font-size:16px;
+        transform: scale(-1);       /* Scott Currell: rotate entire page 180 deg */
+        position: absolute;         /* Scott Currell: take content out of document flow so it can be moved */
+        bottom: 0;                  /* Scott Currell: move content to bottom of page */
+        right: 0;                   /* Scott Currell: move content to right of page */
+      }
+    </style>
     <style> /* #2 */
-     body { font-size:12px; }
-  </style>
+      body {
+        font-size:16px;
+        background-color: #000000;  /* Scott Currell: background color to black */
+        color: #ffffff;             /* Scott Currell: foreground color to white */
+      }
+    </style>
     <style> /* #3 */
-     body { font-size:8px; }
-  </style>
-    
+      body {
+        font-size:16px;
+      }
+      h1:first-letter {
+        font-size: 12px;            /* Scott Currell: shrink first letter of all h1s */
+      }
+    </style>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Week 03 : CSS</title>
    </head>
