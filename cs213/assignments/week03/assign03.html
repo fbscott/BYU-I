@@ -10,8 +10,15 @@
 
   <header>
     <h1>Welcome to Scott Currell's Home Page</h1>
-    <a href="./index.html">CS 213 Assignments</a>
+    <a href="../index.html">CS 213 Assignments</a>
     <hr />
+    <h2>Quick Links</h2>
+    <ul class="quick-links">
+      <li><a href="#lorem">Jump to Article</a></li>
+      <li><a href="#quote">Jump to Quote</a></li>
+      <li><a href="https://www.google.com/" target="_blank">Google</a></li>
+      <li><a href="https://www.yahoo.com/" target="_blank">Yahoo!</a></li>
+    </ul>
   </header>
 
   <main>
@@ -27,7 +34,7 @@
     </section>
     <!--------------------------------- End About Me ----------------------------->
     <!--------------------------------- Favorite Quote --------------------------->
-    <section class="highlight">
+    <section id="quote" class="highlight">
       <h2>A Favorite Quote of Mine</h2>
       <blockquote>
         <a href="https://www.lds.org/general-conference/1988/04/you-make-a-difference?lang=eng#p37" target="_blank">
@@ -35,7 +42,7 @@
         </a>
         <cite>&ndash;Thomas S. Monson</cite>
       </blockquote>
-      <img src="./img/monson_small.jpg" alt="Thomas S. Monson" style="width: 128px; height: 128px;" />
+      <a href="https://www.lds.org/general-conference/1988/04/you-make-a-difference?lang=eng#p37" target="_blank"><img src="./img/monson_small.jpg" alt="Thomas S. Monson" style="width: 128px; height: 128px;" /></a>
     </section>
     <!--------------------------------- End Favorite Quote ----------------------->
     <!--------------------------------- Schedule --------------------------------->
@@ -68,8 +75,9 @@
     <!--------------------------------- End Schedule ----------------------------->
     <!--------------------------------- Italic Sample ---------------------------->
     <section>
-      <article>
-        <h2>Some Placeholder Text so I can Make it Italic</h2>
+      <!-- moved the h2 outside of the article because it jacked with the two-column effect -->
+      <h2 id="lorem">Some Placeholder Text so I can Make it Italic</h2>
+      <article class="two-column">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id condimentum diam. Maecenas et magna iaculis, porttitor dui sed, tristique massa. Mauris consectetur velit arcu. Ut suscipit felis nec pretium porta. Fusce efficitur lobortis elementum. Donec eget consectetur mauris. Nullam convallis arcu vitae efficitur vulputate. Nunc velit leo, pellentesque sit amet maximus a, condimentum porttitor augue. Vestibulum a justo at urna porttitor tempus rhoncus non ipsum. Morbi leo nisl, lacinia et bibendum fermentum, gravida eget justo. Fusce vel dolor odio. Vivamus iaculis risus non feugiat semper. Nulla sed euismod leo, aliquam pharetra lectus. Curabitur vulputate ornare metus, vel dictum mi ornare id. Quisque id nunc vulputate augue sodales consectetur sed a metus. Etiam scelerisque, metus ut dapibus sagittis, ipsum elit scelerisque arcu, vel accumsan lorem felis id purus.</p>
         <p>Nullam in tortor faucibus, semper turpis id, venenatis nulla. Vivamus in neque commodo, ullamcorper purus pulvinar, mollis tellus. Morbi eleifend, libero ut faucibus volutpat, tellus orci sagittis nunc, vitae egestas erat tortor et urna. Aenean venenatis mattis ligula eu ultrices. Proin non molestie arcu, ac blandit nibh. Mauris eu aliquet quam, ac imperdiet sapien. Sed interdum dapibus neque sit amet iaculis. Aenean vel risus sit amet erat maximus pellentesque. Nullam velit dui, lacinia quis libero vel, efficitur lobortis felis. Vivamus posuere rutrum ipsum, et eleifend libero finibus et. Ut cursus faucibus semper.</p>
         <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce eu pharetra mi. Fusce id posuere elit. Vestibulum nec urna ut purus rutrum pharetra quis vitae magna. Cras justo lectus, elementum sit amet eros interdum, fermentum egestas velit. Sed ultrices felis a ligula vulputate interdum. Suspendisse pellentesque, neque in dapibus tempor, quam neque semper odio, et fermentum est diam ut tellus. Quisque ullamcorper sem nisi, tincidunt tincidunt mauris mollis nec. Nullam justo ligula, dignissim at ante eu, varius vulputate ipsum. Mauris vel sem neque.</p>
@@ -78,6 +86,87 @@
       </article>
     </section>
     <!--------------------------------- End Italic Sample ------------------------>
+    <!--------------------------------- Form ------------------------------------->
+    <section>
+      <h2>Gimme Some Data</h2>
+      <form action="javascript:void(0);" name="myForm">
+        <table class="form">
+          <tbody>
+            <tr>
+              <td>Name:</td>
+              <td>
+                <input type="text" name="fname" maxlength="15" size="15" placeholder="First Name" />
+                <input type="text" name="lname" maxlength="15" size="15" placeholder="Last Name" />
+              </td>
+            </tr>
+            <tr>
+              <td>Email:</td>
+              <td><input type="text" name="email" maxlength="35" size="15" placeholder="Email" /></td>
+            </tr>
+            <tr>
+              <td>Phone:</td>
+              <td>
+                <input type="text" name="prefix" maxlength="3" size="3" placeholder="303" /> &ndash;
+                <input type="text" name="middlefix" maxlength="3" size="3" placeholder="555" /> &ndash;
+                <input type="text" name="postfix" maxlength="4" size="4" placeholder="1234" /></td>
+            </tr>
+            <tr>
+              <td>Message:</td>
+              <td><textarea name="message" cols="37" rows="5"></textarea></td>
+            </tr>
+            <tr>
+              <td>Favorite Meal:</td>
+              <td>
+                <ul>
+                  <li><input type="radio" name="favMeal" value="breakfast"> Breakfast</li>
+                  <li><input type="radio" name="favMeal" value="lunch"> Lunch</li>
+                  <li><input type="radio" name="favMeal" value="dinner"> Dinner</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Meals Eaten Today:</td>
+              <td>
+                <ul>
+                  <li><input type="checkbox" name="mealEaten" value="breakfast"> Breakfast</li>
+                  <li><input type="checkbox" name="mealEaten" value="lunch"> Lunch</li>
+                  <li><input type="checkbox" name="mealEaten" value="dinner"> Dinner</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Favorite Color:</td>
+              <td>
+                <select name="favColor">
+                  <option value="nada"> -- </option>
+                  <option value="red">red</option>
+                  <option value="brown">yellow</option>
+                  <option value="orange">orange</option>
+                  <option value="green">green</option>
+                  <option value="blue">blue</option>
+                  <option value="white">indigo</option>
+                  <option value="purple">violet</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <input type="submit" value="Submit" />&nbsp;<input type="reset" value="Reset" />
+      </form>
+    </section>
+    <!--------------------------------- End Form --------------------------------->
+    <!--------------------------------- divs ------------------------------------->
+    <section>
+      <h2>Just a Bunch of Colored divs to Fulfill the Requirement</h2>
+      <div class="circle-color-red"></div>
+      <div class="circle-color-yellow"></div>
+      <div class="circle-color-orange"></div>
+      <div class="circle-color-green"></div>
+      <div class="circle-color-blue"></div>
+      <div class="circle-color-indigo"></div>
+      <div class="circle-color-violet"></div>
+    </section>
+    <!--------------------------------- End divs --------------------------------->
   </main>
 
   <footer>
