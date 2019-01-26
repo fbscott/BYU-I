@@ -1,6 +1,7 @@
 # ignore the following sub folders
 /b320
 /fdrel_225
+/ecen160
 */downloads
 
 # ignore sftp-config
@@ -21,3 +22,4 @@
 *.xls
 *.xlsx
 *.zip
+*.tmp
