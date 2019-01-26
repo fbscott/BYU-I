@@ -22,11 +22,19 @@
         font-size:16px;
         background-color: #000000;  /* Scott Currell: background color to black */
         color: #ffffff;             /* Scott Currell: foreground color to white */
+        direction: rtl;             /* Scott Currell: text right-to-left */
       }
     </style>
     <style> /* #3 */
       body {
         font-size:16px;
+        line-height: 5;             /* Scott Currell: more whitespace between lines */
+      }
+      ul li.menuBarItem:nth-of-type(even) { /* Scott Currell: make every other menu bar red */
+        color: #ff0000;
+      }
+      h1 {
+        letter-spacing: 12px;       /* Scott Currell: increase h1 letter spacing */
       }
       h1:first-letter {
         font-size: 12px;            /* Scott Currell: shrink first letter of all h1s */
