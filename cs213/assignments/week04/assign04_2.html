@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/week04.css">
+  <title>ABC Company</title>
+  <style>
+    div#more-info a {
+      color: #ffa500;
+      font-style: italic;
+      font-weight: bold;
+    }
+    div#more-info p,
+    div#more-info a {
+      margin: 0;
+    }
+    div#read-more {
+      padding: 0 30px;
+      margin: 30px 0;
+      background-color: #ffa500;
+      color: #4a4a4a;
+    }
+    div#read-more,
+    div#more-info {
+      width: 30%;
+      float: right;
+    }
+    aside {
+      border: 1px solid #cccccc;
+      padding-bottom: 30px;
+    }
+    input[type="submit"],
+    input[type="reset"] {
+      background-color: #4a4a4a;
+      color: #ffffff;
+      padding: 10px 20px;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+
+    <header id="header">
+      <h1>ABC Company, Inc.</h1>
+      <img class="search" src="./img/search.png" alt="search" style="width: 26px; height: 26px;" />
+      <input id="search" type="text" size="35" maxlength="35" placeholder="search" />
+      <nav>
+        <a href="./assign04.html" class="nav">Home</a>
+      </nav>
+    </header>
+
+    <article>
+      <div class="clear margin-top">
+        <a href="#footer">Jump to Footer</a>
+      </div>
+
+      <h2>Main Content</h2>
+      <p>In sed imperdiet quam. Suspendisse rutrum non urna nec luctus. Duis aliquam, urna pulvinar pellentesque commodo, lacus sapien tincidunt diam, nec gravida nibh tellus vitae ligula. Ut eget est a dolor luctus mattis. Nunc eu justo vitae augue vehicula egestas. Sed interdum sapien dolor, auctor consequat massa porttitor et. Suspendisse at lorem malesuada, euismod eros id. <span style="color: #ff0000; font-weight: bold; font-size: 18px;">This sentence is big, bold, and red.</span> Quisque ultrices hendrerit ante in semper. Morbi interdum turpis ipsum, sed tempor ex facilisis ac. Maecenas elit ex, aliquam non dignissim nec, luctus congue lacus. Nam vestibulum dui sit amet faucibus accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis nulla risus, rhoncus a ante in, dictum tempus ex.</p>
+      <h2>Main Content <span style="font-size: 16px;">(cont.)</span></h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ultrices at dolor in mollis. Nulla in nisl ut orci fringilla bibendum et facilisis justo. In at odio nec ante viverra facilisis. Sed a nulla ut odio semper faucibus in id felis. Vestibulum ultricies tempus ligula, eget consequat dui. Quisque ut dignissim dolor, non porta leo. Nulla facilisi. Maecenas condimentum, erat quis congue mattis, est odio porttitor nibh, eget dapibus est leo eu urna. Aenean in varius orci. Fusce pharetra quam risus, vel congue turpis sodales ac. Pellentesque eget aliquet arcu, eu gravida urna. Donec congue velit at ligula dapibus, et ultricies tellus ornare. Pellentesque eget justo ut augue luctus feugiat.</p>
+    </article>
+
+    <aside>
+      <h2>Tell Us Some Stuff</h2>
+      <form action="javascript:void(0);" name="myForm">
+        <table>
+          <tbody>
+            <tr>
+              <td>First:</td>
+              <td><input type="text" name="fname" maxlength="15" size="15" placeholder="John" /></td>
+            </tr>
+            <tr>
+              <td>Last:</td>
+              <td><input type="text" name="lname" maxlength="15" size="15" placeholder="Doe" /></td>
+            </tr>
+            <tr>
+              <td>Email:</td>
+              <td><input type="text" name="email" maxlength="35" size="15" placeholder="Email" /></td>
+            </tr>
+            <tr>
+              <td>Phone:</td>
+              <td>
+                <input type="text" name="prefix" maxlength="3" size="3" placeholder="303" /> &ndash;
+                <input type="text" name="middlefix" maxlength="3" size="3" placeholder="555" /> &ndash;
+                <input type="text" name="postfix" maxlength="4" size="4" placeholder="1234" />
+              </td>
+            </tr>
+            <tr>
+              <td>Message:</td>
+              <td><textarea name="message" cols="20" rows="5"></textarea></td>
+            </tr>
+          </tbody>
+        </table>
+        <input type="submit" value="Submit" />&nbsp;<input type="reset" value="Reset" />
+      </form>
+    </aside>
+
+    <div id="more-info">
+      <p>Learn some other stuff by <a href="javascript:void(0);">clicking here &raquo;</a></p>
+    </div>
+
+    <div id="read-more">
+      <h2>Read This Stuff Too</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+
+    <div class="clear margin-bottom">
+      <a href="#header">Return to Top</a>
+    </div>
+
+    <footer id="footer">
+      <p>Copyright &copy; ABC Company, Inc.</p>
+      <div>
+        <a href="https://www.facebook.com/" target="_blank"><img src="./img/facebook2.png" alt="facebook" style="width: 32px; height: 32px;" /></a>
+        <a href="https://www.instagram.com/" target="_blank"><img src="./img/instagram.png" alt="instagram" style="width: 32px; height: 32px;" /></a>
+        <a href="https://www.linkedin.com/" target="_blank"><img src="./img/linkedin.png" alt="linkedin" style="width: 32px; height: 32px;" /></a>
+        <a href="https://twitter.com/" target="_blank"><img src="./img/twitter.png" alt="twitter" style="width: 32px; height: 32px;" /></a>
+        <a href="https://www.pinterest.com/" target="_blank"><img src="./img/pinterest.png" alt="pinterest" style="width: 32px; height: 32px;" /></a>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>

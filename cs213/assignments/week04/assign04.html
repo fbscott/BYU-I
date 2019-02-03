@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/week04.css">
+  <title>ABC Company</title>
+  <style>
+    aside.back {
+      color: #eaeaea;
+      background: url('./img/tree_bw.png');
+      background-color: #4a4a4a;
+      background-size: cover;
+      position: relative;
+    }
+    aside div.cover {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      margin-left: -30px;
+      background-color: rgba(0,0,0,0.7);
+      z-index: 10;
+    }
+    aside div.z20 {
+      position: relative;
+      z-index: 20;
+    }
+    aside p {
+      text-align: justify;
+    }
+    a:hover {
+      color: #ffa500;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+
+    <header id="header">
+      <h1>ABC Company, Inc.</h1>
+      <img class="search" src="./img/search.png" alt="search" style="width: 26px; height: 26px;" />
+      <input id="search" type="text" size="35" maxlength="35" placeholder="search" />
+      <nav>
+        <a href="../index.html" class="nav" style="margin-right: 20px;">Main Assignment Page</a>
+        <a href="./assign04_2.html" class="nav">Contact</a>
+      </nav>
+    </header>
+
+    <article>
+      <div class="clear margin-top">
+        <a href="#footer">Jump to Footer</a>
+      </div>
+
+      <h2>Main Content</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ultrices at dolor in mollis. Nulla in nisl ut orci fringilla bibendum et facilisis justo. In at odio nec ante viverra facilisis. Sed a nulla ut odio semper faucibus in id felis. Vestibulum ultricies tempus ligula, eget consequat dui. Quisque ut dignissim dolor, non porta leo. Nulla facilisi. Maecenas condimentum, erat quis congue mattis, est odio porttitor nibh, eget dapibus est leo eu urna. Aenean in varius orci. Fusce pharetra quam risus, vel congue turpis sodales ac. Pellentesque eget aliquet arcu, eu gravida urna. Donec congue velit at ligula dapibus, et ultricies tellus ornare. Pellentesque eget justo ut augue luctus feugiat.</p>
+      <h2>Main Content <span style="font-size: 16px;">(cont.)</span></h2>
+      <p>In sed imperdiet quam. Suspendisse rutrum non urna nec luctus. Duis aliquam, urna pulvinar pellentesque commodo, lacus sapien tincidunt diam, nec gravida nibh tellus vitae ligula. Ut eget est a dolor luctus mattis. Nunc eu justo vitae augue vehicula egestas. Sed interdum sapien dolor, auctor consequat massa porttitor et. Suspendisse at lorem malesuada, euismod eros id, volutpat nisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque ultrices hendrerit ante in semper. Morbi interdum turpis ipsum, sed tempor ex facilisis ac. Maecenas elit ex, aliquam non dignissim nec, luctus congue lacus. Nam vestibulum dui sit amet faucibus accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis nulla risus, rhoncus a ante in, dictum tempus ex.</p>
+    </article>
+
+    <aside class="back" style="border-radius: 5px;">
+      <div class="cover" style="border-radius: 5px;"></div>
+      <div class="z20">
+        <h2>Sidebar</h2>
+        <p><img src="./img/tree.png" alt="tree" style="width: 50px; height: 50px;">Donec a elit vel libero vulputate auctor. Proin pulvinar tellus et justo efficitur interdum. In hac habitasse platea dictumst. Curabitur sollicitudin vitae dui quis blandit. Aenean bibendum urna a molestie semper. Proin volutpat lacus ante, non ultrices massa pellentesque quis. Aenean eu ante in urna sagittis aliquet. Etiam eu varius nisl. Quisque sed commodo ante. Sed imperdiet lorem velit, vel porta nisi lacinia eu. Suspendisse potenti. Curabitur volutpat feugiat ipsum et porttitor. Sed neque purus, semper vitae convallis vitae, lacinia sit amet arcu. Quisque iaculis dapibus turpis. Quisque at libero ligula.</p>
+      </div>
+    </aside>
+
+    <div class="clear margin-bottom">
+      <a href="#header">Return to Top</a>
+    </div>
+
+    <footer id="footer">
+      <p>Copyright &copy; ABC Company, Inc.</p>
+      <div>
+        <a href="https://www.facebook.com/" target="_blank"><img src="./img/facebook2.png" alt="facebook" style="width: 32px; height: 32px;" /></a>
+        <a href="https://www.instagram.com/" target="_blank"><img src="./img/instagram.png" alt="instagram" style="width: 32px; height: 32px;" /></a>
+        <a href="https://www.linkedin.com/" target="_blank"><img src="./img/linkedin.png" alt="linkedin" style="width: 32px; height: 32px;" /></a>
+        <a href="https://twitter.com/" target="_blank"><img src="./img/twitter.png" alt="twitter" style="width: 32px; height: 32px;" /></a>
+        <a href="https://www.pinterest.com/" target="_blank"><img src="./img/pinterest.png" alt="pinterest" style="width: 32px; height: 32px;" /></a>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>
