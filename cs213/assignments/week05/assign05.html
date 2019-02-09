@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/assign05.css">
+  <title>Mortgage Calculator</title>
+</head>
+<body>
+  <h1>Mortgage Calculator</h1>
+  <form action="javascript:void(0);" name="mortCalc">
+    <table>
+      <!----------------------------------- APR ------------------------------------>
+      <tr>
+        <td>APR:</td>
+        <td>
+          <input type="text" name="apr" id="apr" placeholder="5.25">
+        </td>
+        <td>
+          <span id="apr-error" class="error hide">Error: APR must be between 0% and 25%.</span>
+        </td>
+      </tr>
+      <!----------------------------------- End APR -------------------------------->
+      <!----------------------------------- Term ----------------------------------->
+      <tr>
+        <td>Term:</td>
+        <td>
+          <input type="text" name="term" id="term" placeholder="10">
+        </td>
+        <td>
+          <span id="term-error" class="error hide">Error: Term must be between 0 and 40 years.</span>
+        </td>
+      </tr>
+      <!----------------------------------- End Term ------------------------------->
+      <!----------------------------------- Amount --------------------------------->
+      <tr>
+        <td>Amount:</td>
+        <td>
+          <input type="text" name="amount" id="amount" placeholder="100,000.00">
+        </td>
+        <td>
+          <span id="amount-error" class="error hide">Error: Amount must be greater than $0.00.</span>
+        </td>
+      </tr>
+      <!----------------------------------- Amount APR ----------------------------->
+      <!----------------------------------- Payment -------------------------------->
+      <tr>
+        <td>Payment:</td>
+        <td><input type="text" name="payment" id="payment" readonly></td>
+      </tr>
+      <!----------------------------------- End Payment ---------------------------->
+      <!----------------------------------- Buttons -------------------------------->
+      <tr>
+        <td>&nbsp;</td>
+        <td>
+          <input type="reset" value="Reset" id="clear" />
+          <input type="button" value="Calculate" id="calculate" />
+        </td>
+        <td>
+          <span id="calculate-error" class="error hide">Error: All input fields must contain valid data.</span>
+        </td>
+      </tr>
+      <!----------------------------------- End Buttons ---------------------------->
+    </table>
+  </form>
+  <script src="./js/assign05.js"></script>
+</body>
+</html>
