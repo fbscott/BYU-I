@@ -1,0 +1,37 @@
+input {
+   height: 30px;
+   padding-left: 5px;
+}
+
+input[readonly] {
+   background-color: #e6e6e6;
+}
+
+input::-webkit-input-placeholder {
+  color: #cccccc;
+}
+
+input::-moz-placeholder {
+  color: #cccccc;
+}
+
+input:-ms-input-placeholder {
+  color: #cccccc;
+}
+
+input:-moz-placeholder {
+  color: #cccccc;
+}
+
+span.error {
+   background-color: #ffd2d2;
+   border: 1px solid #ff0000;
+   display: block;
+   line-height: 2;
+   padding: 0 10px;
+   color: #ff0000;
+}
+
+.hide {
+   visibility: hidden;
+}
