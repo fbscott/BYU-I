@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/assign06.css">
+  <title>assign06</title>
+</head>
+<body>
+  <h1>This will be assignment #06</h1>
+  <form action="" name="derp">
+    <table>
+      <!----------------------------------- Prefix --------------------------------->
+      <tr>
+        <td>Prefix:</td>
+        <td colspan="2">
+          <input type="radio" name="prefix" value="mr"> Mr.
+          <input type="radio" name="prefix" value="mrs"> Mrs.
+        </td>
+      </tr>
+      <!----------------------------------- End Prefix ----------------------------->
+      <!----------------------------------- Name ----------------------------------->
+      <tr>
+        <td>Name:</td>
+        <td><input type="text" name="first_name" placeholder="First Name"></td>
+        <td><input type="text" name="last_name" placeholder="Last Name"></td>
+      </tr>
+      <!----------------------------------- End Name ------------------------------->
+      <!----------------------------------- Address -------------------------------->
+      <tr>
+        <td>Address:</td>
+        <td colspan="2"><textarea name="address" id="" cols="30" rows="3" style="width:100%;"></textarea></td>
+      </tr>
+      <!----------------------------------- End Address ---------------------------->
+      <!----------------------------------- Phone ---------------------------------->
+      <tr>
+        <td>Phone:</td>
+        <td>
+          <input type="tel"
+                 name="phone"
+                 placeholder="888-555-1234"
+                 size="20"
+                 minlength="12"
+                 maxlength="12"
+                 pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                 onfocus="console.log('focus');"
+                 onblur="console.log('blur');" />
+          <span></span>
+        </td>
+      </tr>
+      <!----------------------------------- End Phone ------------------------------>
+      <!----------------------------------- Address -------------------------------->
+      <!----------------------------------- End Address ---------------------------->
+    </table>
+  </form>
+  <!-- <script src="./js/assign06.js"></script> -->
+</body>
+</html>
