@@ -1,0 +1,154 @@
+* {
+   box-sizing: border-box;
+}
+
+#container {
+   max-width: 1200px;
+   margin: 0 auto;
+}
+
+img {
+   width: 100%;
+   height: auto;
+   margin: 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+   font-family: Impact, Charcoal, sans-serif;
+}
+
+p {
+   text-align: justify;
+   margin-bottom: 2rem;
+   line-height: 1.635;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+footer p {
+   text-align: center;
+}
+
+.grid-container {
+   display: grid;
+   grid-template-columns: auto;
+   grid-gap: 10px;
+   background-color: #efefef;
+   padding: 10px;
+   width: 100%;
+   align-items: center;
+}
+
+/* align and pad form columns */
+.grid-container > img {
+   text-align: right;
+   padding: 10px;
+}
+
+/* multi-column grid */
+.flex-item {
+   grid-column: 1/2;
+   text-align: center;
+}
+
+@media screen and (min-width: 320px) {
+   .grid-container {
+      grid-template-columns: auto auto;
+   }
+
+
+   /* multi-column grid */
+   .flex-item {
+      grid-column: 1/3;
+   }
+
+}
+
+@media screen and (min-width: 480px) {
+   .grid-container {
+      grid-template-columns: auto auto auto;
+   }
+
+
+   /* multi-column grid */
+   .flex-item {
+      grid-column: 1/4;
+   }
+
+
+   h1 {
+      font-size: 5.4vw;
+   }
+}
+
+@media screen and (min-width: 768px) {
+   h2 {
+      font-size: 3vw;
+   }
+
+   p {
+      text-align: initial;
+   }
+
+   .grid-container {
+      grid-template-columns: auto auto auto auto;
+   }
+
+
+   /* multi-column grid */
+   .flex-item {
+      grid-column: 1/5;
+   }
+
+
+   article {
+      width: 50%;
+      float: left;
+      padding-right: 15px;
+   }
+
+   aside {
+      width: 50%;
+      float: right;
+      padding-left: 15px;
+   }
+}
+
+@media screen and (min-width: 1024px) {
+   .grid-container {
+      grid-template-columns: auto auto auto auto auto;
+   }
+
+
+   /* multi-column grid */
+   .flex-item {
+      grid-column: 1/6;
+   }
+
+
+   h1 {
+      font-size: 55px;
+   }
+
+   h2 {
+      font-size: 31px;
+      /* no FF support and is misaligned in chrome */
+      -webkit-column-span: all; 
+              column-span: all; 
+   }
+
+   article {
+      width: 66.6666%;
+      float: left;
+      padding-right: 15px;
+      -webkit-column-count: 2;
+         -moz-column-count: 2;
+              column-count: 2;
+      column-gap: 30px;
+   }
+
+   aside {
+      width: 33.3333%;
+      float: right;
+      padding-left: 15px;
+   }
+}
