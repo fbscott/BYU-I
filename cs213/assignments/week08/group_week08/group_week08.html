@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Group Assignment Week 08</title>
+	
+	<link rel="stylesheet" type="text/css" href="group_week08.css">
+	
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+		
+		body {
+			margin: 0;
+			font-size: 62.5%;
+		}
+		
+		ul {
+			padding-left: 0;
+		}
+		
+		/**************************************/
+		
+		.blue_rounded {
+			border: 2px solid #26607F;
+			border-radius: 0.5rem;
+			background-color: #0076b6;
+			font-size: 1.2rem;
+			font-weight: bold;
+			margin: 1rem;
+			padding: 1rem;
+		}
+		
+		.white_rounded {
+			border: 2px solid #26607F;
+			border-radius: 0.5rem;
+			background-color: #fff;
+			font-size: 1.2rem;
+			font-weight: bold;
+			padding: 1rem;
+			width: 100%;
+		}
+		
+		/**************************************/
+		
+		#flex_first {
+			width: 80vw;
+			height: 20vh;
+			min-height: 15rem;
+		}
+		
+		.center_list {
+			width:auto;
+			list-style-position: inside;
+		}
+		
+		/**************************************/
+		
+		#flex_second_wrapper{
+			list-style-type: none;
+		}
+		
+		.form-row,
+		.form-row > * {
+			padding: 0.5rem;
+		}
+		
+		.form-row > fieldset {
+			background-color: #fff;
+		}
+		
+		.form-row > button {
+			width:auto;
+			margin: 0.5rem;
+		}
+		
+		/**************************************/
+		
+		.placeholder_image {
+			background-color: #26607F;
+			height: 10rem;
+		}
+		
+		/**************************************/
+		
+		.flex_div {
+			color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<section id="flex_first" class="blue_rounded">
+		<ul class="center_list white_rounded">
+			<li>First list item</li>
+			<li>Second list item</li>
+			<li>Third list item</li>
+			<li>Fourth list item</li>
+		</ul>
+	</section>
+	
+	<section id="flex_second" class="blue_rounded">
+		<form action="">
+			<ul id="flex_second_wrapper">
+				<li class="form-row">
+					<label for="name">Name</label>
+					<input type="text" name="name" id="name">
+				</li>
+				<li class="form-row">
+					<label for="address">Address</label>
+					<textarea name="address" id="address" rows="5" cols="25"></textarea>
+				</li>
+				<li class="form-row">
+					<label for="phone">Phone Number</label>
+					<input type="tel" name="phone" id="phone">
+				</li>
+				<li class="form-row">
+					<label for="email">Email Address</label>
+					<input type="email" name="email" id="email">
+				</li>
+				<li class="form-row">
+					<label for="color">Favorite Color</label>
+					<select name="color" id="color">
+						<option value="red">Red</option>
+						<option value="green">Green</option>
+						<option value="blue">Blue</option>
+						<option value="other">Other</option>
+					</select>
+				</li>
+				<li class="form-row">
+					<label for="hair">Hair Color</label>
+					<fieldset id="hair">
+						<label> <input type="radio" name="hair" value="black"> Black </label>
+						<label> <input type="radio" name="hair" value="blond"> Blond </label>
+						<label> <input type="radio" name="hair" value="red"> Red </label>
+						<label> <input type="radio" name="hair" value="brown"> Brown </label>
+					</fieldset>
+				</li>
+				<li class="form-row">
+					<label for="cookie">Favorite Cookies</label>
+					<fieldset id="cookie">
+						<label> <input type="checkbox" name="cookie" value="chocolate chip"> Chocolate Chip </label>
+						<label> <input type="checkbox" name="cookie" value="oatmeal"> Oatmeal </label>
+						<label> <input type="checkbox" name="cookie" value="snickerdoodle"> Snickerdoodle </label>
+					</fieldset>
+				</li>
+				<li class="form-row">
+					<button class="white_rounded" type="clear">Clear</button>
+					<button class="white_rounded" type="submit">Submit</button>
+				</li>
+			</ul>
+		</form>
+	</section>
+	
+	<section id="grid_first" class="blue_rounded">
+		<article class="example_article white_rounded">
+			<div class="placeholder_image"></div>
+			<h2>A Heading</h2>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed ornare felis, luctus hendrerit tellus. Curabitur hendrerit ante ac dolor viverra blandit. Curabitur venenatis, magna non condimentum ornare, metus urna porttitor purus, id tristique dui
+				tellus sed est.
+			</p>
+		</article>
+		<article class="example_article white_rounded">
+			<div class="placeholder_image"></div>
+			<h2>A Heading</h2>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed ornare felis, luctus hendrerit tellus.
+			</p>
+		</article>
+		<article class="example_article white_rounded">
+			<div class="placeholder_image"></div>
+			<h2>A Heading</h2>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+			</p>
+		</article>
+		<article class="example_article white_rounded">
+			<div class="placeholder_image"></div>
+			<h2>A Heading</h2>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed ornare felis, luctus hendrerit tellus. Curabitur hendrerit ante ac dolor viverra blandit. Curabitur venenatis, magna non condimentum ornare, metus urna porttitor purus, id tristique dui
+				tellus sed est.
+			</p>
+		</article>
+		<article class="example_article white_rounded">
+			<div class="placeholder_image"></div>
+			<h2>A Heading</h2>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed ornare felis, luctus hendrerit tellus. Curabitur hendrerit ante ac dolor viverra blandit.
+			</p>
+		</article>
+		<article class="example_article white_rounded">
+			<div class="placeholder_image"></div>
+			<h2>A Heading</h2>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+			</p>
+		</article>
+		<article class="example_article white_rounded">
+			<div class="placeholder_image"></div>
+			<h2>A Heading</h2>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed ornare felis, luctus hendrerit tellus. Curabitur hendrerit ante ac dolor viverra blandit. Curabitur venenatis, magna non condimentum ornare, metus urna porttitor purus, id tristique dui
+				tellus sed est.
+			</p>
+		</article>
+		<article class="example_article white_rounded">
+			<div class="placeholder_image"></div>
+			<h2>A Heading</h2>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed ornare felis, luctus hendrerit tellus.
+			</p>
+		</article>
+	</section>
+	
+	<section id="grid_second" class="blue_rounded">
+		<div class="box1 white_rounded">One</div>
+		<div class="box2 white_rounded">Two</div>
+		<div class="box3 white_rounded">Three</div>
+		<div class="box4 white_rounded">Four</div>
+		<div class="box5 white_rounded">Five</div>
+		<div class="box6 white_rounded">Six</div>
+		<div class="box7 white_rounded">Seven</div>
+		<div class="box8 white_rounded">Eight</div>
+		<div class="box9 white_rounded">
+			<div class="flex_div blue_rounded">Flex One</div>
+			<div class="flex_div blue_rounded">Flex Two</div>
+			<div class="flex_div blue_rounded">Flex Three</div>
+			<div class="flex_div blue_rounded">Flex Four</div>
+		</div>
+	</section>
+</body>
+</html>
