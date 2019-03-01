@@ -1,0 +1,190 @@
+/************************************** global *******************************/
+* {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+body {
+   padding: 10px 20px;
+   max-width: 1200px;
+   margin: 0px auto;
+}
+footer {
+   text-align: center;
+}
+img {
+   margin: 0px auto;
+}
+/************************************** end global ***************************/
+/************************************** text *********************************/
+h1 {
+   font-size: 8vw;
+}
+h1, h2, h3, h4, h5, h6 {
+   text-align: center;
+}
+a {
+   text-decoration: none;
+}
+a:link, a:visited, a:hover, a:active {
+   color: #ffa500;
+}
+p {
+   margin: 20px 0px;
+   line-height: 1.5;
+   color: #808080;
+}
+ul {
+   list-style-type: none;
+}
+.emphasis {
+   font-weight: bold;
+   color: #000000;
+}
+li.current a {
+   color: #c8c8c8;
+   cursor: default;
+}
+.note {
+   color: #ffa500;
+}
+/************************************** end text *****************************/
+/************************************** grid *********************************/
+header {
+   grid-area: header;
+}
+#page-content {
+   grid-area: page-content;
+}
+#sidebar {
+   grid-area: sidebar;
+}
+footer {
+   grid-area: footer;
+}
+h1 {
+   grid-area: h1;
+}
+nav {
+   grid-area: nav;
+}
+/* multi-column grid */
+.flex-item {
+   grid-column: 1/2;
+   text-align: center;
+}
+.grid-container {
+   display: grid;
+   grid-template-columns: auto;
+   grid-gap: 10px;
+   background-color: #efefef;
+   padding: 10px;
+   width: 100%;
+   align-items: center;
+   margin-bottom: 30px;
+}
+/************************************** end grid *****************************/
+/************************************** nav **********************************/
+nav {
+   text-align: center;
+   margin: 25px 0px;
+}
+nav ul {
+   margin: 0 auto;
+   display: inline-block;
+   position: relative;
+}
+nav li {
+   display: inline-block;
+}
+nav li:not(:first-of-type):before {
+   content: '|';
+   margin: 0 5px;
+}
+/************************************** end nav ******************************/
+/************************************** images *******************************/
+/* align and pad form columns */
+.grid-container > img {
+   text-align: right;
+   padding: 10px;
+}
+header img {
+   display: block;
+   position: relative;
+   margin: 0 auto 20px;
+}
+/************************************** end images ***************************/
+/************************************** media queries ************************/
+@media screen and (min-width: 320px) {
+   /* multi-column grid */
+   .flex-item {
+      grid-column: 1/3;
+   }
+}
+@media screen and (min-width: 550px) {
+   #grid-container {
+      display: grid;
+      grid-template-areas: 'header header' 'page-content sidebar' 'footer footer';
+      grid-gap: 30px;
+   }
+   h2, h3, h4, h5, h6 {
+      text-align: initial;
+   }
+   .grid-container {
+      grid-template-columns: auto auto;
+   }
+   /* multi-column grid */
+   .flex-item {
+      grid-column: 1/4;
+   }
+   nav li:not(:first-of-type):before {
+      margin: 0 20px;
+   }
+}
+@media screen and (min-width: 775px) {
+   #grid-container {
+      display: grid;
+      grid-template-areas:
+         'header header header header'
+         'page-content page-content page-content sidebar'
+         'footer footer footer footer';
+      grid-gap: 30px;
+   }
+   h1 {
+      width: 50%;
+      font-size: 4.5vw;
+      top: 50%;
+      transform: translateY(-50%);
+      position: relative;
+   }
+   nav {
+      width: 50%;
+      float: right;
+   }
+   .grid-container {
+      grid-template-columns: auto auto auto;
+   }
+   /* multi-column grid */
+   .flex-item {
+      grid-column: 1/5;
+   }
+   header img {
+      display: inline-block;
+      float: left;
+   }
+}
+@media screen and (min-width: 1024px) {
+   .grid-container {
+      grid-template-columns: auto auto auto auto auto;
+   }
+   /* multi-column grid */
+   .flex-item {
+      grid-column: 1/6;
+   }
+}
+@media screen and (min-width: 1200px) {
+   h1 {
+      font-size: 55px;
+   }
+}
+/************************************** end media queries ********************/
