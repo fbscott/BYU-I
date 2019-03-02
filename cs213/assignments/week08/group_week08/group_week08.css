@@ -1,3 +1,86 @@
+/********************************** section 1 *********************************/
+/* Naoya Yuda' Contribution */
+   #flex_first {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   }
+
+   #flex_first.blue_rounded{
+   margin: 0 auto;
+   margin-top:1rem;
+   }
+
+   .center_list{
+   margin: 0 auto;
+   }
+/* End Naoya Yuda' Contribution */
+/********************************** section 1 *********************************/
+/********************************** end section 2 *****************************/
+/* Naoya Yuda' Contribution */
+.myForm {
+display: flex;
+flex-direction: column;
+}
+
+#flex_second_wrapper{
+display: flex;
+flex-direction: column;
+}
+
+#name {
+display: flex;
+width: 100%;
+}
+
+#address {
+display: flex;
+width: 100%;
+}
+
+#phone {
+display: flex;
+width: 100%;
+}
+
+#email {
+display: flex;
+width: 100%;
+}
+
+#color {
+display: flex;
+width: 100%;
+}
+
+#hair {
+display: flex;
+flex-direction: column;
+}
+
+#cookie {
+display: flex;
+flex-direction: column;
+}
+
+.form-row .white_rounded{
+display: flex;
+width: 100%;
+}
+/* End Naoya Yuda' Contribution */
+/********************************** end section 2 *****************************/
+/********************************** section 3 *********************************/
+/* Naoya Yuda' Contribution */
+#grid_first{
+display: grid;
+/* grid-template-rows: 1fr 1fr;
+grid-template-columns: 1fr 1fr 1fr 1fr;*/
+grid-template-columns: repeat(4, minmax(250px, 1fr));
+}
+/* End Naoya Yuda' Contribution */
+/********************************** end section 3 *****************************/
+/********************************** section 4 *********************************/
+/* Scott Currell's Contribution */
 #grid_second {
    display: grid;
    grid-gap: 1rem;
@@ -56,3 +139,5 @@
       flex-wrap: initial; /* prevent wrapping */
    }
 }
+/* End Scott Currell's Contribution */
+/********************************** end section 4 *****************************/
