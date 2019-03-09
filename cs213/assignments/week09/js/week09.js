@@ -48,15 +48,15 @@ function loadJSON() {
 
             // update the result
             for (let i = 0; i < jsonObject.students.length; i++) {
-                jsonParsed += '<tr>'
+                jsonParsed += '<tr>';
                 jsonParsed += '<td>' + jsonObject.students[i].first + ' ' +
-                                       jsonObject.students[i].last + '</td>'
+                                       jsonObject.students[i].last + '</td>';
                 jsonParsed += '<td>' + jsonObject.students[i].address.city + ', ' +
                                        jsonObject.students[i].address.state + ' ' +
-                                       jsonObject.students[i].address.zip + '</td>'
-                jsonParsed += '<td>' + jsonObject.students[i].major + '</td>'
-                jsonParsed += '<td>' + jsonObject.students[i].gpa + '</td>'
-                jsonParsed += '</tr>'
+                                       jsonObject.students[i].address.zip + '</td>';
+                jsonParsed += '<td>' + jsonObject.students[i].major + '</td>';
+                jsonParsed += '<td>' + jsonObject.students[i].gpa + '</td>';
+                jsonParsed += '</tr>';
             }
 
             // close the result table
