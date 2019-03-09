@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/assign09.css">
+  <title>assign09</title>
+</head>
+<body>
+  <div>
+    <h1>AJAX</h1>
+
+    <p>Select a country to view its most populated cities.</p>
+
+    <select name="country" id="country">
+      <option value="nada"> -- </option>
+      <option value="canada">Canada</option>
+      <option value="mexico">Mexico</option>
+      <option value="russia">Russia</option>
+      <option value="usa">USA</option>
+    </select>
+
+    <pre id="cities"></pre>
+
+    <input type="text" id="json-requested" placeholder="json.txt" />
+    <button name="json-button" id="json-button">Read JSON</button>
+
+    <div id="json-returned"></div>
+  </div>
+  <script src="./js/week09.js"></script>
+</body>
+</html>
