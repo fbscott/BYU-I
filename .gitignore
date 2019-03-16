@@ -1,7 +1,10 @@
 # ignore the following sub folders
 /b320
 /fdrel_225
-/ecen160
+/ecen160/docs
+/ecen160/notes
+/ecen160/presentations
+/ecen160/screenshots
 */downloads
 
 # ignore sftp-config

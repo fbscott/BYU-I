@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project source="2.7.1" version="1.0">
+This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
+<lib desc="#Wiring" name="0">
+    <tool name="Splitter">
+      <a name="facing" val="west"/>
+      <a name="fanout" val="3"/>
+      <a name="incoming" val="3"/>
+    </tool>
+    <tool name="Constant">
+      <a name="facing" val="north"/>
+      <a name="value" val="0x0"/>
+    </tool>
+  </lib>
+  <lib desc="#Gates" name="1"/>
+  <lib desc="#Plexers" name="2"/>
+  <lib desc="#Arithmetic" name="3"/>
+  <lib desc="#Memory" name="4"/>
+  <lib desc="#I/O" name="5"/>
+  <lib desc="#Base" name="6">
+    <tool name="Text Tool">
+      <a name="text" val=""/>
+      <a name="font" val="SansSerif plain 12"/>
+      <a name="halign" val="center"/>
+      <a name="valign" val="base"/>
+    </tool>
+  </lib>
+  <main name="main"/>
+  <options>
+    <a name="gateUndefined" val="ignore"/>
+    <a name="simlimit" val="1000"/>
+    <a name="simrand" val="0"/>
+  </options>
+  <mappings>
+    <tool lib="6" map="Button2" name="Menu Tool"/>
+    <tool lib="6" map="Button3" name="Menu Tool"/>
+    <tool lib="6" map="Ctrl Button1" name="Menu Tool"/>
+  </mappings>
+  <toolbar>
+    <tool lib="6" name="Poke Tool"/>
+    <tool lib="6" name="Edit Tool"/>
+    <tool lib="6" name="Text Tool">
+      <a name="text" val=""/>
+      <a name="font" val="SansSerif plain 12"/>
+      <a name="halign" val="center"/>
+      <a name="valign" val="base"/>
+    </tool>
+    <sep/>
+    <tool lib="0" name="Pin">
+      <a name="tristate" val="false"/>
+    </tool>
+    <tool lib="0" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="labelloc" val="east"/>
+    </tool>
+    <tool lib="1" name="NOT Gate"/>
+    <tool lib="1" name="AND Gate"/>
+    <tool lib="1" name="OR Gate"/>
+  </toolbar>
+  <circuit name="main">
+    <a name="circuit" val="main"/>
+    <a name="clabel" val=""/>
+    <a name="clabelup" val="east"/>
+    <a name="clabelfont" val="SansSerif plain 12"/>
+    <appear>
+      <path d="M61,63 Q65,73 69,63" fill="none" stroke="#808080" stroke-width="2"/>
+      <rect fill="none" height="119" stroke="#000000" stroke-width="2" width="91" x="20" y="61"/>
+      <polyline fill="none" points="30,170 20,180" stroke="#000000"/>
+      <polyline fill="none" points="20,160 30,170" stroke="#000000"/>
+      <text font-family="SansSerif" font-size="12" text-anchor="middle" x="91" y="171">WE</text>
+      <text font-family="SansSerif" font-size="12" text-anchor="middle" x="59" y="163">ADR</text>
+      <text font-family="SansSerif" font-size="12" text-anchor="middle" x="48" y="174">0</text>
+      <text font-family="SansSerif" font-size="12" text-anchor="middle" x="59" y="174">1</text>
+      <text font-family="SansSerif" font-size="12" text-anchor="middle" x="69" y="174">2</text>
+      <text font-family="SansSerif" font-size="12" text-anchor="middle" x="39" y="84">IN 0</text>
+      <text font-family="SansSerif" font-size="12" text-anchor="middle" x="39" y="104">IN 1</text>
+      <text font-family="SansSerif" font-size="12" text-anchor="middle" x="39" y="124">IN 2</text>
+      <text font-family="SansSerif" font-size="12" text-anchor="middle" x="39" y="144">IN 3</text>
+      <text font-family="SansSerif" font-size="12" text-anchor="middle" x="85" y="84">OUT 0</text>
+      <text font-family="SansSerif" font-size="12" text-anchor="middle" x="85" y="104">OUT 1</text>
+      <text font-family="SansSerif" font-size="12" text-anchor="middle" x="84" y="123">OUT 2</text>
+      <text font-family="SansSerif" font-size="12" text-anchor="middle" x="84" y="144">OUT 3</text>
+      <circ-port height="8" pin="110,80" width="8" x="16" y="76"/>
+      <circ-port height="8" pin="110,120" width="8" x="16" y="96"/>
+      <circ-port height="8" pin="110,160" width="8" x="16" y="116"/>
+      <circ-port height="8" pin="110,200" width="8" x="16" y="136"/>
+      <circ-port height="8" pin="110,240" width="8" x="16" y="166"/>
+      <circ-port height="8" pin="110,280" width="8" x="46" y="176"/>
+      <circ-port height="8" pin="110,320" width="8" x="56" y="176"/>
+      <circ-port height="8" pin="110,360" width="8" x="66" y="176"/>
+      <circ-port height="8" pin="110,400" width="8" x="86" y="176"/>
+      <circ-port height="10" pin="600,80" width="10" x="105" y="75"/>
+      <circ-port height="10" pin="600,120" width="10" x="105" y="95"/>
+      <circ-port height="10" pin="600,160" width="10" x="105" y="115"/>
+      <circ-port height="10" pin="600,200" width="10" x="105" y="135"/>
+      <circ-anchor facing="east" height="6" width="6" x="107" y="77"/>
+    </appear>
+    <wire from="(580,200)" to="(600,200)"/>
+    <wire from="(470,120)" to="(600,120)"/>
+    <wire from="(470,120)" to="(470,280)"/>
+    <wire from="(110,400)" to="(540,400)"/>
+    <wire from="(520,80)" to="(520,320)"/>
+    <wire from="(520,80)" to="(600,80)"/>
+    <wire from="(580,200)" to="(580,360)"/>
+    <wire from="(540,160)" to="(540,400)"/>
+    <wire from="(110,280)" to="(470,280)"/>
+    <wire from="(540,160)" to="(600,160)"/>
+    <wire from="(110,360)" to="(580,360)"/>
+    <wire from="(110,320)" to="(520,320)"/>
+    <comp lib="0" loc="(600,120)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="label" val="OUT 1"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="0" loc="(110,120)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="In 1"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="0" loc="(110,280)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="A0"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="0" loc="(600,200)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="label" val="OUT 3"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="0" loc="(110,200)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="In 3"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="0" loc="(600,160)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="label" val="OUT 2"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="0" loc="(110,400)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="WE"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="0" loc="(110,320)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="A1"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="0" loc="(600,80)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="label" val="OUT 0"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="0" loc="(110,240)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="Clock input"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="0" loc="(110,360)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="A2"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="0" loc="(110,160)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="In 2"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+    <comp lib="0" loc="(110,80)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="In 0"/>
+      <a name="labelloc" val="north"/>
+    </comp>
+  </circuit>
+</project>
