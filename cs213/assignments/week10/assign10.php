@@ -42,4 +42,3 @@
      $str = json_encode($directory);
      print "\n $str \n";   //output the json string - The string is sent to the browser.      
  ?>
-
