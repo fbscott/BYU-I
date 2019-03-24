@@ -1,0 +1,92 @@
+/* form grid */
+.grid-container {
+  display: grid;
+  grid-template-columns: 120px auto auto;
+  grid-gap: 10px;
+  background-color: #efefef;
+  padding: 10px;
+  width: 600px;
+  align-items: center;
+}
+
+/* align and pad form columns */
+.grid-container > div {
+  text-align: right;
+  padding: 10px;
+}
+
+input[type="text"],
+input[type="tel"] {
+   height: 50px;
+}
+
+input[type="text"],
+input[type="tel"],
+textarea {
+   padding-left: 5px;
+   width: 100%;
+}
+
+input[readonly] {
+   background-color: #e6e6e6;
+}
+
+input[type="reset"],
+input[type="button"] {
+   float: left;
+}
+
+input + span.valid:after,
+textarea + span.valid:after { 
+   content: '\2714'; /* check mark */
+   color: #009000;   /* green */
+}
+
+input + span.invalid:after,
+textarea + span.invalid:after {
+   content: '\2717'; /* x mark */
+   color: #8b0000;   /* red */
+}
+
+input + span.valid:after,
+input + span.invalid:after,
+textarea + span.valid:after,
+textarea + span.invalid:after {
+   position: absolute; 
+   margin: -40px -25px;
+   font-size: 1.2rem;
+   font-weight: bold;
+}
+
+input ~ label,
+textarea ~ label {
+   float: left;
+   margin-top: 5px;
+   color: #8b0000;
+   font-weight: bold;
+}
+
+/* multi-column grid */
+.flex-item {
+   grid-column: 2/4;
+}
+
+.align-left,
+table {
+   text-align: left !important;
+}
+
+table th,
+table td {
+   padding: 5px 10px 5px 0;
+}
+
+.hide {
+   visibility: hidden;
+   height: 0;
+   margin-top: initial;
+}
+
+.margin-left {
+   margin-left: 30px;
+}
