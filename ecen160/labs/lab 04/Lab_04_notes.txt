@@ -1,0 +1,4 @@
+Lab 04 Part 06 - Logisim ALU
+	0000 1001 1001 0010 1111 0000 1111 1111 0000 1111 1111 1110 1111 0000 1111 1111 0001 0010 0011 0101
+	URL for testing: https://byui.brightspace.com/content/enforced/529711-Online.2019.Winter.ECEN160.05/TT_ALU_lab.html
+
