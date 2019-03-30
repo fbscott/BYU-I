@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/assign12.css">
+  <title>Mileage Calculator</title>
+</head>
+<body>
+  <h1>Mileage Calculator</h1>
+
+  <form action="javascript:void(0);" class="grid-container">
+    <!------------------------------------------ Start State ------------------------------------>
+    <label for="startState">Start State:</label>
+    <input type="text" name="startState" maxlength="2">
+    <div class="error"><p>Error: Please enter a valid Start State</p></div>
+    <!------------------------------------------ /Start State ----------------------------------->
+    <!------------------------------------------ Start City ------------------------------------->
+    <label for="startCity">Start City:</label>
+    <input type="text" name="startCity">
+    <div class="error"><p>Error: Please enter a valid Start City</p></div>
+    <!------------------------------------------ /Start City ------------------------------------>
+    <!------------------------------------------ Destination State ------------------------------>
+    <label for="endState">Destination State:</label>
+    <input type="text" name="endState" maxlength="2">
+    <div class="error"><p>Error: Please enter a valid Destination State</p></div>
+    <!------------------------------------------ /Destination State ----------------------------->
+    <!------------------------------------------ Destination City ------------------------------->
+    <label for="endCity">Destination City:</label>
+    <input type="text" name="endCity">
+    <div class="error"><p>Error: Please enter a valid Destination City</p></div>
+    <!------------------------------------------ /Destination City ------------------------------>
+    <button name="json-button" id="js-button">Read JSON</button>
+  </form>
+
+  <div id="js-travel-data" style="margin-top: 30px;"></div>
+
+  <script src="./js/assign12.js"></script>
+</body>
+</html>
