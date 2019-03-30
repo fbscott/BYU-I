@@ -30,11 +30,6 @@
                $prices = $_POST['prices'];
 
                foreach ($prices as $price) {
-                  // NOTE:
-                  // I HATE this solution. It's brittle because there might be various items
-                  // with the same price. I couldn't figure out how to dynamically get both
-                  // the item and its price from the HTML. See line 71 of assign11.html for
-                  // more details.
                   switch ($price) {
                      case '5000000.00':
                         echo '<li>Time Machine ($' . number_format($price, 2, '.', ',') . ')</li>';
