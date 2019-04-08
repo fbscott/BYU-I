@@ -1,0 +1,88 @@
+body {
+   max-width: 960px;
+}
+.grid-container {
+   display: grid;
+   grid-template-columns: 15% 15% 15% 15% 15% 15%;
+   grid-gap: 12px;
+   background-color: #efefef;
+   padding: 10px;
+    width: 600px;
+   align-items: center;
+}
+.grid-start-1 {
+   grid-column-start: 1;
+}
+.grid-start-2 {
+   grid-column-start: 2;
+}
+.grid-start-3 {
+   grid-column-start: 3;
+}
+.grid-start-4 {
+   grid-column-start: 4;
+}
+.grid-start-5 {
+   grid-column-start: 5;
+}
+.grid-start-6 {
+   grid-column-start: 6;
+}
+.grid-end-2 {
+   grid-column-end: 2;
+}
+.grid-end-3 {
+   grid-column-end: 3;
+}
+.grid-end-4 {
+   grid-column-end: 4;
+}
+.grid-end-5 {
+   grid-column-end: 5;
+}
+.grid-end-6 {
+   grid-column-end: 6;
+}
+.grid-end-7 {
+   grid-column-end: 7;
+}
+table {
+   border-collapse: collapse;
+}
+th, td {
+   border: 1px solid #cccccc;
+   padding: 10px;
+   text-align: left;
+}
+label {
+   font-size: 12px;
+   text-align: right;
+}
+input,
+select {
+   height: 30px;
+   padding-left: 10px;
+}
+input[type="radio"] + label {
+   /* margin-left: 4px; */
+   position: relative;
+   top: -11px;
+}
+button {
+   height: 50px;
+}
+.error {
+   display: none;
+   font-size: 12px;
+   color: #ff0000;
+   grid-column: 2 / span 5;
+}
+.error p {
+   margin-top: 0;
+}
+.show {
+   display: initial;
+}
+.right {
+   text-align: right;
+}

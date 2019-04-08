@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/assign13.css">
+  <title>Piano Student Registration</title>
+</head>
+<body>
+  <h1>Piano Student Registration</h1>
+
+  <form name="piano" class="grid-container">
+    <!------------------------------------------ Name ------------------------------------------->
+    <label for="first_name">Name:</label>
+    <input type="text" name="first_name" placeholder="First" class="grid-start-2 grid-end-4">
+    <input type="text" name="last_name" placeholder="Last" class="grid-start-4 grid-end-7">
+    <div id="js-name-error" class="error"><p>Error: Please enter your first and last Name.</p></div>
+    <!------------------------------------------ /Name ------------------------------------------>
+    <!------------------------------------------ Student ID ------------------------------------->
+    <label for="student_id">Student ID:</label>
+    <input type="text" name="student_id" class="grid-start-2 grid-end-7">
+    <div id="js-ID-error" class="error"><p>Error: Please enter your student ID.</p></div>
+    <!------------------------------------------ /Student ID ------------------------------------>
+    <!------------------------------------------ Performance ------------------------------------>
+    <label for="performance">Performance Type:</label>
+    <div><input type="radio" name="performance" onclick="PR.isDuet(this);" id="solo" value="solo"><label for="solo">Solo</label></div>
+    <div><input type="radio" name="performance" onclick="PR.isDuet(this);" id="duet" value="duet"><label for="duet">Duet</label></div>
+    <div class="grid-start-4 grid-end-7"><input type="radio" name="performance" onclick="PR.isDuet(this);" id="concerto" value="concerto"><label for="concerto">Concerto</label></div>
+    <div id="js-blank-error" class="error"><p>Error: Please select a performance type.</p></div>
+    <!------------------------------------------ /Performance ----------------------------------->
+    <!------------------------------------------ Skill Level ------------------------------------>
+    <label for="skill">Skill Level:</label>
+    <div><input type="radio" name="skill" id="beginner" value="beginner"><label for="beginner">Beginner</label></div>
+    <div><input type="radio" name="skill" id="intermediate" value="intermediate"><label for="intermediate">Intermediate</label></div>
+    <div><input type="radio" name="skill" id="pre-advanced" value="pre-advanced"><label for="pre-advanced">Pre-Advanced</label></div>
+    <div class="grid-start-5 grid-end-7"><input type="radio" name="skill" id="advanced" value="advanced"><label for="advanced">Advanced</label></div>
+    <div id="js-blank-error" class="error"><p>Error: Please select a skill level.</p></div>
+    <!------------------------------------------ /Skill Level ----------------------------------->
+    <!------------------------------------------ Instrument ------------------------------------->
+    <label for="instrument">Instrument:</label>
+    <div><input type="radio" name="instrument" id="piano" value="piano"><label for="piano">Piano</label></div>
+    <div><input type="radio" name="instrument" id="voice" value="voice"><label for="voice">Voice</label></div>
+    <div><input type="radio" name="instrument" id="string" value="string"><label for="string">String</label></div>
+    <div><input type="radio" name="instrument" id="organ" value="organ"><label for="organ">Organ</label></div>
+    <div><input type="radio" name="instrument" id="other" value="other"><label for="other">Other</label></div>
+    <div id="js-blank-error" class="error"><p>Error: Please select an instrument.</p></div>
+    <!------------------------------------------ /Instrument ------------------------------------>
+    <!------------------------------------------ /Location -------------------------------------->
+    <label for="location">Location:</label>
+    <select name="location" id="location" class="grid-start-2 grid-end-5">
+      <!-- I'm not familiar with the on campus buildings. I had to improvise. -->
+      <option value="" selected="true" disabled="disabled"> -- </option>
+      <option value="north">North</option>
+      <option value="east">East</option>
+      <option value="south">South</option>
+      <option value="west">West</option>
+    </select>
+    <label for="room">Room #:</label>
+    <select name="room" id="room" class="grid-start-6 grid-end-7">
+      <!-- Same with the rooms. -->
+      <option value="" selected="true" disabled="disabled"> -- </option>
+      <option value="100">100</option>
+      <option value="100">100</option>
+      <option value="101">101</option>
+      <option value="102">102</option>
+      <option value="103">103</option>
+      <option value="104">104</option>
+      <option value="105">105</option>
+      <option value="200">200</option>
+      <option value="201">201</option>
+      <option value="202">202</option>
+      <option value="203">203</option>
+      <option value="204">204</option>
+      <option value="205">205</option>
+      <option value="300">300</option>
+      <option value="301">301</option>
+      <option value="302">302</option>
+      <option value="303">303</option>
+      <option value="304">304</option>
+      <option value="305">305</option>
+    </select>
+    <div id="js-blank-error" class="error"><p>Error: Please select a location and room.</p></div>
+    <!------------------------------------------ /Location -------------------------------------->
+    <!------------------------------------------ /Time ------------------------------------------>
+    <label for="location">Time Slot:</label>
+    <select name="time_slot" id="time_slot" class="grid-start-2 grid-end-7">
+      <option value="" selected="true" disabled="disabled"> -- </option>
+      <option value="8:00 am">8:00 am</option>
+      <option value="8:00 am">8:30 am</option>
+      <option value="9:00 am">9:00 am</option>
+      <option value="9:00 am">9:30 am</option>
+      <option value="10:00 am">10:00 am</option>
+      <option value="10:00 am">10:30 am</option>
+      <option value="11:00 am">11:00 am</option>
+      <option value="11:00 am">11:30 am</option>
+      <option value="1:00 pm">1:00 pm</option>
+      <option value="1:00 pm">1:30 pm</option>
+      <option value="2:00 pm">2:00 pm</option>
+      <option value="2:00 pm">2:30 pm</option>
+      <option value="3:00 pm">3:00 pm</option>
+      <option value="3:00 pm">3:30 pm</option>
+      <option value="4:00 pm">4:00 pm</option>
+      <option value="4:00 pm">4:30 pm</option>
+    </select>
+    <!-- <input type="text" name="time_slot" placeholder="8:00 am" class="grid-start-2 grid-end-7"> -->
+    <div id="js-blank-error" class="error"><p>Error: Please select a time slot.</p></div>
+    <!------------------------------------------ /Time ------------------------------------------>
+    <!------------------------------------------ Duet Name -------------------------------------->
+    <p class="duet grid-start-2 grid-end-7">If you're registering for a duet, please enter the other performer's name and student ID.</p>
+    <label for="first_name_2">Name:</label>
+    <input type="text" name="first_name_2" placeholder="First" disabled="true" class="grid-start-2 grid-end-4">
+    <input type="text" name="last_name_2" placeholder="Last" disabled="true" class="grid-start-4 grid-end-7">
+    <div id="js-name2-error" class="error"><p>Error: Please enter the other performer's first and last Name.</p></div>
+    <!------------------------------------------ /Duet Name ------------------------------------->
+    <!------------------------------------------ Duet Student ID -------------------------------->
+    <label for="student_id_2">Student ID:</label>
+    <input type="text" name="student_id_2" disabled="true" class="grid-start-2 grid-end-7">
+    <div id="js-ID2-error" class="error"><p>Error: Please enter the other performer's student ID.</p></div>
+    <!------------------------------------------ /Duet Student ID ------------------------------->
+    <button type="reset" name="clear" class="grid-start-2 grid-end-4">Clear</button>
+    <button type="button" name="register" id="js-button" class="grid-start-4 grid-end-7">Register</button>
+  </form>
+
+  <!-- results table (from AJAX call) -->
+  <div id="js-recital-data" style="margin-top: 30px;"></div>
+
+  <script src="./js/assign13GlobalNamespace.js"></script>
+  <script src="./js/assign13Validation.js"></script>
+  <script src="./js/assign13AJAX.js"></script>
+  <script src="./js/assign13EventListeners.js"></script>
+</body>
+</html>
