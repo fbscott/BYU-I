@@ -16,9 +16,9 @@ PR.lastName2   = document.piano.last_name_2;
 PR.studentID2  = document.piano.student_id_2;
 // other performer info: name (first and last) & student ID
 PR.duetArr = [
-    document.piano.first_name_2,
-    document.piano.last_name_2,
-    document.piano.student_id_2
+    PR.firstName2,
+    PR.lastName2,
+    PR.studentID2
 ];
 // DOM element to be updated
 PR.displayRecitalData = document.getElementById('js-recital-data');
