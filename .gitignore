@@ -2,11 +2,16 @@
 /b320
 /cs308
 /cs364
-/fdrel_225
 /ecen160/docs
 /ecen160/notes
 /ecen160/presentations
 /ecen160/screenshots
+/fdrel200
+/fdrel225
+/fdrel250
+/fdrel275
+/gs120
+/math100g
 */downloads
 
 # ignore sftp-config
