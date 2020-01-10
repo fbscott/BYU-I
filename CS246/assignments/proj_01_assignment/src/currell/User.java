@@ -2,38 +2,36 @@ package currell;
 
 public class User {
 
+    // private: field is accessible only w/in its own class
     private String password;
-    private String hashedPassword;
     private String salt;
+    private String hashedPassword;
 
-    // constructor
+    // Constructors use the name of the class and do NOT have a return type.
+    // The compiler automatically provides a no-argument, default constructor
+    // for any class without constructors: public User() {}
+    // public: field is accessible from all classes
     public User(String password) {
         this.password = password;
-    }
+    } // non-default constructor
 
     // "alt + insert" > Getters and Setters
+    // getters
     public String getPassword() {
         return password;
     }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
+    public String getSalt() { return salt; }
     public String getHashedPassword() {
         return hashedPassword;
     }
 
-    public void setHashedPassword(String hashedPassword) {
-        this.hashedPassword = hashedPassword;
-    }
-
-    public String getSalt() {
-        return salt;
-    }
-
+    // setters
+    public void setPassword(String password) { this.password = password; }
     public void setSalt(String salt) {
         this.salt = salt;
+    }
+    public void setHashedPassword(String hashedPassword) {
+        this.hashedPassword = hashedPassword;
     }
 
     // override stream operators
