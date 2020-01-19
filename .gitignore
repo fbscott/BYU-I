@@ -17,6 +17,7 @@ fdrel275/
 gs120/
 math100g/
 out/
+**/zoom_meetings
 
 # ignore sftp-config
 *.json
