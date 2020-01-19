@@ -6,15 +6,12 @@
 	See the first answer here for a good discussion on why: 
 	http://stackoverflow.com/questions/147454/why-is-using-a-wild-card-with-a-java-import-statement-bad
 */
-
-package currell;
-
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
+import java.util.Random;
 import java.security.SecureRandom;
+import javax.crypto.spec.PBEKeySpec;
+import javax.crypto.SecretKeyFactory;
 import java.util.Arrays;
 import java.util.Base64;
-import java.util.Random;
 
 /**
 * The NSALoginController class handles password hashing and verification
@@ -106,29 +103,12 @@ public final class NSALoginController {
 	* As a side-effect, the original password value is removed for security purposes.
 	* @param user The user whose password needs to be hashed.
 	* @exception Exception If there is a problem with the chosen hash function.
-	* @exception WeakPasswordException If there is a weak password detected.
 	*/
 	public static void hashUserPassword(User user) throws Exception {
 		
 		// Get the next random salt value to use for this password
 		byte[] salt = getNextSalt();
 		char[] password = user.getPassword().toCharArray();
-
-		boolean hasDigit = false;
-
-		if (password.length < 8) {
-			throw new WeakPasswordException("Password must be at least 8 characters in length.");
-		}
-
-		for (int i = 0; password.length > i; i++) {
-			if (Character.isDigit(password[i])) {
-				hasDigit = true;
-			}
-		}
-
-		if (!hasDigit) {
-			throw new WeakPasswordException("Password must contain at least one digit.");
-		}
 
 		// Once we've generated the hash, clear the old password
 		// from memory for security purposes

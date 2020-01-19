@@ -29,6 +29,10 @@ public class Test {
             // click red bulb to add try/catch when hovering over hashUserPassword
             NSALoginController.hashUserPassword(user);
 
+        } catch (WeakPasswordException e) {
+
+            System.out.println("Weak Password Error: " + e.getMessage());
+
         } catch (Exception e) {
 
             System.out.println("Some ting wong . . .");
