@@ -4,7 +4,8 @@ import java.awt.*;
 import java.util.Random;
 
 /**
- *  Wolves move at random at first, then chase their prey.
+ *  Wolves move at random at first, then chase their prey. They spawn a new wolf when
+ *  they eat an animal.
  * <p>
  * @author  Scott Currell
  * @version 1.0
@@ -14,8 +15,8 @@ import java.util.Random;
 public class Wolf extends Creature implements Movable, Aggressor, Aware, Spawner {
 
     Random _rand;
-    int _preferredDirection;
-    boolean _canSpawn = false;
+    private int _preferredDirection;
+    private boolean _canSpawn = false;
 
     public Wolf() {
         _rand = new Random();

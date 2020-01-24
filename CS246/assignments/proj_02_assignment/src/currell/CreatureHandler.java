@@ -5,6 +5,7 @@ import java.util.Random;
 import java.awt.Point;
 import java.util.List;
 
+
 /**
 * The "brains" of the game, which controls all of the creature activites.
 * <p>
@@ -156,5 +157,6 @@ public class CreatureHandler
 					}
 				}
 			}
+		_creatures.addAll(_newCreatures);
 	}
 }

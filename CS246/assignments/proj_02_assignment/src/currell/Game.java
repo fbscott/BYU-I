@@ -48,6 +48,12 @@ public class Game {
 			creatures.add(w);
 		}
 
+		// Add some plants to the world
+		for(int i = 0; i < 25; i++) {
+			ZombieKillingPlant zkp = new ZombieKillingPlant();
+			creatures.add(zkp);
+		}
+
 		// Create the world
 		_theWorld = new World(creatures);
 	}

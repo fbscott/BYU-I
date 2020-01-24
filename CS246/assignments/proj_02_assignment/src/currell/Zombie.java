@@ -13,10 +13,10 @@ import java.awt.*;
 public class Zombie extends Creature implements Movable, Aggressor {
 
     public Zombie() {
-        _health = 0;
+        _health = 1;
     }
 
-    public Boolean isAlive() { return _health == 0; }
+    public Boolean isAlive() { return _health > 0; }
     public Shape getShape() {
         return Shape.Square;
     }
