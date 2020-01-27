@@ -185,5 +185,33 @@ public class Directory {
         for (User user : beatlesList) {
             System.out.println(user);
         }
+
+        System.out.println();
+        System.out.println("/*********************************** GSON / JSON (cont.) ***********************************/\n");
+
+        Integer y = 1;
+
+        List<String> names = new ArrayList<String>();
+
+        names.add("Homer");
+        names.add("Marge");
+        names.add("Bart");
+        names.add("Lisa");
+        names.add("Maggie");
+
+        names.set(2, "Evil");
+
+        System.out.println(names.get(2));
+
+        for (String string : names) {
+            System.out.println(string);
+        }
+
+        if (names.contains("Homer")) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+
     }
 }
