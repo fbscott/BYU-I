@@ -22,19 +22,11 @@ public class WeatherForecastItem {
     @SerializedName("weather")
     private List<WeatherDescription> description;
 
-//    public String getTime() {
-//        return time;
-//    }
-//
-//    public Map getMeasurements() {
-//        return measurements;
-//    }
-
     @Override
     public String toString() {
         return " - Time: " + time + ',' +
-               temperature + ',' +
-               " - Weather Conditions: " + description.get(0) + ',' +
-               " - Wind Speed: " + wind + '\n';
+               " - Temperature: " + temperature.getTemp() + ',' +
+               " - Weather Conditions: " + description.get(0).getDescription() + ',' +
+               " - Wind Speed: " + wind.getSpeed() + '\n';
     }
 }

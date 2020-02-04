@@ -9,14 +9,20 @@ public class WeatherForecast {
 
     @SerializedName("list")
     private List<WeatherForecastItem> items;
-//    private Map<String, String> city;
 
-//    public List<WeatherForecastItem> getItems() {
-//        return items;
+//    Old code before looking at teacher solution
+//    @Override
+//    public String toString() {
+//        return "Weather Forecast:\n" + items;
 //    }
 
-    @Override
     public String toString() {
-        return "Weather Forecast:\n" + items;
+        StringBuilder result = new StringBuilder();
+
+        for (WeatherForecastItem item : items) {
+            result.append(item.toString() + "\n");
+        }
+
+        return result.toString();
     }
 }
