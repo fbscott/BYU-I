@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Favorite Scripture</string>
+    <string name="edit_book">Book Name</string>
+    <string name="edit_chapter">Chapter Number</string>
+    <string name="edit_verse">Verse Number</string>
+    <string name="button_submit">submit</string>
+</resources>
