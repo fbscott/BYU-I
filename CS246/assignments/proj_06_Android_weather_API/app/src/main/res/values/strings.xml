@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">proj_06_Android_weather_API</string>
+    <string name="button_temp">Get Temperature</string>
+    <string name="button_forecast">Get Forecast</string>
+    <string name="text_city">City:</string>
+    <string name="text_get_city">Enter City:</string>
+    <string name="text_current_temp">Current Temperature</string>
+    <string name="text_specify_city">Enter a City to Get its Current Temperature or Future Forecast</string>
+</resources>

@@ -1,4 +1,5 @@
 # ignore the following sub folders
+**/zoom_meetings
 */downloads
 .idea/
 b320/
@@ -17,7 +18,6 @@ fdrel275/
 gs120/
 math100g/
 out/
-**/zoom_meetings
 
 # ignore sftp-config
 *.json
@@ -35,7 +35,10 @@ out/
 *.pdf
 *.png
 *.PNG
+*.ppt
+*.pptx
 *.psd
+*.sublime-workspace
 *.tmp
 *.xls
 *.xlsx
