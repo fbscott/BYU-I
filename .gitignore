@@ -1,13 +1,23 @@
 # ignore the following sub folders
-/b320
-/cs308
-/cs364
-/fdrel_225
-/ecen160/docs
-/ecen160/notes
-/ecen160/presentations
-/ecen160/screenshots
+**/zoom_meetings
 */downloads
+.idea/
+b320/
+cs246/assignments/**/doc/
+cs246/reflections/
+cs308/
+cs364/
+ecen160/docs/
+ecen160/notes/
+ecen160/presentations/
+ecen160/screenshots/
+fdrel200/
+fdrel225/
+fdrel250/
+fdrel275/
+gs120/
+math100g/
+out/
 
 # ignore sftp-config
 *.json
@@ -16,6 +26,7 @@
 *.doc
 *.docx
 *.exe
+*.iml
 *.jpeg
 *.JPEG
 *.jpg
@@ -24,7 +35,10 @@
 *.pdf
 *.png
 *.PNG
+*.ppt
+*.pptx
 *.psd
+*.sublime-workspace
 *.tmp
 *.xls
 *.xlsx

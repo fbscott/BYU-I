@@ -1,0 +1,41 @@
+{
+   "folders":
+   [
+      {
+         "path": ".",
+         "folder_exclude_patterns":
+         [
+            ".git",
+            "B320",
+            "CS308",
+            "CS364",
+            "docs",
+            "ECEN160",
+            "ENG106",
+            "FDAMF101",
+            "FDREL200",
+            "FDREL225",
+            "FDREL250",
+            "FDREL275",
+            "GS120",
+            "MATH100G",
+            "non-code assignments",
+            "receipts",
+            "screenshots",
+            "zoom_meetings"
+         ],
+         "file_exclude_patterns":
+         [
+            "*.doc",
+            "*.docx",
+            "*.pdf",
+            "*.ppt",
+            "*.pptx",
+            "*.xls",
+            "*.xlsx",
+            "*.zip",
+            "proj-BYUI.sublime-project"
+         ]
+      }
+   ]
+}
