@@ -1,6 +1,6 @@
 # BYU-I: Software Engineering Coursework
 
-Scott Currell's personal coursework
+Great Scott's personal coursework
 
 ## CIT261
 
