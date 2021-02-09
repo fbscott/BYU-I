@@ -11,7 +11,7 @@ cs308/
 cs364 (SE I)/
 cs416 (SE II)/
 cs432 (SE III)/
-cse471 (User Interface Eval & Design)/
+# cse471 (User Interface Eval & Design)/
 ecen160/docs/
 ecen160/notes/
 ecen160/presentations/
@@ -42,6 +42,7 @@ out/
 *.PNG
 *.ppt
 *.pptx
+*.psd
 *.psd
 *.sublime-workspace
 *.tmp
