@@ -1,0 +1,172 @@
+/*****************************************************************************
+ * Adapted from David Walsh's Create a CSS Flipping Animation
+ * Source: https://davidwalsh.name/css-flip
+ ****************************************************************************/
+.panel-container {
+   /* 3D rotational effect */
+   perspective: 62.5rem;
+}
+
+.panel-flip {
+   display: block;
+   position: relative;
+   /* prevents div from collapsing */
+   min-height: 14.063rem;
+   min-width: 10.938rem;
+   max-width: 10.938rem;
+   transition: 300ms;
+   transform-style: preserve-3d;
+}
+
+.panel-flip.flip,
+.panel-flip.disabled {
+   transform: rotateY(180deg);
+}
+
+.panel-flip.disabled .panel-back {
+   filter: grayscale(100%);
+   transition: filter 300ms ease-in-out 300ms;
+}
+
+.panel-front,
+.panel-back {
+   position: absolute;
+   border: 1px solid #cccccc;
+   backface-visibility: hidden;
+   cursor: pointer;
+   min-height: 10.938rem;
+   min-width: 10.938rem;
+   max-height: 10.938rem;
+   max-width: 10.938rem;
+   overflow: hidden;
+   /* needed for FireFox */
+   transform: rotateX(0deg);
+}
+
+.panel-front {
+   background-color: #040b28;
+   padding: 1.875rem;
+   z-index: 2;
+}
+
+.panel-back  {
+   background-color: #cccccc;
+   background-size: cover;
+   z-index: 1;
+   background-position-x: center;
+   background-position-y: center;
+   transform: rotateY(180deg);
+}
+
+.score {
+   font-size: 2rem;
+   padding: 0.5rem 0;
+   margin: 1rem auto;
+   background-color: #cccccc;
+   display: block;
+   border-radius: 0.25rem;
+   width: 100%;
+   text-align: center;
+}
+
+.save-container {
+   background-color: #ffa500;
+   padding: 1rem;
+   position: relative;
+   width: 100%;
+   text-align: center;
+}
+
+.save-container p {
+   font-size: 1.25rem;
+   color: #ffffff;
+}
+
+.spinner {
+   border: 1.25rem solid #cccccc;
+   border-top: 1.25rem solid #040b28;
+   margin: 3.125rem auto 0;
+   border-radius: 50%;
+   width: 9.375rem;
+   height: 9.375rem;
+   -webkit-animation: spinner 500ms linear infinite;
+           animation: spinner 500ms linear infinite;
+}
+
+.slide-in-1 {
+   -webkit-animation: slide-in 750ms ease-out;
+           animation: slide-in 750ms 1 ease-out 0ms;
+   -webkit-animation-fill-mode: forwards;
+           animation-fill-mode: forwards;
+}
+
+.slide-in-2 {
+   -webkit-animation: slide-in 750ms ease-out;
+           animation: slide-in 750ms 1 ease-out 50ms;
+   -webkit-animation-fill-mode: forwards;
+           animation-fill-mode: forwards;
+}
+
+.slide-in-3 {
+   -webkit-animation: slide-in 750ms ease-out;
+           animation: slide-in 750ms 1 ease-out 100ms;
+   -webkit-animation-fill-mode: forwards;
+           animation-fill-mode: forwards;
+}
+
+.slide-out-1 {
+   -webkit-animation: slide-out 750ms ease-out;
+           animation: slide-out 750ms 1 ease-out 0ms;
+   -webkit-animation-fill-mode: forwards;
+           animation-fill-mode: forwards;
+}
+
+.slide-out-2 {
+   -webkit-animation: slide-out 750ms ease-out;
+           animation: slide-out 750ms 1 ease-out 50ms;
+   -webkit-animation-fill-mode: forwards;
+           animation-fill-mode: forwards;
+}
+
+.slide-out-3 {
+   -webkit-animation: slide-out 750ms ease-out;
+           animation: slide-out 750ms 1 ease-out 100ms;
+   -webkit-animation-fill-mode: forwards;
+           animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes spinner {
+  0%   { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spinner {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@-webkit-keyframes slide-in {
+   0%   { left: 93.75rem; }
+   40%  { left: -1.875rem; }
+   50%  { left: 0.938rem; }
+   100% { left: 0; }
+}
+
+@keyframes slide-in {
+   0%   { left: 93.75rem; }
+   40%  { left: -1.875rem; }
+   50%  { left: 0.938rem; }
+   100% { left: 0; }
+}
+
+@-webkit-keyframes slide-out {
+   0%   { left: 0; }
+   30%  { left: 1.875rem; }
+   100% { left: -165.625rem; }
+}
+
+@keyframes slide-out {
+   0%   { left: 0; }
+   30%  { left: 1.875rem; }
+   100% { left: -165.625rem; }
+}

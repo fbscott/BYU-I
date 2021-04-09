@@ -1,0 +1,153 @@
+/*****************************************************************************
+ * navigation
+ ****************************************************************************/
+ul.navigation-secondary li a:link,
+ul.navigation-secondary li a:visited {
+   margin-top: 5px;
+   margin-bottom: 5px;
+   text-decoration: none;
+   color: #444444;
+   background-color: #ebebeb;
+   border-radius: 5px;
+   width: 200px;
+   padding: 8px 10px;
+   position: relative;
+   /*
+   Transition shorthand. Same as doing the following:
+    - transition-property: width;
+    - transition-duration: 300ms;
+    - transition-timing-function: ease-out;
+    And then again for other properties (background-color, color, etc.);
+    */
+   transition: width 300ms ease-out,
+               color 300ms,
+               background-color 300ms;
+}
+
+ul.navigation-secondary li a span.caret {
+   color: #444444;
+   position: absolute;
+   padding-right: 10px;
+   right: 0;
+   visibility: hidden;
+   opacity: 0%;
+   transition: opacity 300ms;
+   transition-delay: 500ms;
+}
+
+ul.navigation-secondary li a span.caret span {
+   font-style: italic;
+   font-weight: bold;
+}
+
+ul.navigation-secondary li a:hover {
+   width: 225px;
+   color: #ebebeb;
+   background-color: #444444;
+}
+
+ul.navigation-secondary li a:hover span.caret {
+   visibility: visible;
+   opacity: 100%;
+   background-color: #fcb017;
+   padding: 8px 10px;
+   border-radius: 0px 5px 5px 0px;
+   top: 0px;
+}
+
+/*****************************************************************************
+ * sales banner
+ ****************************************************************************/
+#transition-banner {
+   width: 100%;
+   padding: 20px;
+   border: 1px solid #444444;
+   position: relative;
+   overflow: hidden;
+   background-color: #ebebeb;
+   margin-bottom: 30px;
+}
+
+#transition-banner p#transition-banner-sales-pitch {
+   opacity: 0;
+   transition: opacity 300ms ease-in-out 2s;
+}
+
+#transition-banner p#transition-banner-thanks {
+   opacity: 0;
+   display: inline-block;
+   transition: opacity 300ms ease-in-out;
+}
+
+#transition-banner p#transition-banner-sales-pitch.show,
+#transition-banner p#transition-banner-thanks.show {
+   opacity: 1;
+}
+
+#transition-banner img#transition-banner-img {
+   position: absolute;
+   width: 300px;
+   right: -360px;
+   top: -40px;
+   transition: right 300ms ease-in-out 1s;
+}
+
+#transition-banner img#transition-banner-img.show {
+   right: -60px;
+}
+
+/*****************************************************************************
+ * companion cube
+ ****************************************************************************/
+@keyframes loopUp {
+   from { transform: rotateX(0deg)   rotateY(0deg); }
+   to   { transform: rotateX(360deg) rotateY(0deg); }
+}
+
+@keyframes loopRight {
+   from { transform: rotateX(0deg) rotateY(0deg);   }
+   to   { transform: rotateX(0deg) rotateY(360deg); }
+}
+
+@keyframes loopDiagonal {
+   from { transform: rotateX(0deg)   rotateY(0deg);   }
+   to   { transform: rotateX(360deg) rotateY(360deg); }
+}
+
+#rotating-cube {
+   perspective: 1000px;
+   perspective-origin: 50% 50%;
+}
+
+#companion-cube {
+   position: relative;
+   width: 244px;
+   height: 244px;
+   margin: auto;
+   transform-style: preserve-3d;
+   animation: loopDiagonal 30s linear infinite;
+}
+
+#companion-cube img {
+   position: absolute;
+   opacity: 0.8;
+}
+
+#companion-cube img:nth-child(1) { transform: rotateY(0deg)   translateZ(122px); }
+#companion-cube img:nth-child(2) { transform: rotateY(90deg)  translateZ(122px); }
+#companion-cube img:nth-child(3) { transform: rotateY(180deg) translateZ(122px); }
+#companion-cube img:nth-child(4) { transform: rotateY(-90deg) translateZ(122px); }
+#companion-cube img:nth-child(5) { transform: rotateX(90deg)  translateZ(122px); }
+#companion-cube img:nth-child(6) { transform: rotateX(-90deg) translateZ(122px); }
+
+/*****************************************************************************
+ * aliens
+ ****************************************************************************/
+a.alien {
+   text-decoration: none;
+   text-align: center;
+}
+
+a > img { border: 1px solid #cccccc; }
+
+span.alien-red { color: #ff0000; }

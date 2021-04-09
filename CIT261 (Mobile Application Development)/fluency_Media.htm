@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/css/reset.css">
+  <link rel="stylesheet" href="./assets/css/base.css">
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="./assets/css/fluencies.css">
+  <title>Fluency | HTML5 Media Elements</title>
+</head>
+<body>
+  
+<div class="bg-gray">
+  <div class="row">
+    <div class="columns large-10">
+      <h1 class="margin-top-30">HTML5 Media Elements: Canvas, Video, Audio</h1>
+    </div>
+    <div class="columns large-2 text-right">
+      <a class="margin-top-30" href="./index.htm">home</a>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="column">
+    <h2 class="margin-top-30">HTML5 Canvas</h2>
+    <h3>PONG</h3>
+    <p><strong>PLAY:</strong> Normal PONG rules, but in this version, the ball increases speed after each collision. Speed is reset after each score.</p>
+    <p>Striking the ball closer to the edge of a paddle causes it to rebound at a sharper angle. The closer the ball is to the edge of the paddle, the greater the angle.</p>
+    <p>The artificial intelligence (AI) is basic. It just tries to match the ball's Y-axis value within a percentage range. This is the only way to defeat the AI (there's a slight chance the ball will miss when it tries to go for an edge strike).</p>
+    <p><strong>NOTE:</strong> There's a known glitch: Sometimes the ball clips through a paddle when it gets going too fast. I believe it has to do with the frame rate and collision detection; I "think" the gap between the ball's current and last positions is greater than the span of the paddle to the edge of the canvas, causing a false score. I probably won't fix it for this assignment. <strong>¯\_(ツ)_/¯</strong></p>
+  </div>
+
+</div>
+<div class="row">
+
+  <div class="column">
+    <canvas class="margin-bottom-30" id="pong" width="800" height="600"></canvas>
+  </div>
+
+</div>
+<div class="row">
+  
+  <div class="column">
+    <hr />
+    <h2 class="margin-top-30">HTML5 Video</h2>
+    <h3>Clouds from Pixabay</h3>
+    <video class="margin-bottom-30" width="640" height="360" controls>
+      <source src="./assets/vid/clouds_27197.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+    <blockquote>
+      Free for commercial use. No attribution required.<br />
+      <a class="margin-bottom-0" href="https://pixabay.com/videos/clouds-drone-aerial-landscape-27197/" target="_blank">Clouds Source</a><br />
+      <a href="https://pixabay.com/service/terms/#license" target="_blank">Pixabay License</a>
+    </blockquote>
+  </div>
+
+</div>
+<div class="row">
+  
+  <div class="column margin-bottom-30">
+    <hr />
+    <h2 class="margin-top-30">HTML5 Audio</h2>
+    <h3>Herbal Tea by Artificial.Music</h3>
+    <audio class="margin-bottom-30" controls>
+      <source src="./assets/audio/herbal_tea.mp3" type="audio/mpeg">
+      Your browser does not support HTML5 audio.
+    </audio>
+    <blockquote>
+      herbal tea by Artificial.Music https://soundcloud.com/artificial-music<br />
+      Creative Commons — Attribution 3.0 Unported— CC BY 3.0<br />
+      Free Download / Stream: https://bit.ly/_Herbal-Tea<br />
+      Music promoted by Audio Library https://youtu.be/ChhcjSCEaBc
+    </blockquote>
+  </div>
+
+</div>
+
+<script src="./assets/js/pong.js"></script>
+</body>
+</html>

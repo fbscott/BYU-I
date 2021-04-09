@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" style="padding-bottom: 100px;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/css/reset.css">
+  <link rel="stylesheet" href="./assets/css/base.css">
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="./assets/css/fluencies.css">
+  <title>Fluency | CSS Transitions, Transforms, and Animations</title>
+</head>
+<body>
+  
+<div class="bg-gray">
+  <div class="row">
+    <div class="columns large-10">
+      <h1 class="margin-top-30">CSS: Transitions, Transforms, and Animations</h1>
+    </div>
+    <div class="columns large-2 text-right">
+      <a class="margin-top-30" href="./index.htm">home</a>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="columns large-4">
+    <h2 class="margin-top-30">CSS Transitions</h2>
+  </div>
+
+  <div class="columns large-8">
+    <h2 class="margin-top-30">Transitions Banner</h2>
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="columns large-4">
+    <ul class="navigation-secondary">
+      Link list:
+      <li>
+        <a href="https://codepen.io/" target="_blank">codepen.io <span class="caret"><span>Go</span> &raquo;</span></a>
+      </li>
+      <li>
+        <a href="https://developer.mozilla.org/en-US/" target="_blank">developer.mozilla.org <span class="caret"><span>Go</span> &raquo;</span></a>
+      </li>
+      <li>
+        <a href="https://github.com/" target="_blank">github.com <span class="caret"><span>Go</span> &raquo;</span></a>
+      </li>
+      <li>
+        <a href="https://jsfiddle.net/" target="_blank">jsfiddle.net <span class="caret"><span>Go</span> &raquo;</span></a>
+      </li>
+      <li>
+        <a href="https://jquery.com/" target="_blank">jquery.com <span class="caret"><span>Go</span> &raquo;</span></a>
+      </li>
+      <li>
+        <a href="https://stackoverflow.com/" target="_blank">stackoverflow.com <span class="caret"><span>Go</span> &raquo;</span></a>
+      </li>
+      <li>
+        <a href="https://www.w3schools.com/" target="_blank">w3schools.com <span class="caret"><span>Go</span> &raquo;</span></a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="columns large-8">
+    <div class="row">
+
+      <div class="column">
+        <div id="transition-banner">
+          <div class="row">
+            <div class="column">
+              <h3>Overly Enthusiastic Banner Ad!</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="columns small-8">
+              <p id="transition-banner-sales-pitch">Cheesy thumbs-up guy endorses this product! You should definitely buy it &ndash; even though you already have three others just like it!</p>
+            </div>
+            <div class="columns small-4">
+              <img id="transition-banner-img" src="./assets/img/cheesy-thumbs-up-guy.png" alt="cheesy thumbs up guy" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="column">
+              <button id="transition-banner-button" class="margin-bottom-0">Buy Now!</button>
+              <p id="transition-banner-thanks" class="margin-bottom-0">&nbsp;Thanks for buying our product!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- end transitions -->
+
+<div class="row">
+  <div class="column">
+    <hr />
+    <h2 class="margin-top-30">CSS Transforms and Animations</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="columns large-4">
+    <form action="" name="cubeValues">
+      <label for="transZ">3D transform: translateZ(<span id="js-transZ-value">122</span>px);</label><br />
+      <input type="range" name="transZ" min="0" max="250" value="122" class="slider" id="transZ"><br />
+
+      <label for="rot">2D transform: rotate(<span id="js-rot-value">0</span>deg);</label><br />
+      <input type="range" name="rot" min="-90" max="90" value="0" class="slider" id="rot"><br />
+
+      <input type="radio" id="up" name="dir" value="up">
+      <label for="up">Up&nbsp;&nbsp;&nbsp;&nbsp;</label>
+      <input type="radio" id="right" name="dir" value="right">
+      <label for="right">Right&nbsp;&nbsp;&nbsp;&nbsp;</label>
+      <input type="radio" id="diagonal" name="dir" value="diagonal">
+      <label for="diagonal">Diagonal</label>
+    </form>
+  </div>
+  <div class="columns large-8 margin-bottom-30">
+    <div id="rotating-cube">
+      <div id="companion-cube" class="js-cube">
+        <img src="./assets/img/companion_cube.jpg" class="js-cube-side" alt="portal companion cube">
+        <img src="./assets/img/companion_cube.jpg" class="js-cube-side" alt="portal companion cube">
+        <img src="./assets/img/companion_cube.jpg" class="js-cube-side" alt="portal companion cube">
+        <img src="./assets/img/companion_cube.jpg" class="js-cube-side" alt="portal companion cube">
+        <img src="./assets/img/companion_cube.jpg" class="js-cube-side" alt="portal companion cube">
+        <img src="./assets/img/companion_cube.jpg" class="js-cube-side" alt="portal companion cube">
+      </div>
+    </div>
+  </div>
+</div><!-- end transitions -->
+
+<script src="./assets/js/slider.js"></script>
+<script src="./assets/js/banner.js"></script>
+</body>
+</html>
