@@ -4,23 +4,23 @@
 .idea/
 b320/
 # cit225 (Database Design & Development)/
-cit270 (Systems Security I)/
-cs246/assignments/**/doc/
-cs246/reflections/
-cs308/
-cs364 (SE I)/
-cs416 (SE II)/
-cs432 (SE III)/
-cse471 (User Interface Eval & Design)/
-ecen160/docs/
-ecen160/presentations/
-ecen160/screenshots/
-fdrel200/
-fdrel225/
-fdrel250/
-fdrel275/
-gs120/
-math100g/
+CIT270 (Systems Security I)/
+CS246 (Software Design and Development)/assignments/**/doc/
+CS246 (Software Design and Development)/reflections/
+CS308 (Technical Communication)/
+CS364 (SE I)/
+CS416 (SE II)/
+CS432 (SE III)/
+CSE471 (User Interface Eval & Design)/
+ECEN160 (Fundamentals of Digital Systems)/docs/
+ECEN160 (Fundamentals of Digital Systems)/presentations/
+ECEN160 (Fundamentals of Digital Systems)/screenshots/
+FDREL200/
+FDREL225/
+FDREL250/
+FDREL275/
+GS120/
+MATH100g/
 out/
 
 # ignore sftp-config
