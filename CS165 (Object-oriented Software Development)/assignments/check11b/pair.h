@@ -1,6 +1,6 @@
 /*****************************************************
  * File: pair.h
- * Author: Scott Currell
+ * Author: [student name obfuscated]
  *
  * Purpose: Defines a Pair template class that can hold
  *   two items of arbitrary data types.

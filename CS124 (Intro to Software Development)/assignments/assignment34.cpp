@@ -1,10 +1,10 @@
 /***********************************************************************
 * Program:
 *    Assignment 34, Files
-*    Brother Schwieder, CS124
+*    [instructor name obfuscated], CS124
 *    
 * Author:
-*    Scott Currell
+*    [student name obfuscated]
 *    
 * Summary: 
 *    Start with Assignment 3.2. Modify countLetters() so that it walks through

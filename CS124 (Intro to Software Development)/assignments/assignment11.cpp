@@ -1,9 +1,9 @@
 /***********************************************************************
 * Program:
 *    Assignment 11, Output (Monthly Budget)
-*    Brother Schwieder, CS124
+*    [instructor name obfuscated], CS124
 * Author:
-*    Scott Currell
+*    [student name obfuscated]
 * Summary: 
 *    Write a program to output my monthly budget.
 *

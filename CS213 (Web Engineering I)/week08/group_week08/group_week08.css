@@ -80,7 +80,7 @@ grid-template-columns: repeat(4, minmax(250px, 1fr));
 /* End Naoya Yuda' Contribution */
 /********************************** end section 3 *****************************/
 /********************************** section 4 *********************************/
-/* Scott Currell's Contribution */
+/* [student name obfuscated]'s Contribution */
 #grid_second {
    display: grid;
    grid-gap: 1rem;
@@ -139,5 +139,5 @@ grid-template-columns: repeat(4, minmax(250px, 1fr));
       flex-wrap: initial; /* prevent wrapping */
    }
 }
-/* End Scott Currell's Contribution */
+/* End [student name obfuscated]'s Contribution */
 /********************************** end section 4 *****************************/

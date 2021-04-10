@@ -1,10 +1,10 @@
 /***********************************************************************
 * Program:
 *    Assignment 35, Files
-*    Brother Schwieder, CS124
+*    [instructor name obfuscated], CS124
 *    
 * Author:
-*    Scott Currell
+*    [student name obfuscated]
 *    
 * Summary: 
 *    Write two functions (computeLetterGrade() and computeGradeSign()) and a

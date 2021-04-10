@@ -1,6 +1,6 @@
 /***************************************************************
  * File: address.h
- * Author: Scott Currell
+ * Author: [student name obfuscated]
  * Purpose: Contains the definition of the Address class
  ***************************************************************/
 #ifndef ADDRESS_H

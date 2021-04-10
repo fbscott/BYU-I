@@ -1,9 +1,9 @@
 /***********************************************************************
 * Program:
 *    Project 10, Mad Lib Pt 2
-*    Brother Schwieder, CS124
+*    [instructor name obfuscated], CS124
 * Author:
-*    Scott Currell
+*    [student name obfuscated]
 * Summary: 
 *    The second part of the Mad Lib project: read the Mad Lib from a file and
 *    prompt the user.

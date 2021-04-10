@@ -1,9 +1,9 @@
 /***********************************************************************
 * Program:
 *    Assignment 03, Digital Forensics with Corrupt Files
-*    Brother Walker, CS165
+*    [instructor name obfuscated], CS165
 * Author:
-*    Scott Currell
+*    [student name obfuscated]
 * Summary: 
 *    Prompt the user for the name of a file containing user access records.
 *    Prompt the user for a start and end time for comparison. Display a list

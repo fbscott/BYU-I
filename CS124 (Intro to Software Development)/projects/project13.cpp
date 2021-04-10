@@ -1,9 +1,9 @@
 /***********************************************************************
 * Program:
 *    Project 13, Sudoku
-*    Brother Schwieder, CS124
+*    [instructor name obfuscated], CS124
 * Author:
-*    Scott Currell
+*    [student name obfuscated]
 * Summary: 
 *    Sudoku game
 *

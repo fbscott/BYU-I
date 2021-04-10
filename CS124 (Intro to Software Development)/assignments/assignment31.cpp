@@ -1,10 +1,10 @@
 /***********************************************************************
 * Program:
 *    Assignment 31, Files
-*    Brother Schwieder, CS124
+*    [instructor name obfuscated], CS124
 *    
 * Author:
-*    Scott Currell
+*    [student name obfuscated]
 *    
 * Summary: 
 *    Prompt the user for 10 grades, calculate the average, and print the

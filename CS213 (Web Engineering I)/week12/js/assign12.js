@@ -8,7 +8,7 @@
  *
  * JS Dependencies - None. Vanilla JS.
  *
- * @author Scott Currell
+ * @author [student name obfuscated]
  */
 
 // DOM element to be updated

@@ -1,7 +1,7 @@
 /***********************************************************************
 * Program:
 *    Practice 1.2, Automatic grading program
-*    Brother Helfrich, CS124
+*    [instructor name obfuscated], CS124
 * Author:
 *    The Key
 * Summary: 

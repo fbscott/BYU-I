@@ -2,7 +2,7 @@
  * Header File:
  *    Bullete : The representation of a bullet
  * Author:
- *    Scott Currell
+ *    [student name obfuscated]
  * Summary:
  *    Child of FlyingObject class.
  ****************************************************************************/

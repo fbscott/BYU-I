@@ -2,7 +2,7 @@
  * Implementation File:
  *    LANDER : A class representing the lunar landscape
  * Author:
- *    Scott Currell
+ *    [student name obfuscated]
  * Summary:
  *    Apply physics to lander (move left, right, up), track fuel, and lander
  *    state (alive and can thrust)

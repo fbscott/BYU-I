@@ -1,9 +1,9 @@
 /***********************************************************************
 * Program:
 *    Assignment 14, Matthew 18:21-22
-*    Brother Schwieder, CS124
+*    [instructor name obfuscated], CS124
 * Author:
-*    Scott Currell
+*    [student name obfuscated]
 * Summary: 
 *    This program will address Peter's question to the Lord in 
 *    Matthew 18:21-22

@@ -2,7 +2,7 @@
  * Header File:
  *    ToughBird : The representation of a bird
  * Author:
- *    Scott Currell
+ *    [student name obfuscated]
  * Summary:
  *    Child of bird class.
  ****************************************************************************/

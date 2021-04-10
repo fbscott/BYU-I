@@ -1,9 +1,9 @@
 /***********************************************************************
 * Program:
 *    Assignment 01, Genetic Genealogy
-*    Brother Walker, CS165
+*    [instructor name obfuscated], CS165
 * Author:
-*    Scott Currell
+*    [student name obfuscated]
 * Summary: 
 *    Prompt the user for his/her DNA sequence, a number of relatives, their
 *    names and respective DNA sequences, then compare each sequence to the

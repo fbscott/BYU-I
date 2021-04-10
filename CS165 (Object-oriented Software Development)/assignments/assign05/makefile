@@ -1,9 +1,9 @@
 ###############################################################
 # Program:
 #     Assignment 05, Order Tracking
-#     Brother Walker, CS165
+#     [instructor name obfuscated], CS165
 # Author:
-#     Scott Currell
+#     [student name obfuscated]
 # Summary:
 #     eCommerce product inventory. Collect customer, address, product, and
 # 		order data. Print that data to the screen to verify classes function

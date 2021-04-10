@@ -1,9 +1,9 @@
 /******************************************************************************
 * Program:
 *    Test 1, Unit 1 Practice Test
-*    Brother Schwieder, CS124
+*    [instructor name obfuscated], CS124
 * Author:
-*    Scott Currell
+*    [student name obfuscated]
 * Summary: 
 *    Prompt the user for his/her grade. Output a pass message if grade > 59 or
 *    a fail message if 59 or below.

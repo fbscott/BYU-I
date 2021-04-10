@@ -1,9 +1,9 @@
 /***********************************************************************
 * Program:
 *    Assignment 42, Dem Bones
-*    Brother Schwieder, CS124
+*    [instructor name obfuscated], CS124
 * Author:
-*    Scott Currell
+*    [student name obfuscated]
 * Summary: 
 *    This program will display the words to the song Dem Bones by
 *    using the string class

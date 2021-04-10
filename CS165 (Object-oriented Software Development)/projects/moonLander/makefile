@@ -1,9 +1,9 @@
 ###############################################################
 # Program:
 #     Project 07, Moon Lander
-#     Brother Walker, CS165
+#     [instructor name obfuscated], CS165
 # Author:
-#     Scott Currell
+#     [student name obfuscated]
 # Summary:
 #     Land a lunar module on the surface of the moon. Lander only has 500
 #		units of fuel. Cannot land with a velocity greater than 3 px per frame

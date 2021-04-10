@@ -2,7 +2,7 @@
  * Source File:
  *    FlyingObject : The representation of a flying object
  * Author:
- *    Scott Currell
+ *    [student name obfuscated]
  * Summary:
  *    Base flying object class. Children (bird/bullet) will inherit from this
  *    class.

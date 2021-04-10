@@ -1,6 +1,6 @@
 /***************************************************************
  * File: customer.h
- * Author: Scott Currell
+ * Author: [student name obfuscated]
  * Purpose: Contains the definition of the Customer class
  ***************************************************************/
 #ifndef CUSTOMER_H

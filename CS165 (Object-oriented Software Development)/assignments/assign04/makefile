@@ -1,9 +1,9 @@
 ###############################################################
 # Program:
 #     Assignment 04, Product inventory
-#     Brother Walker, CS165
+#     [instructor name obfuscated], CS165
 # Author:
-#     Scott Currell
+#     [student name obfuscated]
 # Summary:
 #     Prompt the user for a product name, description, weight, and price.
 #     Display user-specified info: advertising profile, line item, or receipt.

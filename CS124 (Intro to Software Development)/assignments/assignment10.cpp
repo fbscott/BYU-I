@@ -1,9 +1,9 @@
 /***********************************************************************
 * Program:
 *    Assignment 10, Prepare: First Program (Hello World)
-*    Brother Schwieder, CS124
+*    [instructor name obfuscated], CS124
 * Author:
-*    Scott Currell
+*    [student name obfuscated]
 * Summary: 
 *    Write a program to put the text "Hello World" on the screen.
 *

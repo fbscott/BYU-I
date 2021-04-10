@@ -10,7 +10,7 @@ import java.awt.Point;
 *  Creature is the base class for all creatures in the game. However, unless they implement
 *  one of the defined interfaces, they just sit there and do nothing.
 * <p>
-* @author  Brother Falin
+* @author  [instructor name obfuscated]
 * @version 1.0
 * @since   2016-12-08 
 */

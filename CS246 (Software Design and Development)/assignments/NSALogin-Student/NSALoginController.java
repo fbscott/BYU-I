@@ -50,7 +50,7 @@ import java.util.Base64;
 * <li><a href="http://stackoverflow.com/questions/3607641/javadoc-comments-vs-block-comments">Javadoc comments vs block comments?</a></li>
 * <li><a href="http://stackoverflow.com/questions/21632086/javadoc-for-private-protected-methods">Javadoc for private/protected methods?</a></li>
 * </ul>
-* @author  Brother Falin
+* @author  [instructor name obfuscated]
 * @version 1.0
 * @since   2016-12-08 
 * 

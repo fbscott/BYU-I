@@ -1,9 +1,9 @@
 /***********************************************************************
 * Program:
 *    Project 02, Monthly Budget
-*    Brother Schwieder, CS124
+*    [instructor name obfuscated], CS124
 * Author:
-*    Scott Currell
+*    [student name obfuscated]
 * Summary: 
 *    Write a program that prompts the user for his or her income, taxes,
 *    expenses, etc. and display the results on the screen in a table.

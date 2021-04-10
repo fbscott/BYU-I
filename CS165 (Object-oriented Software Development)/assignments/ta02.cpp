@@ -1,9 +1,9 @@
 /***********************************************************************
 * Program:
 *    Team Activity 02, structs
-*    Brother Walker, CS165
+*    [instructor name obfuscated], CS165
 * Author:
-*    Team #1 (Scott Currell)
+*    Team #1 ([student name obfuscated])
 * Summary: 
 *    Display a scripture on screen. Then prompt the user for a new scripture
 *    and display that new scripture on screen.

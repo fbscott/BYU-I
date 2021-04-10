@@ -2,7 +2,7 @@
  * Header File:
  *    POINT : The representation of a position on the screen
  * Author:
- *    Scott Currell
+ *    [student name obfuscated]
  * Summary:
  *    ... add summary ...
  ************************************************************************/

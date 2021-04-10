@@ -1,6 +1,6 @@
 /***************************************************************
  * File: order.cpp
- * Author: Scott Currell
+ * Author: [student name obfuscated]
  * Purpose: Contains the method implementations for the Order class.
  ***************************************************************/
 #include "order.h"

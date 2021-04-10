@@ -1,6 +1,6 @@
 /***************************************************************
  * File: assign04.cpp
- * Author: Scott Currell
+ * Author: [student name obfuscated]
  * Purpose: Contains the main function to test the Product class.
  ***************************************************************/
 

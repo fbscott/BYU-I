@@ -2,7 +2,7 @@
  * Header File:
  *    Ship : The representation of a ship
  * Author:
- *    Scott Currell
+ *    [student name obfuscated]
  * Summary:
  *    Draw and move the ship.
  ****************************************************************************/

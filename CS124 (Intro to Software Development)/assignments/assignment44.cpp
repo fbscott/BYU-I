@@ -1,9 +1,9 @@
 /***********************************************************************
 * Program:
 *    Assignment 44, Search Speed
-*    Brother Schwieder, CS124
+*    [instructor name obfuscated], CS124
 * Author:
-*    Scott Currell
+*    [student name obfuscated]
 * Summary: 
 *    This program compares the search speed of the linear search
 *    and the binary search.

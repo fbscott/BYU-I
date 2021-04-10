@@ -5,7 +5,7 @@ import java.awt.*;
 /**
  *  Zombies move from left to right and eat anything that's NOT a plant.
  * <p>
- * @author  Scott Currell
+ * @author  [student name obfuscated]
  * @version 1.0
  * @since   2020-01-15
  * @see Creature

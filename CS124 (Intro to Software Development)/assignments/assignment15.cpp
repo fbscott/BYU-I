@@ -1,9 +1,9 @@
 /***********************************************************************
 * Program:
 *    Assignment 15, Full Tithe Payer
-*    Brother Schwieder, CS124
+*    [instructor name obfuscated], CS124
 * Author:
-*    Scott Currell
+*    [student name obfuscated]
 * Summary: 
 *    This program will compute if a user is a full tithe payer using
 *    the complicated formula provided in the scriptures:
