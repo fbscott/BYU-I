@@ -7,7 +7,7 @@ import java.util.List;
 * The starting class of the game. This class initializes the game world and all
 * of thre creatures within it.
 * <p>
-* @author  Brother Falin
+* @author  [instructor name obfuscated]
 * @version 1.0
 * @since   2016-12-08 
 * @see Creature

@@ -1,10 +1,10 @@
 /***********************************************************************
 * Program:
 *    Assignment 33, Files
-*    Brother Schwieder, CS124
+*    [instructor name obfuscated], CS124
 *    
 * Author:
-*    Scott Currell
+*    [student name obfuscated]
 *    
 * Summary: 
 *    Ask two people for their account balance. Then, based on who has the most

@@ -1,9 +1,9 @@
 /******************************************************************************
 * Program:
 *    Assignment 16, IF Statements
-*    Brother Schwieder, CS124
+*    [instructor name obfuscated], CS124
 * Author:
-*    Scott Currell
+*    [student name obfuscated]
 * Summary: 
 *    Collect the user's annual income. Based on that income, output the
 *    user's tax bracket.

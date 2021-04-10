@@ -1,6 +1,6 @@
 /***************************************************************
  * File: order.h
- * Author: Scott Currell
+ * Author: [student name obfuscated]
  * Purpose: Contains the definition of the Order class
  ***************************************************************/
 #ifndef ORDER_H

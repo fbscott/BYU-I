@@ -1,7 +1,7 @@
 /*****************************************************************************
  * Recreation of the 1970's PONG game.
  * 
- * Author: Scott Currell
+ * Author: [student name obfuscated]
  *
  * Adapted from Chris DeLeon's Udemy course: Code Your First Game: Arcade
  * Classic in JavaScript on Canvas

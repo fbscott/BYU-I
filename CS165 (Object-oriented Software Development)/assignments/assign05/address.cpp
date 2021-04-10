@@ -1,6 +1,6 @@
 /***************************************************************
  * File: address.cpp
- * Author: Scott Currell
+ * Author: [student name obfuscated]
  * Purpose: Contains the method implementations for the Address class.
  ***************************************************************/
 #include "address.h"

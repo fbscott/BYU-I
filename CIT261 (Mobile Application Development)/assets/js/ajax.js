@@ -6,7 +6,7 @@
  *
  * JS Dependencies - None. Vanilla JS.
  *
- * @author Scott Currell
+ * @author [student name obfuscated]
  *****************************************************************************/
 
 // global namespace: Weather Forecaster (WF)

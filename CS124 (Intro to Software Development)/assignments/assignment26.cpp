@@ -1,10 +1,10 @@
 /***********************************************************************
 * Program:
 *    Assignment 26, Files
-*    Brother Schwieder, CS124
+*    [instructor name obfuscated], CS124
 *    
 * Author:
-*    Scott Currell
+*    [student name obfuscated]
 *    
 * Summary: 
 *    Write a program to read 10 grades from a file and display the average.

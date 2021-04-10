@@ -2,7 +2,7 @@
  * Source File:
  *    VELOCITY : A class representing the lander's velocity
  * Author:
- *    Scott Currell
+ *    [student name obfuscated]
  * Summary:
  *    Set lander physics: left, right, and up directions and velocities. 
  ************************************************************************/

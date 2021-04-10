@@ -1,9 +1,9 @@
 /*****************************************************************************
 * Program:
 *    Assignment 21, Debugging: Stubs
-*    Brother Schwieder, CS124
+*    [instructor name obfuscated], CS124
 * Author:
-*    Scott Currell
+*    [student name obfuscated]
 * Summary: 
 *    Write a program to help Sue determine how much money she is spending on
 *    her car.

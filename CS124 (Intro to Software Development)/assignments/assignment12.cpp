@@ -1,9 +1,9 @@
 /***********************************************************************
 * Program:
 *    Assignment 12, Input & Variables
-*    Brother Schwieder, CS124
+*    [instructor name obfuscated], CS124
 * Author:
-*    Scott Currell
+*    [student name obfuscated]
 * Summary: 
 *    Write a program that prompts the user for his or her income and displays
 *    the result on the screen.

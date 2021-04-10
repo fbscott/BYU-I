@@ -5,7 +5,7 @@ import java.awt.Color;
 /**
 *  Plants sit there and look green, waiting to be eaten. They are represented by green circles.
 * <p>
-* @author  Brother Falin
+* @author  [instructor name obfuscated]
 * @version 1.0
 * @since   2016-12-08 
 * @see Creature

@@ -7,7 +7,7 @@ import java.util.Random;
  *  Wolves move at random at first, then chase their prey. They spawn a new wolf when
  *  they eat an animal.
  * <p>
- * @author  Scott Currell
+ * @author  [student name obfuscated]
  * @version 1.0
  * @since   2020-01-15
  * @see Creature

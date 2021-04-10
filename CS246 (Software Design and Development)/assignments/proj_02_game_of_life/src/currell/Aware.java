@@ -3,7 +3,7 @@ package currell;
 /**
 *  Aware creatures can sense others creatures around them.
 * <p>
-* @author  Brother Falin
+* @author  [instructor name obfuscated]
 * @version 1.0
 * @since   2016-12-08 
 * @see Creature

@@ -2,7 +2,7 @@
  * Header File:
  *    VELOCITY : A representation of the lander's velocity
  * Author:
- *    Scott Currell
+ *    [student name obfuscated]
  * Summary:
  *    Everything wee need to know about the lander's velocity: how fast it's
  *    moving in along the X and Y axes.

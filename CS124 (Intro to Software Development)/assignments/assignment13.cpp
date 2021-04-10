@@ -1,9 +1,9 @@
 /***********************************************************************
 * Program:
 *    Assignment 13, Expressions
-*    Brother Schwieder, CS124
+*    [instructor name obfuscated], CS124
 * Author:
-*    Scott Currell
+*    [student name obfuscated]
 * Summary: 
 *    Write a program to convert Fahrenheit to Celsius. This program will prompt
 *    the user for the Fahrenheit number and convert it to Celsius.

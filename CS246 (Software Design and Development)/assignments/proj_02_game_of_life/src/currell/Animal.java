@@ -6,7 +6,7 @@ import java.util.Random;
 /**
 *  Animals move around and eat plants. They are represented by red squares.
 * <p>
-* @author  Brother Falin
+* @author  [instructor name obfuscated]
 * @version 1.0
 * @since   2016-12-08 
 * @see Creature

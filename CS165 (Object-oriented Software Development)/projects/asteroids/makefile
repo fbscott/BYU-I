@@ -1,9 +1,9 @@
 ###############################################################
 # Program:
 #     Project 13, Asteroids
-#     Brother Walker, CS165
+#     [instructor name obfuscated], CS165
 # Author:
-#     Scott Currell
+#     [student name obfuscated]
 # Summary:
 #     Put your summary code here... 
 # Above and Beyond

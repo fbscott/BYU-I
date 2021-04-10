@@ -1,6 +1,6 @@
 /***************************************************************
  * File: product.h
- * Author: Scott Currell
+ * Author: [student name obfuscated]
  * Purpose: Contains the definition of the Product class
  ***************************************************************/
 #ifndef PRODUCT_H

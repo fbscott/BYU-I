@@ -1,9 +1,9 @@
 /***********************************************************************
 * Program:
 *    Checkpoint 01b, review
-*    Brother Walker, CS165
+*    [instructor name obfuscated], CS165
 * Author:
-*    Scott Currell
+*    [student name obfuscated]
 * Summary: 
 *    Summaries are not necessary for checkpoint assignments.
 * ***********************************************************************/

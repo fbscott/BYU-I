@@ -15,7 +15,7 @@ import java.awt.event.ComponentEvent;
 /**
 * Handles drawing and the passage of time in the world.
 * <p>
-* @author  Brother Falin
+* @author  [instructor name obfuscated]
 * @version 1.0
 * @since   2016-12-08 
 * @see CreatureHandler

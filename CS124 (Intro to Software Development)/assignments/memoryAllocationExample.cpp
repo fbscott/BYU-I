@@ -1,9 +1,9 @@
 /***********************************************************************
 * Program:
 *    Assignment 41, Files
-*    Brother Schwieder, CS124
+*    [instructor name obfuscated], CS124
 * Author:
-*    Scott Currell
+*    [student name obfuscated]
 * Summary: 
 *    Write a program to read a game data file, print game board to the screen,
 *    and put the data back to another file.

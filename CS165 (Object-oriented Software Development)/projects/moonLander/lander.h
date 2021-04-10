@@ -2,7 +2,7 @@
  * Header File:
  *    LANDER : A representation of lander's state
  * Author:
- *    Scott Currell
+ *    [student name obfuscated]
  * Summary:
  *    Everything we need to know about the lander's state: is it alive, has
  *    it crashed, how much fuel does it have, can it thrust, make it thrust,

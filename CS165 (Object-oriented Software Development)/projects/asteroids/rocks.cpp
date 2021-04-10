@@ -2,7 +2,7 @@
  * Source File:
  *    Rock : The representation of a rock
  * Author:
- *    Scott Currell
+ *    [student name obfuscated]
  * Summary:
  *    Rock class. Children will inherit from this class.
  ****************************************************************************/

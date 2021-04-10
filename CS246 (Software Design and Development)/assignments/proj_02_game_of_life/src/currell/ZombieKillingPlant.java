@@ -6,7 +6,7 @@ import java.util.Random;
 /**
  *  Kills zombies and spawns a new zombie-killing plant adjacent to the original.
  * <p>
- * @author  Scott Currell
+ * @author  [student name obfuscated]
  * @version 1.0
  * @since   2020-01-20
  * @see Creature

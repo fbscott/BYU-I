@@ -2,7 +2,7 @@
  * Header File:
  *    Bird : The representation of a bird
  * Author:
- *    Scott Currell
+ *    [student name obfuscated]
  * Summary:
  *    Child of FlyingObject class. Children (standard/tough/sacred) will
  *    inherit from this class.

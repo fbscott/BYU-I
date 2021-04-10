@@ -1,9 +1,9 @@
 /***********************************************************************
 * Program:
 *    Assignment 25, Loop Design
-*    Brother Schwieder, CS124
+*    [instructor name obfuscated], CS124
 * Author:
-*    Scott Currell
+*    [student name obfuscated]
 * Summary: 
 *    Write a function (displayTable()) to display a calendar on the screen.
 *

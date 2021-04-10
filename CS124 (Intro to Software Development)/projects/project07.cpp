@@ -1,9 +1,9 @@
 /***********************************************************************
 * Program:
 *    Project 07, Calendar
-*    Brother Schwieder, CS124
+*    [instructor name obfuscated], CS124
 * Author:
-*    Scott Currell
+*    [student name obfuscated]
 * Summary: 
 *    Create a calendar for any month of any year from 1753 forward. Prompt
 *    the user for the numeric month and year to be displayed as calendar grid.

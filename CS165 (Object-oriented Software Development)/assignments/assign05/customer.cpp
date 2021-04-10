@@ -1,6 +1,6 @@
 /***************************************************************
  * File: customer.cpp
- * Author: Scott Currell
+ * Author: [student name obfuscated]
  * Purpose: Contains the method implementations for the Customer class.
  ***************************************************************/
 #include "customer.h"
