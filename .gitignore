@@ -4,13 +4,17 @@
 .idea/
 b320/
 # cit225 (Database Design & Development)/
+*/notes/
+_notes/
 CIT270 (Systems Security I)/
 CS246 (Software Design and Development)/assignments/**/doc/
 CS246 (Software Design and Development)/reflections/
 CS308 (Technical Communication)/
+CS313 (Backend Web Engineering I - Notes)
 CS364 (SE I)/
 CS416 (SE II)/
 CS432 (SE III)/
+cs_124/
 CSE471 (User Interface Eval & Design)/
 ECEN160 (Fundamentals of Digital Systems)/docs/
 ECEN160 (Fundamentals of Digital Systems)/presentations/
@@ -21,6 +25,7 @@ FDREL250/
 FDREL275/
 GS120/
 MATH100g/
+MATH221A/
 out/
 
 # ignore sftp-config
