@@ -54,3 +54,4 @@ out/
 *.xls
 *.xlsx
 *.zip
+*.code-workspace

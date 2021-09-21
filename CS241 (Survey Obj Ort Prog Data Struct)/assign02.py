@@ -12,12 +12,12 @@ def getFileName():
 def readFile(file):
     count = 0
     sum = 0
-    max_rate = 0
-    min_rate = 1
     max_rate_str = ""
     min_rate_str = ""
 
     with open(file, newline = "") as csv_file:
+        max_rate = 0
+        min_rate = 1
 
         # sort by column header
         rates = csv.DictReader(csv_file, delimiter = ",")
