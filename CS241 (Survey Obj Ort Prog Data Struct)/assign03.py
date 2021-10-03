@@ -70,7 +70,7 @@ def main():
     # user-provide command
     command = ''
 
-    # continue prompting the uer until s/he enters "quit"
+    # continue prompting the user until s/he enters "quit"
     while command != 'quit':
         command = prompt_for_command()
 
