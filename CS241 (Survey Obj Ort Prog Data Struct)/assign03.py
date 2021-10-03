@@ -68,9 +68,9 @@ def main():
     # new instance of Robot
     robot = Robot()
     # user-provide command
-    # game will contine until command == 'quit'
     command = ''
 
+    # continue prompting the uer until s/he enters "quit"
     while command != 'quit':
         command = prompt_for_command()
 
@@ -80,10 +80,9 @@ def main():
             robot.fire_laser()
         elif command == 'status':
             robot.display_status()
-        elif command == 'quit':
-            print('Goodbye.')
-            # end game
-            can_replay = False
+
+    # quit the game
+    print('Goodbye.')
 
 if __name__ == '__main__':
     main()
