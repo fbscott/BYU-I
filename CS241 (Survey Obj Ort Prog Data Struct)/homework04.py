@@ -49,7 +49,7 @@ def main():
         elif option == 2:
             playlist.appendleft(createNewSong())
 
-        # play first song in lust if there is one
+        # play first song in list if there is one
         elif option == 3:
             if len(playlist) == 0:
                 print('\nThe playlist is currently empty.\n')
