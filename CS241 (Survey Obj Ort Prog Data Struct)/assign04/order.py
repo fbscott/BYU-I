@@ -5,10 +5,7 @@ class Order:
         self.products = []
 
     def get_subtotal(self):
-        """
-        iterates through products list
-        adds each product's total price to the subtotal
-        """
+        """sums the price of each product and returns it"""
         # start at 0
         subtotal = 0
 
@@ -19,11 +16,11 @@ class Order:
         return subtotal
 
     def get_tax(self):
-        """calculate tax based on hardcoded value"""
+        """calculates and returns the tax based on hardcoded value (6.5%)"""
         return self.get_subtotal() * 0.065
 
     def get_total(self):
-        """calculate total including tax"""
+        """calculates and returns a subtotal - including tax"""
         return self.get_subtotal() + self.get_tax()
 
     def add_product(self, product):
@@ -32,9 +29,20 @@ class Order:
 
     def display_receipt(self):
         """display order details"""
+        """
+        format:
+        Order: 1138
+        Item1 (qty) - $price
+        Item2 (qty) - $price
+        etc.
+        Subtotal: $subtotal
+        Tax: $tax
+        Total: $total
+        """
+
         print(f"Order: {self.id}")
 
-        # display each products details
+        # display each product's details
         for product in self.products:
             product.display()
 

@@ -6,13 +6,11 @@ class Customer:
         self.orders = []
 
     def get_order_count(self):
+        """get the order count and return it"""
         return len(self.orders)
 
     def get_total(self):
-        """
-        iterates through orders list
-        adds each order's total to the grand total
-        """
+        """adds each order's total to the grand total and returns it"""
         # start at 0
         total = 0
 
@@ -20,6 +18,7 @@ class Customer:
             # update the total for each order
             total += order.get_total()
 
+        # grand total
         return total
 
     def add_order(self, order):
