@@ -1,17 +1,22 @@
 stack = []
 opening_brackets = ['{', '[', '(']
+# for comparison
+# saves a lot of if/else logic by just accessing a closing bracket for a given
+# opening bracket
 brackets_dict = {
     '{':'}',
     '[':']',
     '(':')'
 }
 
-def prompt():
+def get_file():
+    """file from testBed"""
     # return "c:\\git_repos\\BYU-I\\CS241 (Survey Obj Ort Prog Data Struct)\\_data\\stacks05\\stacks06.txt"
     return input("File: ")
 
-def read_file(file_name):
-    """read the file"""
+def is_balanced(file_name):
+    """build the stack and return a boolean value if it is balanced or not"""
+    # read the file
     with open(file_name) as file:
         # Parse the file. No need to go overboard. Each line only contains one
         # character.
@@ -26,30 +31,29 @@ def read_file(file_name):
                 top = stack.pop()
                 # compare the popped element to the corresponding bracket from
                 # the dictionary
-                if(brackets_dict[top] != line.strip()):
-                    print("Not balanced")
-                    return
+                if(brackets_dict[top] != line.strip()): # mismatch
+                    return False
             # if we've gotten to this point, the current character is a closing
             # bracket, but the stack is empty
             else:
-                print("Not balanced")
-                return
+                return False
 
         # if there's still data in the stack at this point, then there's a
         # missing closing bracket
         if(stack):
-            print("Not balanced")
+            return False
         # everything is balanced
+        # default condition
         else:
-            print("Balanced")
+            return True
 
     file.close()
 
 def main():
     """do all the things"""
-    user_provided_file = prompt()
+    user_provided_file = get_file()
 
-    read_file(user_provided_file)
+    print("Balanced") if is_balanced(user_provided_file) else print("Not balanced")
 
 if __name__ == '__main__':
     main()
