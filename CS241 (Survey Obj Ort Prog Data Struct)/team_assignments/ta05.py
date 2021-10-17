@@ -120,6 +120,8 @@ class MyApplication(arcade.Window):
         print("Mouse clicked")
         if button == arcade.MOUSE_BUTTON_LEFT:
             self.ball_x_pixels_per_second += 100
+        else:
+            self.ball_x_pixels_per_second -= 100
 
     def on_mouse_release(self, x, y, button, key_modifiers):
         """
