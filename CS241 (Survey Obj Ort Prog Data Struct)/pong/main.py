@@ -7,7 +7,8 @@ This program implements a simplistic version of the
 classic Pong arcade game.
 """
 import arcade
-import random
+from ball import Ball
+from paddle import Paddle
 
 # These are Global constants to use throughout the game
 SCREEN_WIDTH = 400
@@ -20,71 +21,6 @@ MOVE_AMOUNT = 5
 
 SCORE_HIT = 1
 SCORE_MISS = 5
-
-class Point:
-    def __init__(self, x, y):
-        self.x = float(x)
-        self.y = float(y)
-
-class Velocity:
-    def __init__(self):
-        self.dx = float(random.uniform(1, 5))
-        self.dy = float(random.uniform(-5, 5))
-
-class Ball:
-    def __init__(self):
-        # center the ball at a random position on the left wall
-        self.center = Point(BALL_RADIUS,
-            random.uniform(BALL_RADIUS,
-            SCREEN_HEIGHT - BALL_RADIUS))
-        self.velocity = Velocity()
-        self.radius = BALL_RADIUS
-        self.screen_height = SCREEN_HEIGHT
-
-    def draw(self):
-        arcade.draw_circle_filled(self.center.x,
-            self.center.y,
-            self.radius,
-            arcade.color.WHITE)
-
-    def advance(self):
-        self.center.x += self.velocity.dx
-        self.center.y += self.velocity.dy
-
-    def bounce_horizontal(self):
-        self.velocity.dx *= -1
-
-    def bounce_vertical(self):
-        self.velocity.dy *= -1
-
-    def restart(self):
-        self.center.x = 0
-        self.center.y = random.uniform(BALL_RADIUS, SCREEN_HEIGHT - BALL_RADIUS)
-        self.velocity.dx = float(random.uniform(1, 5))
-        self.velocity.dy = float(random.uniform(-5, 5))
-
-class Paddle:
-    def __init__(self):
-        self.center = Point(SCREEN_WIDTH - 10, SCREEN_HEIGHT / 2)
-        self.width = PADDLE_WIDTH
-        self.height = PADDLE_HEIGHT
-        self.screen_width = SCREEN_WIDTH
-        self.screen_height = SCREEN_HEIGHT
-
-    def draw(self):
-        arcade.draw_rectangle_filled(self.center.x,
-                                     self.center.y,
-                                     self.width,
-                                     self.height,
-                                     arcade.color.WHITE)
-
-    def move_up(self):
-        if self.center.y < (self.screen_height - (self.height / 2)):
-            self.center.y += 5
-
-    def move_down(self):
-        if self.center.y > (self.height / 2):
-            self.center.y -= 5
 
 class Pong(arcade.Window):
     """
@@ -110,8 +46,12 @@ class Pong(arcade.Window):
         """
         super().__init__(width, height)
 
-        self.ball = Ball()
-        self.paddle = Paddle()
+        self.ball = Ball(BALL_RADIUS,
+            SCREEN_HEIGHT)
+        self.paddle = Paddle(PADDLE_WIDTH,
+            PADDLE_HEIGHT,
+            SCREEN_WIDTH,
+            SCREEN_HEIGHT)
         self.score = 0
 
         # These are used to see if the user is
