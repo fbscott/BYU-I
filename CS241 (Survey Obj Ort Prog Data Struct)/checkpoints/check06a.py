@@ -8,12 +8,12 @@ class Book:
     def __init__(self):
         self.title = ""
         self.author = ""
-        self.publication_year = ""
+        self.publication_year = 0
 
     def prompt_book_info(self):
         self.title = input("Title: ")
         self.author = input("Author: ")
-        self.publication_year = input("Publication Year: ")
+        self.publication_year = int(input("Publication Year: "))
 
     def display_book_info(self):
         print(f"{self.title} ({self.publication_year}) by {self.author}")
