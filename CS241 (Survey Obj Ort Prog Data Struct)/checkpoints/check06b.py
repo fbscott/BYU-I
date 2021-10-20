@@ -17,6 +17,7 @@ class Phone():
         self.suffix = int(input("Suffix: "))
 
     def display(self):
+        print("\nPhone info:")
         print(f"({self.area_code}){self.prefix}-{self.suffix}")
 
 class SmartPhone(Phone):
@@ -34,16 +35,14 @@ class SmartPhone(Phone):
         print(f"{self.email}")
 
 def main():
-    phone = Phone()
     print("Phone:")
+    phone = Phone()
     phone.prompt_number()
-    print("\nPhone info:")
     phone.display()
 
     print("\nSmart phone:")
     smart_phone = SmartPhone()
     smart_phone.prompt()
-    print("\nPhone info:")
     smart_phone.display()
 
 if __name__ == "__main__":
