@@ -10,7 +10,7 @@ class Point():
     def display(self):
         print("({:.0f}, {:.0f})".format(self.x, self.y))
 
-# Circle class for Core Requirements (IS-A)
+# Circle class for Core Requirements (IS-A: inheritance)
 # class Circle(Point):
 #     def __init__(self):
 #         super().__init__()
@@ -25,7 +25,7 @@ class Point():
 #         super().display()
 #         print("Radius: {:.0f}".format(self.radius))
 
-# Circle class for Stretch Challenges (HAS-A)
+# Circle class for Stretch Challenges (HAS-A: composition)
 class Circle():
     def __init__(self):
         self.center = Point()
