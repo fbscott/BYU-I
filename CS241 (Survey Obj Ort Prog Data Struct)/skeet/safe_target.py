@@ -17,7 +17,6 @@ class SafeTarget(FlyingObject):
         # pixels/frame
         self.velocity.dy = float(random.uniform(-2, 3))
         self.color = color
-        self.lives = 3
 
     def draw(self):
         '''
@@ -36,5 +35,6 @@ class SafeTarget(FlyingObject):
     def is_off_screen(self, width, height):
         super().is_off_screen(width, height)
 
-    def hit():
-        return 1
+    def hit(self):
+        self.alive = False
+        return int(-10)

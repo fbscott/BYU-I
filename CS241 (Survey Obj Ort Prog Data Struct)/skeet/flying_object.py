@@ -8,13 +8,14 @@ class FlyingObject:
         self.velocity = Velocity()
         self.radius = 0.0
         self.alive = True
+        self.color = ''
 
-    def draw(self, color):
+    def draw(self):
         """draw the ball on the screen"""
         arcade.draw_circle_filled(self.center.x,
             self.center.y,
             self.radius,
-            color)
+            self.color)
 
     def advance(self):
         """move the ball"""

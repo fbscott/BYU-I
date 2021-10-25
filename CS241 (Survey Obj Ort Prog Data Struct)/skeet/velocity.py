@@ -1,5 +1,3 @@
-import random
-
 class Velocity:
     """
     Velocity constructor

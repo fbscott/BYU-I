@@ -44,5 +44,10 @@ class StrongTarget(FlyingObject):
     def is_off_screen(self, width, height):
         super().is_off_screen(width, height)
 
-    def hit():
-        return 1
+    def hit(self):
+        while self.lives > 1:
+            self.lives -= 1
+            return int(1)
+
+        self.alive = False
+        return int(5)

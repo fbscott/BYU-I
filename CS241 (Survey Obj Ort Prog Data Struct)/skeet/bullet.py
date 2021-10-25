@@ -11,7 +11,7 @@ class Bullet(FlyingObject):
         self.color = color
 
     def draw(self):
-        super().draw(self.color)
+        super().draw()
 
     def advance(self):
         super().advance()

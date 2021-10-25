@@ -18,7 +18,7 @@ class StandardTarget(FlyingObject):
         self.color = color
 
     def draw(self):
-        super().draw(self.color)
+        super().draw()
 
     def advance(self):
         super().advance()
@@ -26,5 +26,6 @@ class StandardTarget(FlyingObject):
     def is_off_screen(self, width, height):
         super().is_off_screen(width, height)
 
-    def hit():
-        return 1
+    def hit(self):
+        self.alive = False
+        return int(1)
