@@ -1,3 +1,4 @@
+import arcade
 from point import Point
 from velocity import Velocity
 
@@ -7,6 +8,13 @@ class FlyingObject:
         self.velocity = Velocity()
         self.radius = 0.0
         self.alive = True
+
+    def draw(self, color):
+        """draw the ball on the screen"""
+        arcade.draw_circle_filled(self.center.x,
+            self.center.y,
+            self.radius,
+            color)
 
     def advance(self):
         """move the ball"""

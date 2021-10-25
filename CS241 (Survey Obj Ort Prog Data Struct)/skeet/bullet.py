@@ -1,4 +1,3 @@
-import arcade
 import math
 from flying_object import FlyingObject
 
@@ -12,11 +11,7 @@ class Bullet(FlyingObject):
         self.color = color
 
     def draw(self):
-        """draw the ball on the screen"""
-        arcade.draw_circle_filled(self.center.x,
-            self.center.y,
-            self.radius,
-            self.color)
+        super().draw(self.color)
 
     def advance(self):
         super().advance()
