@@ -10,7 +10,7 @@ import math
 import random
 from point import Point
 from bullet import Bullet
-from target import Target
+# from target import Target
 
 # These are Global constants to use throughout the game
 SCREEN_WIDTH = 600
@@ -29,12 +29,20 @@ TARGET_COLOR = arcade.color.CARROT_ORANGE
 TARGET_SAFE_COLOR = arcade.color.AIR_FORCE_BLUE
 TARGET_SAFE_RADIUS = 15
 
+###############################################################################
+# start classes
+###############################################################################
+
+###############################################################################
+# end classes
+###############################################################################
+
 class Rifle:
     """
     The rifle is a rectangle that tracks the mouse.
     """
     def __init__(self):
-        self.center = Point(50, 50)
+        self.center = Point()
         self.center.x = 0
         self.center.y = 0
 
@@ -42,7 +50,6 @@ class Rifle:
 
     def draw(self):
         arcade.draw_rectangle_filled(self.center.x, self.center.y, RIFLE_WIDTH, RIFLE_HEIGHT, RIFLE_COLOR, 360-self.angle)
-
 
 class Game(arcade.Window):
     """
@@ -136,14 +143,16 @@ class Game(arcade.Window):
         """
 
         # TODO: Decide what type of target to create and append it to the list
-        newTarget = random.randint(0,3)
+        # newTarget = random.randint(0,3)
 
-        t = Target()
-        self.targets.append(t)
+        # t = Target()
+        # self.targets.append(t)
 
+        # newTarget = random.randint(0,3)
+        
         # if (newTarget == 1):
-        #     t = Standard_Target()
-        #     self.targets.append(t)
+        # t = Standard_Target()
+        # self.targets.append(t)
             
         # elif (newTarget == 2):
         #     y = Strong_Target()
@@ -216,7 +225,7 @@ class Game(arcade.Window):
         # Fire!
         angle = self._get_angle_degrees(x, y)
 
-        bullet = Bullet()
+        bullet = Bullet(BULLET_RADIUS, BULLET_SPEED, BULLET_COLOR)
         bullet.fire(angle)
 
         self.bullets.append(bullet)
