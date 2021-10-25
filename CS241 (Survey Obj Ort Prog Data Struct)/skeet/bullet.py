@@ -2,7 +2,9 @@ import math
 from flying_object import FlyingObject
 
 class Bullet(FlyingObject):
+    """"""
     def __init__(self, radius, speed, color):
+        """constructor"""
         super().__init__()
         self.radius = radius
         self.speed = speed

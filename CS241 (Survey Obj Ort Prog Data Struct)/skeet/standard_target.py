@@ -3,6 +3,7 @@ from flying_object import FlyingObject
 
 class StandardTarget(FlyingObject):
     def __init__(self, radius, color, screen_height):
+        """constructor"""
         super().__init__()
         self.radius = radius
         self.center.x = 0
