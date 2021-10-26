@@ -144,7 +144,7 @@ class Game(arcade.Window):
         """
 
         # TODO: Decide what type of target to create and append it to the list
-        rand_target = random.randint(0, 3)
+        rand_target = random.randint(1, 3)
 
         if (rand_target == 1):
             standard = StandardTarget(TARGET_RADIUS, TARGET_COLOR, SCREEN_HEIGHT)

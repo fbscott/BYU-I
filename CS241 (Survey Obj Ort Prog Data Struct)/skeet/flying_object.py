@@ -12,8 +12,8 @@ class FlyingObject:
         self.center = Point()
         self.velocity = Velocity()
         self.radius = 0.0
-        self.alive = True
         self.color = ''
+        self.alive = True
 
     def draw(self):
         """

@@ -2,25 +2,18 @@ import math
 from flying_object import FlyingObject
 
 class Bullet(FlyingObject):
-    """"""
+    """Projectile. Fires from rifle. Destroys targets. Orgin: (0,0)"""
     def __init__(self, radius, speed, color):
         """constructor"""
         super().__init__()
+        # bullets start at (0,0) so there's no need to override the "center"
+        # value as it's already set in the Point class by default
         self.radius = radius
-        self.speed = speed
-        self.velocity.dx = self.speed
-        self.velocity.dy = self.speed
+        self.velocity.dy = speed
+        self.velocity.dx = speed
         self.color = color
 
-    def draw(self):
-        super().draw()
-
-    def advance(self):
-        super().advance()
-
-    def is_off_screen(self, width, height):
-        super().is_off_screen(width, height)
-
     def fire(self, angle):
-        self.velocity.dx = math.cos(math.radians(angle)) * self.speed
-        self.velocity.dy = math.sin(math.radians(angle)) * self.speed
+        """Fire bullets"""
+        self.velocity.dx = math.cos(math.radians(angle)) * self.velocity.dx
+        self.velocity.dy = math.sin(math.radians(angle)) * self.velocity.dy
