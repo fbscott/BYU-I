@@ -32,5 +32,5 @@ class SafeTarget(StandardTarget):
 
     def hit(self):
         """Kills the object when a bullet hits it"""
-        self.alive = False
+        super().hit()
         return int(-10)
