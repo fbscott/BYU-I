@@ -2,7 +2,7 @@ import math
 from flying_object import FlyingObject
 
 class Bullet(FlyingObject):
-    """Projectile. Fires from rifle. Destroys targets. Orgin: (0,0)"""
+    """Projectile. Fires from rifle. Destroys targets. Origin: (0,0)"""
     def __init__(self, radius, speed, color):
         """constructor"""
         super().__init__()

@@ -20,7 +20,8 @@ class FlyingObject:
         Draw the object (bullet, target, etc.) on the screen. Assumes the
         object is a circle. Can be overridden in the child class.
         """
-        arcade.draw_circle_filled(self.center.x,
+        arcade.draw_circle_filled(
+            self.center.x,
             self.center.y,
             self.radius,
             self.color)

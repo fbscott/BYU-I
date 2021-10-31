@@ -23,7 +23,8 @@ class SafeTarget(StandardTarget):
         contain a number and be transparent with an outline.
         '''
         # this object will be a square rather than a circle
-        arcade.draw_rectangle_filled(self.center.x,
+        arcade.draw_rectangle_filled(
+            self.center.x,
             self.center.y,
             self.radius,
             self.radius,

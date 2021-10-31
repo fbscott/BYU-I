@@ -3,8 +3,8 @@ from flying_object import FlyingObject
 
 class StandardTarget(FlyingObject):
     """
-    Target. Destroyed by bullet. Originates from the left side of the top half
-    of the screen.
+    Standard Target. Destroyed by bullet. Originates from the left side of the
+    top half of the screen.
     """
     def __init__(self, radius, color, screen_height):
         """constructor"""

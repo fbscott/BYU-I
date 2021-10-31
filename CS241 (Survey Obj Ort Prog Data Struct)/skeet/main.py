@@ -13,6 +13,7 @@ from bullet import Bullet
 from standard_target import StandardTarget
 from strong_target import StrongTarget
 from safe_target import SafeTarget
+from bouncing_target import BouncingTarget
 
 # These are Global constants to use throughout the game
 SCREEN_WIDTH = 600
@@ -144,7 +145,7 @@ class Game(arcade.Window):
         """
 
         # TODO: Decide what type of target to create and append it to the list
-        rand_target = random.randint(1, 3)
+        rand_target = random.randint(1, 4)
 
         if (rand_target == 1):
             standard = StandardTarget(TARGET_RADIUS, TARGET_COLOR, SCREEN_HEIGHT)
@@ -155,6 +156,9 @@ class Game(arcade.Window):
         elif (rand_target == 3):
             safe = SafeTarget(TARGET_SAFE_RADIUS, TARGET_SAFE_COLOR, SCREEN_HEIGHT)
             self.targets.append(safe)
+        elif (rand_target == 4):
+            bouncing = BouncingTarget(TARGET_SAFE_RADIUS, arcade.color.NAVY_BLUE, SCREEN_HEIGHT)
+            self.targets.append(bouncing)
 
     def check_collisions(self):
         """

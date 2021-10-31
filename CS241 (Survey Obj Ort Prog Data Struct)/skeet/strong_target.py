@@ -24,7 +24,8 @@ class StrongTarget(StandardTarget):
         contain a number and be transparent with an outline.
         '''
         # this object will be an empty circle
-        arcade.draw_circle_outline(self.center.x,
+        arcade.draw_circle_outline(
+            self.center.x,
             self.center.y,
             self.radius,
             self.color)
@@ -34,7 +35,8 @@ class StrongTarget(StandardTarget):
         text_y = self.center.y - (self.radius / 2)
 
         # draw text in the object
-        arcade.draw_text(repr(self.lives),
+        arcade.draw_text(
+            repr(self.lives),
             text_x,
             text_y,
             self.color,
