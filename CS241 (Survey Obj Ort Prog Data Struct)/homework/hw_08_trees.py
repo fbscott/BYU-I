@@ -53,7 +53,14 @@ def print_tree(node):
     """
 
     # TODO: Put your code here
-    pass
+    if isinstance(node.left, TreeNode):
+        print_tree(node.left)
+
+    # root
+    print(node.data)
+    
+    if isinstance(node.right, TreeNode):
+        print_tree(node.right)
 
 def main():
     """
