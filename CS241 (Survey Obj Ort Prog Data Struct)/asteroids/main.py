@@ -6,6 +6,7 @@ Designed to be completed by others
 This program implements the asteroids game.
 """
 import arcade
+from rock_large import Rock_large
 
 # These are Global constants to use throughout the game
 SCREEN_WIDTH = 800
@@ -56,6 +57,11 @@ class Game(arcade.Window):
         self.held_keys = set()
 
         # TODO: declare anything here you need the game class to track
+        self.asteroids = []
+
+        for i in range(INITIAL_ROCK_COUNT):
+            rock_large = Rock_large(SCREEN_HEIGHT)
+            self.asteroids.append(rock_large)
 
     def on_draw(self):
         """
@@ -67,6 +73,8 @@ class Game(arcade.Window):
         arcade.start_render()
 
         # TODO: draw each object
+        for asteroid in self.asteroids:
+            asteroid.draw()
 
     def update(self, delta_time):
         """
@@ -76,6 +84,8 @@ class Game(arcade.Window):
         self.check_keys()
 
         # TODO: Tell everything to advance or move forward one step in time
+        for asteroid in self.asteroids:
+            asteroid.advance()
 
         # TODO: Check for collisions
 
