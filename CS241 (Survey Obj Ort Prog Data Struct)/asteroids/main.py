@@ -6,6 +6,7 @@ Designed to be completed by others
 This program implements the asteroids game.
 """
 import arcade
+import os
 from rock_large import Rock_large
 # from rock_medium import Rock_medium
 # from rock_small import Rock_small
@@ -56,16 +57,28 @@ class Game(arcade.Window):
         :param height: Screen height
         """
         super().__init__(width, height)
-        arcade.set_background_color(arcade.color.SMOKY_BLACK)
+        # arcade.set_background_color(arcade.color.SMOKY_BLACK)
 
         self.held_keys = set()
 
         # TODO: declare anything here you need the game class to track
+        self.background = None
+        
         self.asteroids = []
 
         for i in range(INITIAL_ROCK_COUNT):
             rock_large = Rock_large(SCREEN_WIDTH, SCREEN_HEIGHT)
             self.asteroids.append(rock_large)
+
+    def setupBgImage(self):
+        """
+        Add background image to game.
+        source: https://api.arcade.academy/en/latest/examples/sprite_collect_coins_background.html
+        """
+        absolutepath = os.path.abspath(__file__)
+        rootDirectory = os.path.dirname(absolutepath)
+        bgImgPath = os.path.join(rootDirectory, 'img')
+        self.background = arcade.load_texture(bgImgPath + "\\space.png")
 
     def on_draw(self):
         """
@@ -77,6 +90,15 @@ class Game(arcade.Window):
         arcade.start_render()
 
         # TODO: draw each object
+        # Draw the background texture
+        arcade.draw_lrwh_rectangle_textured(
+            0,
+            0,
+            SCREEN_WIDTH,
+            SCREEN_HEIGHT,
+            self.background
+        )
+
         for asteroid in self.asteroids:
             asteroid.draw()
 
@@ -137,4 +159,5 @@ class Game(arcade.Window):
 
 # Creates the game and starts it going
 window = Game(SCREEN_WIDTH, SCREEN_HEIGHT)
+window.setupBgImage()
 arcade.run()

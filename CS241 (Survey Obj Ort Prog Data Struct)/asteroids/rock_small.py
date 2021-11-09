@@ -3,7 +3,7 @@ from rock_base import Rock
 
 class Rock_small(Rock):
     """
-    Small rock. Broken up by bullet.
+    Small rock. Killed by bullet.
     """
     def __init__(self, screen_height):
         """constructor"""
