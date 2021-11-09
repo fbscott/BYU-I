@@ -7,6 +7,10 @@ This program implements the asteroids game.
 """
 import arcade
 from rock_large import Rock_large
+# from rock_medium import Rock_medium
+# from rock_small import Rock_small
+# from ship import Ship
+# from bullet import Bullet
 
 # These are Global constants to use throughout the game
 SCREEN_WIDTH = 800
@@ -60,7 +64,7 @@ class Game(arcade.Window):
         self.asteroids = []
 
         for i in range(INITIAL_ROCK_COUNT):
-            rock_large = Rock_large(SCREEN_HEIGHT)
+            rock_large = Rock_large(SCREEN_WIDTH, SCREEN_HEIGHT)
             self.asteroids.append(rock_large)
 
     def on_draw(self):

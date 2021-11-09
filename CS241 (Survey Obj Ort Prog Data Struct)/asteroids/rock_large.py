@@ -1,24 +1,26 @@
 import random
-from flying_object import FlyingObject
+from rock_base import Rock
 
-class Rock_large(FlyingObject):
+class Rock_large(Rock):
     """
-    Large asteroid. Broken up by bullet.
+    Large rock. Broken up by bullet.
     """
-    def __init__(self, screen_height):
+    def __init__(self, screen_width, screen_height):
         """constructor"""
         super().__init__("meteorGrey_big1.png")
-        # The initial position of the target is anywhere along the top half of
-        # the left side the screen
-        self.center.y = float(random.uniform(screen_height / 2, screen_height))
-        # The horizontal component of the velocity should be between 1 and 5
-        # pixels/frame
+        self.center.x = float(random.uniform(0, screen_width))
+        self.center.y = float(random.uniform(0, screen_height))
         self.velocity.dx = float(random.uniform(-1.5, 1.5))
-        # The vertical component of the velocity should be between -2 and +5
-        # pixels/frame
         self.velocity.dy = float(random.uniform(-1.5, 1.5))
+        self.rotation = 1.5
 
     def hit(self):
-        """Kills the object when a bullet hits it"""
-        self.alive = False
-        return int(1)
+        """Spawns smaller rocks when a bullet hits it"""
+        self.spawnMediumRock()
+        self.spawnSmallRock()
+
+    def spawnMediumRock():
+        pass
+
+    def spawnSmallRock():
+        pass
