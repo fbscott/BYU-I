@@ -20,14 +20,17 @@ class FlyingObject:
     Base (parent) class for all objects (other than the rifle) that move on the
     screen.
     """
-    def __init__(self, img):
+    def __init__(self, img, screen_width, screen_height, radius):
         """constructor"""
-        self.center   = Point()
-        self.velocity = Velocity()
-        self.texture  = arcade.load_texture(imgPath + "\\" + img)
-        self.width    = self.texture.width
-        self.height   = self.texture.height
-        self.alive    = True
+        self.center        = Point()
+        self.velocity      = Velocity()
+        self.texture       = arcade.load_texture(imgPath + "\\" + img)
+        self.screen_width  = screen_width
+        self.screen_height = screen_height
+        self.width         = self.texture.width
+        self.height        = self.texture.height
+        self.radius        = radius
+        self.alive         = True
 
     def draw(self):
         """
@@ -48,3 +51,16 @@ class FlyingObject:
         """Moves the object. Adds velocity (dx,dy) to its (x,y) coordinates."""
         self.center.x += self.velocity.dx
         self.center.y += self.velocity.dy
+
+    def wrap(self):
+        if self.center.x > self.screen_width:
+            self.center.x -= self.screen_width
+
+        if self.center.y > self.screen_height:
+            self.center.y -= self.screen_height
+
+        if self.center.x < 0:
+            self.center.x += self.screen_width
+
+        if self.center.y < 0:
+            self.center.y += self.screen_height

@@ -10,7 +10,7 @@ import os
 from rock_large import Rock_large
 # from rock_medium import Rock_medium
 # from rock_small import Rock_small
-# from ship import Ship
+from ship import Ship
 # from bullet import Bullet
 
 # These are Global constants to use throughout the game
@@ -66,8 +66,20 @@ class Game(arcade.Window):
         
         self.asteroids = []
 
+        self.ship = Ship(
+            SCREEN_WIDTH,
+            SCREEN_HEIGHT,
+            SHIP_RADIUS,
+            SHIP_THRUST_AMOUNT,
+            SHIP_TURN_AMOUNT
+        )
+
         for i in range(INITIAL_ROCK_COUNT):
-            rock_large = Rock_large(SCREEN_WIDTH, SCREEN_HEIGHT)
+            rock_large = Rock_large(
+                SCREEN_WIDTH,
+                SCREEN_HEIGHT,
+                BIG_ROCK_RADIUS
+            )
             self.asteroids.append(rock_large)
 
     def setupBgImage(self):
@@ -99,6 +111,8 @@ class Game(arcade.Window):
             self.background
         )
 
+        self.ship.draw()
+
         for asteroid in self.asteroids:
             asteroid.draw()
 
@@ -110,8 +124,11 @@ class Game(arcade.Window):
         self.check_keys()
 
         # TODO: Tell everything to advance or move forward one step in time
+        self.ship.advance()
+
         for asteroid in self.asteroids:
             asteroid.advance()
+            asteroid.wrap()
 
         # TODO: Check for collisions
 
@@ -121,7 +138,7 @@ class Game(arcade.Window):
         You will need to put your own method calls in here.
         """
         if arcade.key.LEFT in self.held_keys:
-            pass
+            self.ship.rotate()
 
         if arcade.key.RIGHT in self.held_keys:
             pass
