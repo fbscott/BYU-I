@@ -18,12 +18,12 @@ class Ship(FlyingObject):
             radius,
             turn_amount
         )
-        self.center.x = (screen_width / 2)
-        self.center.y = (screen_height / 2)
-        self.rotation = 0
-        self.radius = radius
+        self.center.x      = (screen_width / 2)
+        self.center.y      = (screen_height / 2)
+        self.rotation      = 0
+        self.radius        = radius
         self.thrust_amount = thrust_amount
-        self.turn_amount = turn_amount
+        self.turn_amount   = turn_amount
 
     def rotate_left(self):
         self.rotation += self.turn_amount
