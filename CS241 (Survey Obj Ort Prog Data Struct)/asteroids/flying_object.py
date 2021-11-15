@@ -20,7 +20,7 @@ class FlyingObject:
     Base (parent) class for all objects (other than the rifle) that move on the
     screen.
     """
-    def __init__(self, img, screen_width, screen_height, radius):
+    def __init__(self, img, screen_width, screen_height, radius, rotation = 0):
         """constructor"""
         self.center        = Point()
         self.velocity      = Velocity()
@@ -30,6 +30,7 @@ class FlyingObject:
         self.width         = self.texture.width
         self.height        = self.texture.height
         self.radius        = radius
+        self.rotation      = rotation
         self.alive         = True
 
     def draw(self):
@@ -43,7 +44,7 @@ class FlyingObject:
             self.width,
             self.height,
             self.texture,
-            1,
+            self.rotation,
             255
         )
 

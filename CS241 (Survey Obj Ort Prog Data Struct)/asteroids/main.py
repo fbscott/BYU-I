@@ -125,6 +125,7 @@ class Game(arcade.Window):
 
         # TODO: Tell everything to advance or move forward one step in time
         self.ship.advance()
+        self.ship.wrap()
 
         for asteroid in self.asteroids:
             asteroid.advance()
@@ -138,16 +139,16 @@ class Game(arcade.Window):
         You will need to put your own method calls in here.
         """
         if arcade.key.LEFT in self.held_keys:
-            self.ship.rotate()
+            self.ship.rotate_left()
 
         if arcade.key.RIGHT in self.held_keys:
-            pass
+            self.ship.rotate_right()
 
         if arcade.key.UP in self.held_keys:
-            pass
+            self.ship.forward()
 
         if arcade.key.DOWN in self.held_keys:
-            pass
+            self.ship.reverse()
 
         # Machine gun mode...
         #if arcade.key.SPACE in self.held_keys:
