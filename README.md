@@ -5,6 +5,7 @@ Great Scott's personal coursework
 ## CIT261 (Mobile Application Development)
 
 Repo: https://github.com/fbscott/currell-scott.BYU-I.io
+
 Demo: https://fbscott.github.io/currell-scott.BYU-I.io/
 
 ## CSE341 (Web Backend Development II)
