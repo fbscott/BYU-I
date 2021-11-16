@@ -23,9 +23,9 @@ class FlyingObject:
     def __init__(
         self,
         img,
+        radius = 0,
         screen_width = 0,
         screen_height = 0,
-        radius = 0,
         rotation = 0
     ):
         """constructor"""

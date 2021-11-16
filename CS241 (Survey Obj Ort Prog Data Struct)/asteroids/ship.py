@@ -5,17 +5,18 @@ class Ship(FlyingObject):
 
     def __init__(
         self,
+        radius,
         screen_width,
         screen_height,
-        radius,
         thrust_amount,
         turn_amount
     ):
         super().__init__(
-            "playerShip1_orange.png",
+            # "playerShip1_orange.png",
+            "millennium_falcon.png",
+            radius,
             screen_width,
             screen_height,
-            radius,
             turn_amount
         )
         self.center.x      = (screen_width / 2)

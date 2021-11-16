@@ -15,5 +15,9 @@ class Rock_small(Rock):
         self.radius      = radius
         self.rotation    = 5.0
 
+    def rotate(self):
+        super().advance()
+        self.rotation += 5.0
+
     def hit(self):
         pass

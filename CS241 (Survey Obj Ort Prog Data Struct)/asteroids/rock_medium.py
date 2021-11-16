@@ -15,6 +15,10 @@ class Rock_medium(Rock):
         self.radius      = radius
         self.rotation    = 2.0
 
+    def rotate(self):
+        super().advance()
+        self.rotation += 2.0
+
     def hit(self):
         """Spawns smaller rocks when a bullet hits it"""
         self.spawnSmallRock()

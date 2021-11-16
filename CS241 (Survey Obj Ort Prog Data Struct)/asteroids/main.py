@@ -11,7 +11,7 @@ from rock_large import Rock_large
 # from rock_medium import Rock_medium
 # from rock_small import Rock_small
 from ship import Ship
-# from bullet import Bullet
+from bullet import Bullet
 
 # These are Global constants to use throughout the game
 SCREEN_WIDTH = 800
@@ -65,20 +65,22 @@ class Game(arcade.Window):
         self.background = None
         
         self.asteroids = []
+        self.bullets = []
 
         self.ship = Ship(
+            SHIP_RADIUS,
             SCREEN_WIDTH,
             SCREEN_HEIGHT,
-            SHIP_RADIUS,
             SHIP_THRUST_AMOUNT,
             SHIP_TURN_AMOUNT
         )
 
         for i in range(INITIAL_ROCK_COUNT):
             rock_large = Rock_large(
+                BIG_ROCK_RADIUS,
                 SCREEN_WIDTH,
                 SCREEN_HEIGHT,
-                BIG_ROCK_RADIUS
+                BIG_ROCK_SPIN
             )
             self.asteroids.append(rock_large)
 
@@ -111,10 +113,13 @@ class Game(arcade.Window):
             self.background
         )
 
-        self.ship.draw()
-
         for asteroid in self.asteroids:
             asteroid.draw()
+
+        for bullet in self.bullets:
+            bullet.draw()
+
+        self.ship.draw()
 
     def update(self, delta_time):
         """
@@ -130,6 +135,14 @@ class Game(arcade.Window):
         for asteroid in self.asteroids:
             asteroid.advance()
             asteroid.wrap()
+            asteroid.rotate()
+
+        for bullet in self.bullets:
+            bullet.advance()
+            bullet.wrap()
+            bullet.is_alive()
+            if (not bullet.alive):
+                self.bullets.remove(bullet)
 
         # TODO: Check for collisions
 
@@ -165,7 +178,20 @@ class Game(arcade.Window):
 
             if key == arcade.key.SPACE:
                 # TODO: Fire the bullet here!
-                pass
+                bullet = Bullet(
+                    BULLET_RADIUS,
+                    SCREEN_WIDTH,
+                    SCREEN_HEIGHT,
+                    self.ship.center.x,
+                    self.ship.center.y,
+                    self.ship.velocity.dx,
+                    self.ship.velocity.dy,
+                    self.ship.rotation,
+                    BULLET_SPEED,
+                    BULLET_LIFE
+                )
+                self.bullets.append(bullet)
+                bullet.fire()
 
     def on_key_release(self, key: int, modifiers: int):
         """
