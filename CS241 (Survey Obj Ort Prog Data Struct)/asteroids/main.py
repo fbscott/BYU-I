@@ -8,7 +8,7 @@ This program implements the asteroids game.
 import arcade
 import os
 from rock_large import Rock_large
-# from rock_medium import Rock_medium
+from rock_medium import Rock_medium
 # from rock_small import Rock_small
 from ship import Ship
 from bullet import Bullet
@@ -136,6 +136,8 @@ class Game(arcade.Window):
             asteroid.advance()
             asteroid.wrap()
             asteroid.rotate()
+            if (not asteroid.alive):
+                self.asteroids.remove(asteroid)
 
         for bullet in self.bullets:
             bullet.advance()
@@ -145,6 +147,37 @@ class Game(arcade.Window):
                 self.bullets.remove(bullet)
 
         # TODO: Check for collisions
+        self.check_collisions()
+
+    def check_collisions(self):
+        for bullet in self.bullets:
+            for asteroid in self.asteroids:
+
+                if bullet.alive and asteroid.alive:
+                    hit = bullet.radius + asteroid.radius
+
+                    if (
+                        abs(bullet.center.x - asteroid.center.x) < hit and
+                        abs(bullet.center.y - asteroid.center.y) < hit
+                    ):
+                        bullet.alive = False
+                        asteroid.hit(
+                            self.asteroids,
+                            MEDIUM_ROCK_RADIUS,
+                            MEDIUM_ROCK_SPIN
+                        )
+
+        # for asteroid in self.asteroids:
+
+        #     if self.ship.alive and asteroid.alive:
+        #         close_enough = self.ship.radius + asteroid.radius
+
+        #         if (
+        #             abs(self.ship.center.x - asteroid.center.x) < close_enough and
+        #             abs(self.ship.center.y - asteroid.center.y) < close_enough
+        #         ):
+        #             self.ship.alive = False
+        #             asteroid.hit(self.asteroids)
 
     def check_keys(self):
         """

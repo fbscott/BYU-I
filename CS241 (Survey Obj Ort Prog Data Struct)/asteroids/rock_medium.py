@@ -5,23 +5,40 @@ class Rock_medium(Rock):
     """
     Medium rock. Broken up by bullet.
     """
-    def __init__(self, screen_width, screen_height, radius):
+    def __init__(
+        self,
+        radius,
+        screen_width,
+        screen_height,
+        rotation,
+        center_x,
+        center_y,
+        velocity_dx,
+        velocity_dy,
+        img
+    ):
         """constructor"""
-        super().__init__("meteorGrey_med1.png", screen_width, screen_height, radius)
-        self.center.x    = float(random.uniform(0, screen_width))
-        self.center.y    = float(random.uniform(0, screen_height))
-        self.velocity.dx = float(random.uniform(-1.5, 1.5))
-        self.velocity.dy = float(random.uniform(-1.5, 1.5))
+        super().__init__(
+            img,
+            radius,
+            screen_width,
+            screen_height
+        )
+        self.center.x    = float(center_x)
+        self.center.y    = float(center_y)
+        self.velocity.dx = float(random.uniform(velocity_dx * -1, velocity_dx))
+        self.velocity.dy = float(random.uniform(velocity_dy * -1, velocity_dy))
         self.radius      = radius
-        self.rotation    = 2.0
+        self.rotation    = rotation
 
     def rotate(self):
         super().advance()
-        self.rotation += 2.0
+        self.rotation += self.random
 
-    def hit(self):
+    def hit(self, obj):
         """Spawns smaller rocks when a bullet hits it"""
+        print('big rock hit')
         self.spawnSmallRock()
 
-    def spawnSmallRock():
+    def spawnSmallRock(self):
         pass

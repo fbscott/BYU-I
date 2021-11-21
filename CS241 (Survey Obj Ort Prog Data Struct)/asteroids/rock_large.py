@@ -1,5 +1,6 @@
 import random
 from rock_base import Rock
+from rock_medium import Rock_medium
 
 class Rock_large(Rock):
     """
@@ -31,13 +32,33 @@ class Rock_large(Rock):
         super().advance()
         self.rotation += self.random
 
-    def hit(self):
-        """Spawns smaller rocks when a bullet hits it"""
-        self.spawnMediumRock()
-        self.spawnSmallRock()
-
-    def spawnMediumRock():
-        pass
-
-    def spawnSmallRock():
-        pass
+    def hit(
+        self,
+        asteroids,
+        radius,
+        rotation
+    ):
+        rock_medium_1 = Rock_medium(
+            radius,
+            self.screen_width,
+            self.screen_height,
+            rotation,
+            self.center.x,
+            self.center.y,
+            self.velocity.dx,
+            self.velocity.dy + 2,
+            "asteroid_med_1.png"
+        )
+        rock_medium_2 = Rock_medium(
+            radius,
+            self.screen_width,
+            self.screen_height,
+            rotation,
+            self.center.x,
+            self.center.y,
+            self.velocity.dx,
+            self.velocity.dy - 2,
+            "asteroid_med_2.png"
+        )
+        self.alive = False
+        asteroids.extend([rock_medium_1, rock_medium_2])
