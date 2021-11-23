@@ -72,3 +72,6 @@ class FlyingObject:
 
         if self.center.y < 0:
             self.center.y += self.screen_height
+
+    def hit(self):
+        pass

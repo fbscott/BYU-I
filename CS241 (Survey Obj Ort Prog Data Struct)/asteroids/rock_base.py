@@ -20,9 +20,10 @@ class Rock(ABC, FlyingObject):
         self.random = float(random.uniform(-1, 1))
 
     @abstractmethod
-    def rotate():
+    def rotate(self):
         pass
 
     @abstractmethod
-    def hit():
+    def hit(self, obj):
+        super().hit(obj)
         pass

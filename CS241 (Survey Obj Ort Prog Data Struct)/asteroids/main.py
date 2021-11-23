@@ -119,7 +119,33 @@ class Game(arcade.Window):
         for bullet in self.bullets:
             bullet.draw()
 
-        self.ship.draw()
+        if self.ship.alive:
+            self.ship.draw()
+        else:
+            arcade.draw_text(
+                "GAME OVER",
+                SCREEN_WIDTH / 2,
+                SCREEN_HEIGHT / 2,
+                arcade.color.RED,
+                60,
+                width = 400,
+                align = "center",
+                anchor_x = "center",
+                anchor_y = "center"
+            )
+
+        if len(self.asteroids) == 0:
+            arcade.draw_text(
+                "YOU WIN!",
+                SCREEN_WIDTH / 2,
+                SCREEN_HEIGHT / 2,
+                arcade.color.GREEN,
+                60,
+                width = 400,
+                align = "center",
+                anchor_x = "center",
+                anchor_y = "center"
+            )
 
     def update(self, delta_time):
         """
@@ -146,6 +172,9 @@ class Game(arcade.Window):
             if (not bullet.alive):
                 self.bullets.remove(bullet)
 
+        if not self.ship.alive:
+            self.ship.alive = False
+
         # TODO: Check for collisions
         self.check_collisions()
 
@@ -167,17 +196,21 @@ class Game(arcade.Window):
                             MEDIUM_ROCK_SPIN
                         )
 
-        # for asteroid in self.asteroids:
+        for asteroid in self.asteroids:
 
-        #     if self.ship.alive and asteroid.alive:
-        #         close_enough = self.ship.radius + asteroid.radius
+            if self.ship.alive and asteroid.alive:
+                hit = self.ship.radius + asteroid.radius
 
-        #         if (
-        #             abs(self.ship.center.x - asteroid.center.x) < close_enough and
-        #             abs(self.ship.center.y - asteroid.center.y) < close_enough
-        #         ):
-        #             self.ship.alive = False
-        #             asteroid.hit(self.asteroids)
+                if (
+                    abs(self.ship.center.x - asteroid.center.x) < hit and
+                    abs(self.ship.center.y - asteroid.center.y) < hit
+                ):
+                    self.ship.alive = False
+                    asteroid.hit(
+                        self.asteroids,
+                        MEDIUM_ROCK_RADIUS,
+                        MEDIUM_ROCK_SPIN
+                    )
 
     def check_keys(self):
         """

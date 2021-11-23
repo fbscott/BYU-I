@@ -1,6 +1,7 @@
 import random
 from rock_base import Rock
 from rock_medium import Rock_medium
+from rock_small import Rock_small
 
 class Rock_large(Rock):
     """
@@ -15,7 +16,6 @@ class Rock_large(Rock):
     ):
         """constructor"""
         super().__init__(
-            # "meteorGrey_big1.png",
             "asteroid_large.png",
             radius,
             screen_width,
@@ -60,5 +60,15 @@ class Rock_large(Rock):
             self.velocity.dy - 2,
             "asteroid_med_2.png"
         )
+        rock_small = Rock_small(
+            radius,
+            self.screen_width,
+            self.screen_height,
+            rotation,
+            self.center.x,
+            self.center.y,
+            self.velocity.dx + 5,
+            self.velocity.dy
+        )
         self.alive = False
-        asteroids.extend([rock_medium_1, rock_medium_2])
+        asteroids.extend([rock_medium_1, rock_medium_2, rock_small])

@@ -3,21 +3,43 @@ from rock_base import Rock
 
 class Rock_small(Rock):
     """
-    Small rock. Killed by bullet.
+    small rock. Broken up by bullet.
     """
-    def __init__(self, screen_width, screen_height, radius):
+    def __init__(
+        self,
+        radius,
+        screen_width,
+        screen_height,
+        rotation,
+        center_x,
+        center_y,
+        velocity_dx,
+        velocity_dy
+    ):
         """constructor"""
-        super().__init__("meteorGrey_small1.png", screen_width, screen_height, radius)
-        self.center.x    = float(random.uniform(0, screen_width))
-        self.center.y    = float(random.uniform(0, screen_height))
-        self.velocity.dx = float(random.uniform(-1.5, 1.5))
-        self.velocity.dy = float(random.uniform(-1.5, 1.5))
+        super().__init__(
+            "asteroid_small.png",
+            radius,
+            screen_width,
+            screen_height
+        )
+        self.center.x    = float(center_x)
+        self.center.y    = float(center_y)
+        self.velocity.dx = float(random.uniform(velocity_dx * -1, velocity_dx))
+        self.velocity.dy = float(random.uniform(velocity_dy * -1, velocity_dy))
         self.radius      = radius
-        self.rotation    = 5.0
+        self.rotation    = rotation
 
     def rotate(self):
         super().advance()
-        self.rotation += 5.0
+        self.rotation += self.random
 
-    def hit(self):
-        pass
+    def hit(
+        self,
+        asteroids = "?",
+        radius = "?",
+        rotation = "?"
+        ):
+        """Spawns smaller rocks when a bullet hits it"""
+        self.alive = False
+        print('small rock hit')
