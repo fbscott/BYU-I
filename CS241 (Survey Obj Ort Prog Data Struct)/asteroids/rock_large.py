@@ -10,7 +10,8 @@ class Rock_large(Rock):
         radius,
         screen_width,
         screen_height,
-        rotation
+        rotation,
+        speed
     ):
         super().__init__(
             "asteroid_large.png",
@@ -18,10 +19,11 @@ class Rock_large(Rock):
             screen_width,
             screen_height
         )
+        self.speed       = speed
         self.center.x    = float(random.uniform(0, screen_width))
         self.center.y    = float(random.uniform(0, screen_height))
-        self.velocity.dx = float(random.uniform(-1.5, 1.5))
-        self.velocity.dy = float(random.uniform(-1.5, 1.5))
+        self.velocity.dx = float(random.uniform(self.speed * -1, self.speed))
+        self.velocity.dy = float(random.uniform(self.speed * -1, self.speed))
         self.radius      = radius
         self.rotation    = rotation
 

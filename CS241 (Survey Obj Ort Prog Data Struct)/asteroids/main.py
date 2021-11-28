@@ -80,7 +80,8 @@ class Game(arcade.Window):
                 BIG_ROCK_RADIUS,
                 SCREEN_WIDTH,
                 SCREEN_HEIGHT,
-                BIG_ROCK_SPIN
+                BIG_ROCK_SPIN,
+                BIG_ROCK_SPEED
             )
             self.asteroids.append(rock_large)
 
