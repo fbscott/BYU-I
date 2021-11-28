@@ -1,7 +1,8 @@
 import math
-from flying_object import FlyingObject
 import os
 import arcade
+from flying_object import FlyingObject
+
 absolutepath  = os.path.abspath(__file__)
 rootDirectory = os.path.dirname(absolutepath)
 imgPath       = os.path.join(rootDirectory, 'img')

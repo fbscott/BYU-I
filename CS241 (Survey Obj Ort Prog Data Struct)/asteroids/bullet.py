@@ -1,5 +1,4 @@
 import math
-
 from arcade.key import X
 from flying_object import FlyingObject
 
@@ -19,7 +18,6 @@ class Bullet(FlyingObject):
         life
     ):
         super().__init__(
-            # "laserBlue01.png",
             "millennium_falcon_laser.png",
             radius,
             screen_width,
@@ -35,11 +33,13 @@ class Bullet(FlyingObject):
         self.life = life
 
     def is_alive(self):
+        """kill bullet after 60 frames"""
         if self.alive == True and self.life > 0:
             self.life -= 1
         else:
             self.alive = False
 
     def fire(self):
+        """fire in the same direction as the ship plus its velocity"""
         self.velocity.dx = (math.cos(math.radians(self.rotation + 90)) * self.speed) + self.velocity.dx
         self.velocity.dy = (math.sin(math.radians(self.rotation + 90)) * self.speed) + self.velocity.dy
