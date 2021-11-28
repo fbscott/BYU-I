@@ -3,9 +3,7 @@ from rock_base import Rock
 from rock_small import Rock_small
 
 class Rock_medium(Rock):
-    """
-    Medium rock. Broken up by bullet.
-    """
+    """Medium rock. Broken up by bullet."""
     def __init__(
         self,
         radius,
@@ -18,7 +16,6 @@ class Rock_medium(Rock):
         velocity_dy,
         img
     ):
-        """constructor"""
         super().__init__(
             img,
             radius,
@@ -33,6 +30,7 @@ class Rock_medium(Rock):
         self.rotation    = rotation
 
     def rotate(self):
+        """rotate rock"""
         super().advance()
         self.rotation += self.random
 
@@ -42,6 +40,7 @@ class Rock_medium(Rock):
         radius,
         rotation
     ):
+        """Breaks rock into smaller rocks when a bullet hits it"""
         rock_small_1 = Rock_small(
             radius,
             self.screen_width,

@@ -2,9 +2,7 @@ import random
 from rock_base import Rock
 
 class Rock_small(Rock):
-    """
-    small rock. Broken up by bullet.
-    """
+    """Small rock. Destroyed by bullet."""
     def __init__(
         self,
         radius,
@@ -16,7 +14,6 @@ class Rock_small(Rock):
         velocity_dx,
         velocity_dy
     ):
-        """constructor"""
         super().__init__(
             "asteroid_small.png",
             radius,
@@ -31,15 +28,15 @@ class Rock_small(Rock):
         self.rotation    = rotation
 
     def rotate(self):
+        """rotate rock"""
         super().advance()
         self.rotation += self.random
 
     def hit(
         self,
-        asteroids = "?",
-        radius = "?",
-        rotation = "?"
-        ):
-        """Spawns smaller rocks when a bullet hits it"""
+        asteroids = None,
+        radius = None,
+        rotation = None
+    ):
+        """Destroys rock when a bullet hits it"""
         self.alive = False
-        print('small rock hit')

@@ -25,7 +25,7 @@ SHIP_TURN_AMOUNT = 3
 SHIP_THRUST_AMOUNT = 0.25
 SHIP_RADIUS = 30
 
-INITIAL_ROCK_COUNT = 5
+INITIAL_ROCK_COUNT = 1
 
 BIG_ROCK_SPIN = 1
 BIG_ROCK_SPEED = 1.5
@@ -225,6 +225,7 @@ class Game(arcade.Window):
 
         if arcade.key.UP in self.held_keys:
             self.ship.forward()
+            self.ship.img_on_key_press()
 
         if arcade.key.DOWN in self.held_keys:
             self.ship.reverse()
@@ -264,6 +265,7 @@ class Game(arcade.Window):
         Removes the current key from the set of held keys.
         """
         if key in self.held_keys:
+            self.ship.img_on_key_release()
             self.held_keys.remove(key)
 
 

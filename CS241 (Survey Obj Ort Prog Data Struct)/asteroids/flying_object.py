@@ -13,7 +13,7 @@ this code will "hopefully" run on any machine as the paths will be different.
 """
 absolutepath  = os.path.abspath(__file__)
 rootDirectory = os.path.dirname(absolutepath)
-imgPath       = os.path.join(rootDirectory, 'img')   
+imgPath       = os.path.join(rootDirectory, 'img')
 
 class FlyingObject:
     """
@@ -61,6 +61,7 @@ class FlyingObject:
         self.center.y += self.velocity.dy
 
     def wrap(self):
+        """Wraps objects to other side of screen so they always stay in view."""
         if self.center.x > self.screen_width:
             self.center.x -= self.screen_width
 
@@ -72,6 +73,3 @@ class FlyingObject:
 
         if self.center.y < 0:
             self.center.y += self.screen_height
-
-    def hit(self):
-        pass

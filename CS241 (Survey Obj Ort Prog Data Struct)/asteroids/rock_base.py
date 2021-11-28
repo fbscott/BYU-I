@@ -4,6 +4,7 @@ import random
 from flying_object import FlyingObject
 
 class Rock(ABC, FlyingObject):
+    """Base class. Inherited by large, medium, and small rock classes."""
     def __init__(
         self,
         img,
@@ -26,4 +27,3 @@ class Rock(ABC, FlyingObject):
     @abstractmethod
     def hit(self, obj):
         super().hit(obj)
-        pass
