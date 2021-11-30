@@ -43,3 +43,8 @@ class Bullet(FlyingObject):
         """fire in the same direction as the ship plus its velocity"""
         self.velocity.dx = (math.cos(math.radians(self.rotation + 90)) * self.speed) + self.velocity.dx
         self.velocity.dy = (math.sin(math.radians(self.rotation + 90)) * self.speed) + self.velocity.dy
+
+    def rapid_fire(self):
+        """fire in the same direction as the ship plus its velocity"""
+        self.velocity.dx = (math.cos(math.radians(self.rotation + 90)) * self.speed) + self.velocity.dx
+        self.velocity.dy = (math.sin(math.radians(self.rotation + 90)) * self.speed) + self.velocity.dy

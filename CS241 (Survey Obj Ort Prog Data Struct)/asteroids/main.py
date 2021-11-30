@@ -28,7 +28,7 @@ SHIP_RADIUS = 30
 INITIAL_ROCK_COUNT = 5
 
 BIG_ROCK_SPIN = 1
-BIG_ROCK_SPEED = 1.5
+BIG_ROCK_SPEED = 0.5
 BIG_ROCK_RADIUS = 15
 
 MEDIUM_ROCK_SPIN = -2
@@ -232,8 +232,22 @@ class Game(arcade.Window):
             self.ship.reverse()
 
         # Machine gun mode...
-        #if arcade.key.SPACE in self.held_keys:
-        #    pass
+        # Hold "F" for rapid fire
+        if arcade.key.F in self.held_keys:
+            rapid_fire_bullet = Bullet(
+                BULLET_RADIUS,
+                SCREEN_WIDTH,
+                SCREEN_HEIGHT,
+                self.ship.center.x,
+                self.ship.center.y,
+                self.ship.velocity.dx,
+                self.ship.velocity.dy,
+                self.ship.rotation,
+                BULLET_SPEED,
+                BULLET_LIFE
+            )
+            self.bullets.append(rapid_fire_bullet)
+            rapid_fire_bullet.rapid_fire()
 
 
     def on_key_press(self, key: int, modifiers: int):
