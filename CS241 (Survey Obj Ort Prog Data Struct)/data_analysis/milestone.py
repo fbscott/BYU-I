@@ -9,7 +9,6 @@ os.chdir('c:\\git_repos\\BYU-I\\CS241 (Survey Obj Ort Prog Data Struct)\\_data\\
 # Merge datasets before getting started.
 master = pd.read_csv('basketball_master.csv')
 players = pd.read_csv('basketball_players.csv')
-
 nba = pd.merge(players, master, how = 'left', left_on = 'playerID', right_on = 'bioID')
 
 # PART I - Step 01:
@@ -51,10 +50,8 @@ sns.boxplot(data = plots)
 # sns.boxplot(data = nba[['points', 'assists', 'rebounds']])
 
 # plt.savefig() has to be called BEFORE plt.show() otherwise the image will be blank
-plt.savefig('boxplot_reboundsPerGame.png') # save the file
-
+plt.savefig('pt_1_step_2_boxplot_reboundsPerGame.png') # save the file
 plt.show() # plot boxplot
-
 
 # PART I - Step 04:
 # Produce a plot that shows how the number of points scored has changed over
@@ -67,8 +64,7 @@ nba_grouped_year = nba[['points', 'year']].groupby('year').median()
 
 nba_grouped_year = nba_grouped_year.reset_index()
 nba_grouped_year = nba_grouped_year[nba_grouped_year['points'] > 0]
+
 sns.regplot(data = nba_grouped_year, x = 'year', y = 'points').set_title("Median points per year")
-
-plt.savefig('facet_pointsPerYear.png') # save the file
-
+plt.savefig('pt_1_step_3_facet_pointsPerYear.png') # save the file
 plt.show()
