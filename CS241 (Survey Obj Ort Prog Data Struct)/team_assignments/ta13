@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# core req 1
+# echo "Running on file: $1" # $1 is a command line parameter
+
+# core req 2
+# wc -l $1 # count lines in file
+
+# core req 3
+echo "Running on file: $1"
+
+echo "Files in the directory:"
+
+for file in $1*.py
+do
+   wc -l $file
+done
