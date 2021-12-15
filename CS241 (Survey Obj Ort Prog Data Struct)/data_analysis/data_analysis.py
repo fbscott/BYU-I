@@ -47,8 +47,8 @@ df = pd.DataFrame({
     'Evening': [33, 46, 50, 49, 60]
 })
 
-print(player_stats.year)
-print(df.Day)
+# print(player_stats.year)
+# print(df.Day)
 
 # #set seaborn plotting aesthetics
 # sns.set(style = 'white')
@@ -78,7 +78,28 @@ three_pointers_over_time = three_pointers_over_time[three_pointers_over_time['th
 # Many sports analysts argue about which player is the GOAT (the Greatest Of
 # All Time). Based on this data, who would you say is the GOAT? Provide
 # evidence to back up your decision.
+#create DataFrame
+df = pd.DataFrame({'Day': ['points', 'fgMade', 'rebounds', 'steals', 'minutes'],
+                   'player 1': [1, 1, 1, 1, 1],
+                   'player 2': [2, 2, 2, 2, 2],
+                   'player 3': [3, 3, 3, 3, 3],
+                   'player 4': [4, 4, 4, 4, 4],
+                   'player 5': [5, 5, 5, 5, 5],
+                   'player 6': [6, 6, 6, 6, 6],
+                   'player 7': [7, 7, 7, 7, 7],
+                   'player 8': [8, 8, 8, 8, 8],
+                   'player 9': [9, 9, 9, 9, 9],
+                   'player 10': [10, 10, 10, 10, 10]})
 
+#view DataFrame
+print(df)
+
+#set seaborn plotting aesthetics
+# sns.set(style='white')
+
+#create stacked bar chart
+# df.set_index('Day').plot(kind='bar', stacked=True, color=['steelblue', 'red'])
+# plt.show()
 
 # PART III - Step 02:
 # The biographical data in this dataset contains information about home towns,
