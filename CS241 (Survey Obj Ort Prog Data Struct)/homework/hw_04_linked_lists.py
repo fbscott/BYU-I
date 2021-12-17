@@ -1,8 +1,8 @@
 from collections import deque
 
 class Song:
-    '''song constructor'''
     def __init__(self):
+        '''song constructor'''
         self.title = ''
         self.artist = ''
 
