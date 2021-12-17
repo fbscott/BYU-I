@@ -1,13 +1,22 @@
 # ignore the following sub folders
+**/__pycache__/
+**/venv/
 **/zoom_meetings
+*/_notes/
+*/_peer_files
+*/_ponder/
+*/_starter_files/
 */downloads
+*/notes/
 .idea/
-b320/
-# cit225 (Database Design & Development)/
+B320 (Advanced Writing in Professional Contexts)/
 CIT270 (Systems Security I)/
+CS241 (Survey Obj Ort Prog Data Struct)/final.png
+CS241 (Survey Obj Ort Prog Data Struct)/asteroids/design/
 CS246 (Software Design and Development)/assignments/**/doc/
 CS246 (Software Design and Development)/reflections/
 CS308 (Technical Communication)/
+CS313 (Backend Web Engineering I - Notes)
 CS364 (SE I)/
 CS416 (SE II)/
 CS432 (SE III)/
@@ -15,30 +24,59 @@ CSE471 (User Interface Eval & Design)/
 ECEN160 (Fundamentals of Digital Systems)/docs/
 ECEN160 (Fundamentals of Digital Systems)/presentations/
 ECEN160 (Fundamentals of Digital Systems)/screenshots/
+ENG106/
 FDREL200/
 FDREL225/
 FDREL250/
 FDREL275/
+GESCI101/
 GS120/
 MATH100g/
+MATH221A/
+_notes/
+cs_124/
 out/
+
+# ignore images in these sub folders
+CIT225 (Database Design & Development)/**/*.JPG
+CIT225 (Database Design & Development)/**/*.PNG
+CIT225 (Database Design & Development)/**/*.jpg
+CIT225 (Database Design & Development)/**/*.png
+CS124 (Intro to Software Development)/**/*.JPG
+CS124 (Intro to Software Development)/**/*.PNG
+CS124 (Intro to Software Development)/**/*.jpg
+CS124 (Intro to Software Development)/**/*.png
+CS213 (Web Engineering I)/**/*.JPG
+CS213 (Web Engineering I)/**/*.PNG
+CS213 (Web Engineering I)/**/*.jpg
+CS213 (Web Engineering I)/**/*.png
+CS246 (Software Design and Development)/**/*.JPG
+CS246 (Software Design and Development)/**/*.PNG
+CS246 (Software Design and Development)/**/*.jpg
+CS246 (Software Design and Development)/**/*.png
+ECEN160 (Fundamentals of Digital Systems)/**/*.JPG
+ECEN160 (Fundamentals of Digital Systems)/**/*.PNG
+ECEN160 (Fundamentals of Digital Systems)/**/*.jpg
+ECEN160 (Fundamentals of Digital Systems)/**/*.png
+screencapture-byui-edu-catalog-2020-01-31-11_38_58.png
 
 # ignore sftp-config
 *.json
 
 # ignore the following file types
+# *.JPEG
+# *.JPG
+# *.PNG
+*.code-workspace
 *.doc
 *.docx
 *.exe
 *.iml
-*.jpeg
-*.JPEG
-*.jpg
-*.JPG
+# *.jpeg
+# *.jpg
 *.mp4
 *.pdf
-*.png
-*.PNG
+# *.png
 *.ppt
 *.pptx
 *.psd
