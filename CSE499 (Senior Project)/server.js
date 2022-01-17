@@ -19,48 +19,12 @@ APP.get('/', (req, res) => {
     res.sendFile(PATH.join(__dirname + '/public/index.htm'));
 });
 
-APP.get('/home', (req, res) => {
-    res.render('pages/home');
+APP.get('/log', (req, res) => {
+    let _title = "Pi Garage | Log";
+
+    res.render('pages/log', {
+        title: _title
+    });
 });
 
 APP.listen(PORT, () => console.log('Server running on port ' + PORT));
-
-// function onRequest(req, res) {
-//     console.log('Received request for: ' + req.url);
-
-//     switch (req.url) {
-//         case '/':
-//             res.writeHead(200, {"Content-Type": "text/html"});
-//             res.write(person.greeting());
-//             res.end();
-//             break;
-//         case '/home':
-//             fs.readFile(path.join(__dirname, 'public', 'index.htm'), 'utf8', (err, content) => {
-//                 if (err) throw err;
-//                 res.writeHead(200, {"Content-Type": "text/html"});
-//                 res.end(content);
-//             });
-//             break;
-//         case '/getData':
-//             res.writeHead(200, {"Content-Type": "application/json"});
-//             res.end(JSON.stringify(person));
-//             break;
-//         default:
-//             fs.readFile(path.join(__dirname, 'public', 'page-not-found.htm'), 'utf8', (err, content) => {
-//                 if (err) throw err;
-//                 // console.log({
-//                 //     dirname: __dirname,
-//                 //     path: path.dirname(__dirname),
-//                 //     content: content,
-//                 //     request_url: req.url,
-//                 //     args: [process.argv[0], process.argv[1]]
-//                 // });
-//                 res.writeHead(200, {"Content-Type": "text/html"});
-//                 res.end(content);
-//             });
-//     }
-// }
-
-// var server = http.createServer(onRequest);
-
-// server.listen(PORT, () => console.log('Server running on port ' + PORT));
