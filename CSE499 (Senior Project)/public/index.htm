@@ -6,17 +6,23 @@
   <link rel="stylesheet" type="text/css" href="/assets/css/_reset.css">
   <link rel="stylesheet" type="text/css" href="/assets/css/_base.css">
   <link rel="stylesheet" type="text/css" href="/assets/css/_grid.css">
+  <link rel="stylesheet" type="text/css" href="/assets/css/_slider.css">
   <title>Pi Garage | Home</title>
 </head>
 <body>
   <div class="row">
     <div class="column large-12">
       <h1>Raspberry Pi Garage Door Opener</h1>
-      <a href="./log">Log</a>
-    </div>
-  </div>
-  <script>
-    console.log(window.location);
-  </script>
+      <p>View event <a href="./log">Log</a>.</p>
+    </div><!-- /column -->
+  </div><!-- /row -->
+  <div class="row">
+    <div class="column large-12">
+      <label class="switch">
+        <input type="checkbox" id="door-south">
+        <span class="slider round"></span>
+      </label>
+    </div><!-- /column -->
+  </div><!-- /row -->
 </body>
 </html>
