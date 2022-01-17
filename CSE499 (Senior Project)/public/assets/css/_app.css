@@ -1,0 +1,8 @@
+.button-description {
+    margin: 0;
+    white-space: nowrap;
+    font-size: 0.8rem;
+    position: absolute;
+    top: 50%;
+    transform: translate(0%, -50%);
+}
