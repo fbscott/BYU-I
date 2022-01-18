@@ -9,12 +9,12 @@ const SERVER     = HTTP.createServer(APP);
 const { Server } = require('socket.io');
 const IO         = new Server(SERVER);
 const GPIO       = require('onoff').Gpio;
+const SWITCH     = new GPIO(17, 'in', 'both');
 
 // const Person = require('./person.js');
 // const person = new Person('Scott', 'CSE499');
 // const EXPRESS_PORT = process.env.PORT || 8888;
-// const IO_PORT = process.env.PORT || 3000;
-const PORT = process.env.PORT || 3000;
+const HTTP_PORT = process.env.PORT || 3000;
 
 // allow server to use anything that lives in /public
 APP.use(EXPRESS.static(PATH.join(__dirname + '/public')));
@@ -41,6 +41,10 @@ IO.on('connection', socket => {
     let _doorStatus = false;
 
     console.log('user connected');
+    console.table({
+        time: socket.handshake.time,
+        address: socket.handshake.address
+    });
 
     // get door status from the client
     socket.on('door-south', data => {
@@ -51,23 +55,36 @@ IO.on('connection', socket => {
         } else {
             console.log('South door is closed.');
         }
+
+        // broadcast to all clients except the sender
+        // i.e., all other clients
+        socket.broadcast.emit('door-south', _doorStatus);
     });
 
     socket.on('disconnect', () => {
         console.log('user disconnected');
     });
 
-    setInterval(() => {
-        _doorStatus = !_doorStatus;
+    // Watch for hardware interrupts
+    SWITCH.watch(function (err, value) {
+        if (err) {
+            console.error('Error: ', err);
+            return;
+        }
 
+        _doorStatus = value;
+
+        console.log(_doorStatus);
+
+        //send button status to client
         socket.emit('door-south', _doorStatus);
-    }, 2000);
+    });
 });
 
 // APP.listen(EXPRESS_PORT, () => {
 //     console.log('Express server listening on port ' + EXPRESS_PORT);
 // });
 
-SERVER.listen(PORT, () => {
-    console.log('HTTP server listening on port ' + PORT);
+SERVER.listen(HTTP_PORT, () => {
+    console.log('HTTP server listening on port ' + HTTP_PORT);
 });
