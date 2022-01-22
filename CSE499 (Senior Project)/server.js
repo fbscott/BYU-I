@@ -35,30 +35,35 @@ APP.get('/log', (req, res) => {
     });
 });
 
+/******************************************************************************
+ * LOG EVENT
+ * @param {Bool} data 1: open, 2: closed
+ * @param {String} layer GPIO or websocket
+ *****************************************************************************/
+const logEvent = (data, layer) => {
+    let doorStatus = data ? 'Open' : 'Closed';
+
+    console.log(`${doorStatus} (${layer})`);
+};
+
 // // WebSocket connection
 // io.sockets.on('connection', socket => {
 IO.on('connection', socket => {
-    let _doorStatus = false;
+    let doorStatus = false;
 
     console.log('user connected');
     console.table({
-        time: socket.handshake.time,
-        address: socket.handshake.address
+        'time': new Date(socket.handshake.time).toLocaleString(),
+        'client address': socket.handshake.address.slice(7)
     });
 
     // get door status from the client
     socket.on('door-south', data => {
-        _doorStatus = data;
-
-        if (!!_doorStatus) {
-            console.log('South door is open.');
-        } else {
-            console.log('South door is closed.');
-        }
-
         // broadcast to all clients except the sender
         // i.e., all other clients
-        socket.broadcast.emit('door-south', _doorStatus);
+        socket.broadcast.emit('door-south', data);
+
+        logEvent(data, 'websocket');
     });
 
     socket.on('disconnect', () => {
@@ -72,12 +77,12 @@ IO.on('connection', socket => {
             return;
         }
 
-        _doorStatus = value;
+        doorStatus = value;
 
-        console.log(_doorStatus);
+        logEvent(value, 'GPIO');
 
         //send button status to client
-        socket.emit('door-south', _doorStatus);
+        socket.emit('door-south', doorStatus);
     });
 });
 
