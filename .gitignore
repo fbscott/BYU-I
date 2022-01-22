@@ -21,6 +21,7 @@ CS416 (SE II)/
 CS432 (SE III)/
 CSE453 (Computer Security)
 CSE471 (User Interface Eval & Design)/
+CSE499 (Senior Project)/images/
 ECEN160 (Fundamentals of Digital Systems)/docs/
 ECEN160 (Fundamentals of Digital Systems)/presentations/
 ECEN160 (Fundamentals of Digital Systems)/screenshots/
@@ -83,6 +84,7 @@ screencapture-byui-edu-catalog-2020-01-31-11_38_58.png
 *.psd
 *.sublime-workspace
 *.tmp
+*.txt
 *.xls
 *.xlsx
 *.zip
