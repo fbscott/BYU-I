@@ -46,11 +46,32 @@ const logEvent = (data, layer) => {
     console.log(`${doorStatus} (${layer})`);
 };
 
+/******************************************************************************
+ * EMIT CHANGE ON EVENT
+ * @param {Object} websocket 
+ * @param {Object} err 
+ * @param {Int} val 1: open, 2: closed
+ * @returns null on error
+ *****************************************************************************/
+const emitChangeOnEvent = (websocket, err, val) => {
+    let doorStatus = false;
+
+    if (err) {
+        console.error('Error: ', err);
+        return;
+    }
+
+    doorStatus = val;
+
+    logEvent(val, 'GPIO');
+
+    //send button status to client
+    websocket.emit('door-south', doorStatus);
+};
+
 // // WebSocket connection
 // io.sockets.on('connection', socket => {
 IO.on('connection', socket => {
-    let doorStatus = false;
-
     console.log('user connected');
     console.table({
         'time': new Date(socket.handshake.time).toLocaleString(),
@@ -72,17 +93,7 @@ IO.on('connection', socket => {
 
     // Watch for hardware interrupts
     SWITCH.watch(function (err, value) {
-        if (err) {
-            console.error('Error: ', err);
-            return;
-        }
-
-        doorStatus = value;
-
-        logEvent(value, 'GPIO');
-
-        //send button status to client
-        socket.emit('door-south', doorStatus);
+        emitChangeOnEvent(socket, err, value);
     });
 });
 
