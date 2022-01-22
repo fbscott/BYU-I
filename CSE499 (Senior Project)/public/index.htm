@@ -61,8 +61,7 @@
 
       _doorSouth.addEventListener('change', function() {
         // send door status to server (as 1 or 0)
-        // socket.emit('door-south', Number(this.checked));
-        socket.emit('door-south', this.checked);
+        socket.emit('door-south', Number(this.checked));
       });
     });
 

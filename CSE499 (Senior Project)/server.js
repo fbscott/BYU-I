@@ -10,6 +10,7 @@ const { Server } = require('socket.io');
 const IO         = new Server(SERVER);
 const GPIO       = require('onoff').Gpio;
 const SWITCH     = new GPIO(17, 'in', 'both');
+const RELAY      = new GPIO(27, 'out');
 
 // const Person = require('./person.js');
 // const person = new Person('Scott', 'CSE499');
@@ -83,6 +84,12 @@ IO.on('connection', socket => {
         // broadcast to all clients except the sender
         // i.e., all other clients
         socket.broadcast.emit('door-south', data);
+
+        RELAY.writeSync(1);
+
+        setTimeout(() => {
+            RELAY.writeSync(0);
+        }, 1000);
 
         logEvent(data, 'websocket');
     });
