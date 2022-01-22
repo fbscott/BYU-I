@@ -12,40 +12,44 @@
   <title>Pi Garage | Home</title>
 </head>
 <body>
-  <!------------------------------- navigation ------------------------------->
-  <div class="row">
-    <div class="column large-12">
-      <h1>Raspberry Pi Garage Door Opener</h1>
-      <p>View event <a href="./log">Log</a>.</p>
-    </div><!-- /column -->
-  </div><!-- /row -->
-  <!------------------------------- end navigation --------------------------->
-  <!------------------------------- south door ------------------------------->
-  <div class="row margin-1">
-    <div class="columns small-4">
-      <p class="button-description">South Door</p>
-    </div>
-    <div class="column small-8">
-      <label class="switch">
-        <input type="checkbox" id="door-south">
-        <span class="slider round"></span>
-      </label>
-    </div><!-- /column -->
-  </div><!-- /row -->
-  <!------------------------------- end south door --------------------------->
-  <!------------------------------- north door ------------------------------->
-  <div class="row margin-1">
-    <div class="columns small-4">
-      <p class="button-description">North Door</p>
-    </div>
-    <div class="column small-8">
-      <label class="switch">
-        <input type="checkbox" id="door-north">
-        <span class="slider round"></span>
-      </label>
-    </div><!-- /column -->
-  </div><!-- /row -->
-  <!------------------------------- end north door --------------------------->
+  <div class="bg">
+    <!------------------------------- navigation ------------------------------->
+    <div class="row">
+      <div class="column large-12">
+        <h1>Raspberry Pi<br />Garage Door Opener</h1>
+        <!-- <p>View event <a href="./log">Log</a>.</p> -->
+      </div><!-- /column -->
+    </div><!-- /row -->
+    <!------------------------------- end navigation --------------------------->
+  </div>
+  <!-- <div class="bg"> -->
+    <!------------------------------- south door ----------------------------->
+    <div class="row margin-3">
+      <div class="columns small-4">
+        <p class="button-description">South Door</p>
+      </div>
+      <div class="column small-8">
+        <label class="switch">
+          <input type="checkbox" id="door-south">
+          <span class="slider round"></span>
+        </label>
+      </div><!-- /column -->
+    </div><!-- /row -->
+    <!------------------------------- end south door ------------------------->
+    <!------------------------------- north door ----------------------------->
+    <div class="row margin-3">
+      <div class="columns small-4">
+        <p class="button-description">North Door</p>
+      </div>
+      <div class="column small-8">
+        <label class="switch">
+          <input type="checkbox" id="door-north">
+          <span class="slider round"></span>
+        </label>
+      </div><!-- /column -->
+    </div><!-- /row -->
+    <!------------------------------- end north door ------------------------->
+  <!-- </div> -->
 
   <script src="/socket.io/socket.io.js"></script>
   <script>

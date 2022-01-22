@@ -1,3 +1,16 @@
+.bg {
+    /* height: 100%; */
+    background-color: #eeeeee;
+    padding: 2rem 0;
+    background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.3)
+    ), url(../img/andy-holmes-f6eWKcd8_dA-unsplash_edit.jpg);
+    background-size: cover;
+    background-position-y: 50%;
+}
+
 .button-description {
     margin: 0;
     white-space: nowrap;
