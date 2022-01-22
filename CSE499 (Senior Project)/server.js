@@ -91,6 +91,11 @@ IO.on('connection', socket => {
         console.log('user disconnected');
     });
 
+    // Read hardware state on connect
+    SWITCH.read(function (err, value) {
+        emitChangeOnEvent(socket, err, value);
+    });
+
     // Watch for hardware interrupts
     SWITCH.watch(function (err, value) {
         emitChangeOnEvent(socket, err, value);
