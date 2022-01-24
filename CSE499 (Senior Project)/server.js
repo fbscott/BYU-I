@@ -10,7 +10,7 @@ const { Server } = require('socket.io');
 const IO         = new Server(SERVER);
 const GPIO       = require('onoff').Gpio;
 const SWITCH     = new GPIO(17, 'in', 'both');
-const RELAY      = new GPIO(27, 'out');
+const RELAY      = new GPIO(23, 'out');
 
 // const Person = require('./person.js');
 // const person = new Person('Scott', 'CSE499');
