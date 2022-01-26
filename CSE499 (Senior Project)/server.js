@@ -1,5 +1,4 @@
 // const url  = require('url');
-// const fs = require('fs');
 const PATH       = require('path');
 const EXPRESS    = require('express');
 const APP        = EXPRESS();
@@ -11,23 +10,17 @@ const IO         = new Server(SERVER);
 const GPIO       = require('onoff').Gpio;
 const SWITCH     = new GPIO(17, 'in', 'both');
 const RELAY      = new GPIO(23, 'out');
-
-// const Person = require('./person.js');
-// const person = new Person('Scott', 'CSE499');
-// const EXPRESS_PORT = process.env.PORT || 8888;
-const HTTP_PORT = process.env.PORT || 3000;
-
+const PORT       = process.env.PORT || 8080;
+const Log        = require('./log.js');
+let log          = new Log();
 // allow server to use anything that lives in /public
 APP.use(EXPRESS.static(PATH.join(__dirname + '/public')));
-
 // view engine
 APP.set('views', './views'); // object, directory
 APP.set('view engine', 'ejs'); // render .ejs files as views
-
 APP.get('/', (req, res) => {
     res.sendFile(PATH.join(__dirname + '/public/index.htm'));
 });
-
 APP.get('/log', (req, res) => {
     let _title = 'Pi Garage | Log';
     
@@ -35,17 +28,6 @@ APP.get('/log', (req, res) => {
         title: _title
     });
 });
-
-/******************************************************************************
- * LOG EVENT
- * @param {Bool} data 1: open, 2: closed
- * @param {String} layer GPIO or websocket
- *****************************************************************************/
-const logEvent = (data, layer) => {
-    let doorStatus = data ? 'Open' : 'Closed';
-
-    console.log(`${doorStatus} (${layer})`);
-};
 
 /******************************************************************************
  * EMIT CHANGE ON EVENT
@@ -64,7 +46,7 @@ const emitChangeOnEvent = (websocket, err, val) => {
 
     doorStatus = val;
 
-    logEvent(val, 'GPIO');
+    log.logEvent(val, 'GPIO');
 
     //send button status to client
     websocket.emit('door-south', doorStatus);
@@ -73,11 +55,14 @@ const emitChangeOnEvent = (websocket, err, val) => {
 // // WebSocket connection
 // io.sockets.on('connection', socket => {
 IO.on('connection', socket => {
-    console.log('user connected');
-    console.table({
-        'time': new Date(socket.handshake.time).toLocaleString(),
-        'client address': socket.handshake.address.slice(7)
-    });
+    log.logUser(
+        new Date(socket.handshake.time).toLocaleString(),
+        socket.handshake.address.slice(7),
+        socket.handshake.headers['user-agent'],
+        'connected'
+    );
+
+    // console.log(socket);
 
     // get door status from the client
     socket.on('door-south', data => {
@@ -91,11 +76,16 @@ IO.on('connection', socket => {
             RELAY.writeSync(0);
         }, 1000);
 
-        logEvent(data, 'websocket');
+        log.logEvent(data, 'websocket');
     });
 
     socket.on('disconnect', () => {
-        console.log('user disconnected');
+        log.logUser(
+            new Date().toLocaleString(),
+            socket.handshake.address.slice(7),
+            socket.handshake.headers['user-agent'],
+            'disconnected'
+        );
     });
 
     // Read hardware state on connect
@@ -109,10 +99,10 @@ IO.on('connection', socket => {
     });
 });
 
-// APP.listen(EXPRESS_PORT, () => {
-//     console.log('Express server listening on port ' + EXPRESS_PORT);
+// APP.listen(PORT, () => {
+//     console.log('Express server listening on port ' + PORT);
 // });
 
-SERVER.listen(HTTP_PORT, () => {
-    console.log('HTTP server listening on port ' + HTTP_PORT);
+SERVER.listen(PORT, () => {
+    console.log('HTTP server listening on port ' + PORT);
 });
