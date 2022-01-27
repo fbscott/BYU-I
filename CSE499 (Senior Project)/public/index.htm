@@ -22,44 +22,56 @@
     </div><!-- /row -->
     <!------------------------------- end navigation --------------------------->
   </div>
-  <!-- <div class="bg"> -->
-    <!------------------------------- south door ----------------------------->
-    <div class="row margin-3">
-      <div class="columns small-4">
-        <p class="button-description">South Door</p>
-      </div>
-      <div class="column small-8">
-        <label class="switch">
-          <input type="checkbox" id="door-south">
-          <span class="slider round"></span>
-        </label>
-      </div><!-- /column -->
-    </div><!-- /row -->
-    <!------------------------------- end south door ------------------------->
-    <!------------------------------- north door ----------------------------->
-    <div class="row margin-3">
-      <div class="columns small-4">
-        <p class="button-description">North Door</p>
-      </div>
-      <div class="column small-8">
-        <label class="switch">
-          <input type="checkbox" id="door-north">
-          <span class="slider round"></span>
-        </label>
-      </div><!-- /column -->
-    </div><!-- /row -->
-    <!------------------------------- end north door ------------------------->
-  <!-- </div> -->
-
+  <!------------------------------- log ---------------------------------------->
+  <div class="row margin-2">
+    <div class="columns">
+      <h2>Home</h2>
+    </div><!-- /column -->
+  </div><!-- /row -->
+  <!------------------------------- end log ------------------------------------>
+  <!------------------------------- south door --------------------------------->
+  <div class="row margin-3">
+    <div class="columns small-4">
+      <p class="button-description">South Door</p>
+    </div>
+    <div class="column small-8">
+      <label class="switch">
+        <input type="checkbox" id="door-south">
+        <span class="slider round"></span>
+      </label>
+    </div><!-- /column -->
+  </div><!-- /row -->
+  <!------------------------------- end south door ----------------------------->
+  <!------------------------------- north door --------------------------------->
+  <div class="row margin-3">
+    <div class="columns small-4">
+      <p class="button-description">North Door</p>
+    </div>
+    <div class="column small-8">
+      <label class="switch">
+        <input type="checkbox" id="door-north">
+        <span class="slider round"></span>
+      </label>
+    </div><!-- /column -->
+  </div><!-- /row -->
+  <!------------------------------- end north door ----------------------------->
+  <!------------------------------- log button --------------------------------->
+  <div class="row margin-2 button">
+    <div class="columns">
+      <button id="js-navigate" data-url="/log"><strong>EVENT LOG</strong></button>
+    </div><!-- /column -->
+  </div><!-- /row -->
+  <!------------------------------- end log button ----------------------------->
   <script src="/socket.io/socket.io.js"></script>
+  <script src="/assets/js/button-route.js"></script>
   <script>
     var socket = io('ws://192.168.1.207:8080/');
 
     // on page loads
     window.addEventListener('load', function() {
-      let _doorSouth = document.getElementById('door-south');
+      let doorSouth = document.getElementById('door-south');
 
-      _doorSouth.addEventListener('change', function() {
+      doorSouth.addEventListener('change', function() {
         // send door status to server (as 1 or 0)
         socket.emit('door-south', Number(this.checked));
       });

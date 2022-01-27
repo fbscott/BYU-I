@@ -1,18 +1,21 @@
 // const url  = require('url');
 const PATH       = require('path');
 const EXPRESS    = require('express');
-const APP        = EXPRESS();
 const HTTP       = require('http');
-const SERVER     = HTTP.createServer(APP);
 // const io         = require('socket.io')(SERVER);
 const { Server } = require('socket.io');
-const IO         = new Server(SERVER);
 const GPIO       = require('onoff').Gpio;
+const LOG        = require('./log.js');
+
+const APP        = EXPRESS();
+const SERVER     = HTTP.createServer(APP);
+const IO         = new Server(SERVER);
 const SWITCH     = new GPIO(17, 'in', 'both');
 const RELAY      = new GPIO(23, 'out');
 const PORT       = process.env.PORT || 8080;
-const Log        = require('./log.js');
-let log          = new Log();
+
+let log          = new LOG();
+
 // allow server to use anything that lives in /public
 APP.use(EXPRESS.static(PATH.join(__dirname + '/public')));
 // view engine
@@ -25,7 +28,8 @@ APP.get('/log', (req, res) => {
     let _title = 'Pi Garage | Log';
     
     res.render('pages/log', {
-        title: _title
+        title: _title,
+        button_route: '/'
     });
 });
 
