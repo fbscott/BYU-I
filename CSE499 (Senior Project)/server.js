@@ -29,7 +29,8 @@ APP.get('/log', (req, res) => {
     
     res.render('pages/log', {
         title: _title,
-        button_route: '/'
+        button_route: '/',
+        log_data: log.readLog()
     });
 });
 

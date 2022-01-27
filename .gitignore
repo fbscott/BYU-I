@@ -65,19 +65,14 @@ screencapture-byui-edu-catalog-2020-01-31-11_38_58.png
 *.json
 
 # ignore the following file types
-# *.JPEG
-# *.JPG
-# *.PNG
+*.bak
 *.code-workspace
 *.doc
 *.docx
 *.exe
 *.iml
-# *.jpeg
-# *.jpg
 *.mp4
 *.pdf
-# *.png
 *.ppt
 *.pptx
 *.psd

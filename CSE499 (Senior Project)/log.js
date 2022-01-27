@@ -47,9 +47,20 @@ class Log {
      logUser(time, address, agent, status) {
         console.table({
             status,
-            'address': address,
+            address,
             agent,
             time
+        });
+    };
+
+    readLog() {
+        fs.readFile('./public/assets/data/event-log.json', 'utf8', (err, data) => {
+            if (err) {
+                return console.log(err)
+            } else {
+                console.log(data);
+                return data;
+            }
         });
     };
 }
