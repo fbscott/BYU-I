@@ -2,37 +2,58 @@
   <title><%= title %></title>
 </head>
 <body>
-  <div class="bg">
-    <!------------------------------- navigation ------------------------------->
-    <div class="row">
-      <div class="column large-12">
-        <h1>Raspberry Pi<br />Garage Door Opener</h1>
-        <!-- <p>View event <a href="./log">Log</a>.</p> -->
-      </div><!-- /column -->
-    </div><!-- /row -->
-    <!------------------------------- end navigation --------------------------->
-  </div>
-  <!------------------------------- header ------------------------------------->
-  <div class="row margin-2">
-    <div class="columns">
-      <h2>Event Log</h2>
-    </div><!-- /column -->
-  </div><!-- /row -->
-  <!------------------------------- end header --------------------------------->
-  <!------------------------------- log data ----------------------------------->
-  <div class="row margin-2">
-    <div class="columns">
-      <p><%= log_data %></p>
-    </div><!-- /column -->
-  </div><!-- /row -->
-  <!------------------------------- end log data ------------------------------->
-  <!------------------------------- home button -------------------------------->
-  <div class="row margin-2 button">
-    <div class="columns">
-      <button id="js-navigate" data-url="<%= button_route %>"><strong>HOME</strong></button>
-    </div><!-- /column -->
-  </div><!-- /row -->
-  <!------------------------------- end home button ---------------------------->
+  <div id="container">
+    <div id="body">
+      <!------------------------------- navigation --------------------------->
+      <div class="bg">
+        <div class="row">
+          <div class="column large-12">
+            <h1>Raspberry Pi<br />Garage Door Opener</h1>
+            <!-- <p>View event <a href="./log">Log</a>.</p> -->
+          </div><!-- /column -->
+        </div><!-- /row -->
+      </div>
+      <!------------------------------- end navigation ----------------------->
+      <!------------------------------- header ------------------------------->
+      <div class="row margin-2">
+        <div class="columns">
+          <h2>Event Log</h2>
+        </div><!-- /column -->
+      </div><!-- /row -->
+      <!------------------------------- end header --------------------------->
+      <!------------------------------- log data ----------------------------->
+      <div class="row margin-2 events">
+        <div class="columns">
+          <% if(events.length > 0) {
+            for (let i = 0; i < events.length; i++) { %>
+          <div class="event">
+            <div class="row">
+              <div class="columns small-6">
+                <p class="description"><%= events[i].doorStatus %></p>
+              </div>
+              <div class="columns small-6">
+                <p class="description"><%= events[i].layer %></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="columns">
+                <p class="time"><%= events[i].time %></p>
+              </div>
+            </div>
+          </div>
+          <% }} %>
+        </div><!-- /column -->
+      </div><!-- /row -->
+      <!------------------------------- end log data ------------------------->
+      <!------------------------------- home button -------------------------->
+      <div id="button" class="row margin-2">
+        <div class="columns">
+          <button id="js-navigate" data-url="<%= button_route %>"><strong>HOME</strong></button>
+        </div><!-- /column -->
+      </div><!-- /row -->
+      <!------------------------------- end home button ---------------------->
+    </div><!-- /#body -->
+  </div><!-- /#container -->
   <script src="../../assets/js/button-route.js"></script>
 </body>
 </html>

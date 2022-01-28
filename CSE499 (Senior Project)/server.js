@@ -26,11 +26,13 @@ APP.get('/', (req, res) => {
 });
 APP.get('/log', (req, res) => {
     let _title = 'Pi Garage | Log';
-    
+
+    log.setData();
+
     res.render('pages/log', {
         title: _title,
         button_route: '/',
-        log_data: log.readLog()
+        events: log.events
     });
 });
 
@@ -51,7 +53,7 @@ const emitChangeOnEvent = (websocket, err, val) => {
 
     doorStatus = val;
 
-    log.logEvent(val, 'GPIO');
+    log.logEvent(val, 'Button', new Date().toLocaleString());
 
     //send button status to client
     websocket.emit('door-south', doorStatus);
@@ -81,7 +83,7 @@ IO.on('connection', socket => {
             RELAY.writeSync(0);
         }, 1000);
 
-        log.logEvent(data, 'websocket');
+        log.logEvent(data, 'App', new Date().toLocaleString());
     });
 
     socket.on('disconnect', () => {

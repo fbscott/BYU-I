@@ -48,10 +48,20 @@ table {
 }
 
 th, td {
-   text-align: center;
-   padding: 0.625rem;
-   border: 1px solid #cccccc;
+   text-align: left;
+   padding: 0.125rem;
+   border: none;
    min-width: 7.813rem;
+   font-size: 0.75rem;
+}
+
+tr:first-of-type {
+   background-color: #444444;
+   color: #eeeeee;
+}
+
+tr:nth-of-type(even) {
+   background-color: #d9d9d9;
 }
 
 input, button, select {
