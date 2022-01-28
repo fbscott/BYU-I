@@ -67,8 +67,6 @@ IO.on('connection', socket => {
         'connected'
     );
 
-    // console.log(socket);
-
     // get door status from the client
     socket.on('door-south', data => {
         // broadcast to all clients except the sender
