@@ -53,8 +53,6 @@ const emitChangeOnEvent = (websocket, err, val) => {
 
     doorStatus = val;
 
-    log.logEvent(val, 'Button', new Date().toLocaleString());
-
     //send button status to client
     websocket.emit('door-south', doorStatus);
 };
@@ -82,8 +80,6 @@ IO.on('connection', socket => {
         setTimeout(() => {
             RELAY.writeSync(0);
         }, 1000);
-
-        log.logEvent(data, 'App', new Date().toLocaleString());
     });
 
     socket.on('disconnect', () => {
@@ -103,6 +99,7 @@ IO.on('connection', socket => {
     // Watch for hardware interrupts
     SWITCH.watch(function (err, value) {
         emitChangeOnEvent(socket, err, value);
+        log.logEvent(value, 'Button', new Date().toLocaleString());
     });
 });
 
