@@ -91,12 +91,12 @@ IO.on('connection', socket => {
 
     // Read hardware state on connect
     SWITCH.read(function (err, value) {
-        emitChangeOnEvent(socket, err, !value);
+        emitChangeOnEvent(socket, err, value);
     });
 
     // Watch for hardware interrupts
     SWITCH.watch(function (err, value) {
-        emitChangeOnEvent(socket, err, !value);
+        emitChangeOnEvent(socket, err, value);
         log.logEvent(value, 'Button', new Date().toLocaleString());
     });
 });
