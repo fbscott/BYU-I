@@ -19,7 +19,7 @@ CS313 (Backend Web Engineering I - Notes)
 CS364 (SE I)/
 CS416 (SE II)/
 CS432 (SE III)/
-CSE453 (Computer Security)
+CSE453 (Computer Security - Research)/
 CSE471 (User Interface Eval & Design)/
 CSE499 (Senior Project)/images/
 ECEN160 (Fundamentals of Digital Systems)/docs/
@@ -55,6 +55,21 @@ CS246 (Software Design and Development)/**/*.JPG
 CS246 (Software Design and Development)/**/*.PNG
 CS246 (Software Design and Development)/**/*.jpg
 CS246 (Software Design and Development)/**/*.png
+CSE453 (Computer Security)/**/*.db
+CSE453 (Computer Security)/**/*.exe
+CSE453 (Computer Security)/**/*.filters
+CSE453 (Computer Security)/**/*.idb
+CSE453 (Computer Security)/**/*.ilk
+CSE453 (Computer Security)/**/*.ipch
+CSE453 (Computer Security)/**/*.log
+CSE453 (Computer Security)/**/*.obj
+CSE453 (Computer Security)/**/*.pdb
+CSE453 (Computer Security)/**/*.recipe
+CSE453 (Computer Security)/**/*.sln
+CSE453 (Computer Security)/**/*.suo
+CSE453 (Computer Security)/**/*.tlog
+CSE453 (Computer Security)/**/*.user
+CSE453 (Computer Security)/**/*.vcxproj
 ECEN160 (Fundamentals of Digital Systems)/**/*.JPG
 ECEN160 (Fundamentals of Digital Systems)/**/*.PNG
 ECEN160 (Fundamentals of Digital Systems)/**/*.jpg
