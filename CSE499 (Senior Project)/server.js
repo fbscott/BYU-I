@@ -40,24 +40,20 @@ APP.get('/log', (req, res) => {
  * EMIT CHANGE ON EVENT
  * @param {Object} websocket 
  * @param {Object} err 
- * @param {Int} val 1: open, 2: closed
+ * @param {Int} val 0 or 1
  * @returns null on error
  *****************************************************************************/
 const emitChangeOnEvent = (websocket, err, val) => {
-    let doorStatus = false;
-
     if (err) {
         console.error('Error: ', err);
         return;
     }
 
-    doorStatus = val;
-
     //send button status to client
-    websocket.emit('door-south', doorStatus);
+    websocket.emit('door-south', Number(!val));
 };
 
-// // WebSocket connection
+// WebSocket connection
 // io.sockets.on('connection', socket => {
 IO.on('connection', socket => {
     log.logUser(
@@ -97,7 +93,7 @@ IO.on('connection', socket => {
     // Watch for hardware interrupts
     SWITCH.watch(function (err, value) {
         emitChangeOnEvent(socket, err, value);
-        log.logEvent(value, 'Button', new Date().toLocaleString());
+        // log.logEvent(value, 'Button', new Date().toLocaleString());
     });
 });
 

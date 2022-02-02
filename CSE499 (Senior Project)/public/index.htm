@@ -75,7 +75,7 @@
       let doorSouth = document.getElementById('door-south');
 
       doorSouth.addEventListener('change', function() {
-        // send door status to server (1: open, 0: closed)
+        // send door status to server (0: open, 1: closed)
         socket.emit('door-south', Number(this.checked));
       });
     });

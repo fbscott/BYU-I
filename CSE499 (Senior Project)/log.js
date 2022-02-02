@@ -14,32 +14,23 @@ class Log {
 
     /**************************************************************************
      * LOG EVENT
-     * @param {Bool} status 1: open, 2: closed
+     * @param {Bool} status 0: open, 1: closed
      * @param {String} layer GPIO or websocket
      * @param {String} time
      *************************************************************************/
     logEvent(status, layer, time) {
-        let doorStatus = status ? 'Open' : 'Closed';
-        let obj = {};
-        var json = JSON.stringify(obj);
+        let doorStatus = status ? 'Closed' : 'Open';
+        let obj = JSON.parse(fs.readFileSync('./public/assets/data/event-log.json', 'utf-8'));
 
-        fs.readFile('./public/assets/data/event-log.json', 'utf8', (err, data) => {
-            if (err) {
-                return console.log(err)
-            } else {
-                obj = JSON.parse(data);
-                obj.events.push({
-                    doorStatus,
-                    layer,
-                    time
-                });
-                json = JSON.stringify(obj);
-
-                fs.writeFile('./public/assets/data/event-log.json', json, 'utf8', () => {
-                    console.log('event logged');
-                }); // write it back
-            }
+        obj.events.push({
+            doorStatus,
+            layer,
+            time
         });
+
+        let json = JSON.stringify(obj);
+
+        fs.writeFileSync('./public/assets/data/event-log.json', json, 'utf-8');
     };
 
     /**************************************************************************
