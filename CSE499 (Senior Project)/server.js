@@ -53,7 +53,7 @@ const emitChangeOnEvent = (websocket, err, val) => {
     websocket.emit('door-south', Number(!val));
 };
 
-let isServerWatching = true;
+let doorInterface = 'Button';
 
 // WebSocket connection
 // io.sockets.on('connection', socket => {
@@ -76,6 +76,8 @@ IO.on('connection', socket => {
         setTimeout(() => {
             RELAY.writeSync(0);
         }, 1000);
+
+        doorInterface = 'App';
     });
 
     socket.on('disconnect', () => {
@@ -96,17 +98,12 @@ IO.on('connection', socket => {
     SWITCH.watch(function (err, value) {
         emitChangeOnEvent(socket, err, value);
     });
+});
 
-    // watch only the initial connection, otherwise duplicate log events occur
-    // on every subsequent connection
-    if(isServerWatching) {
-        // log event (open/close with door contact)
-        SWITCH.watch(function (err, value) {
-            log.logEvent(value, 'Button', new Date().toLocaleString());
-        });
-    }
-
-    isServerWatching = false;
+// log event (open/close with door contact)
+SWITCH.watch(function (err, value) {
+    log.logEvent(value, doorInterface, new Date().toLocaleString());
+    doorInterface = 'Button';
 });
 
 // APP.listen(PORT, () => {
