@@ -22,27 +22,40 @@
       </div><!-- /row -->
       <!------------------------------- end header --------------------------->
       <!------------------------------- log data ----------------------------->
-      <div class="row margin-2 events">
-        <div class="columns">
-          <% if(events.length > 0) {
-            // reverse the loop so items appear in descending order.
-            for (var i = events.length - 1; i >= 0; i--) { %>
-          <div class="event">
-            <div class="row">
-              <div class="columns small-6">
-                <p class="description"><%= events[i].doorStatus %></p>
-              </div>
-              <div class="columns small-6">
-                <p class="description"><%= events[i].doorInterface %></p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="columns">
-                <p class="time"><%= events[i].time %></p>
-              </div>
-            </div>
+      <div class="row">
+        <div class="event-labels">
+          <div class="columns small-6">
+            <p class="event-label">Status</p>
           </div>
-          <% }} %>
+          <div class="columns small-6">
+            <p class="event-label">Interface</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="columns">
+          <div class="events">
+            <% if(events.length > 0) {
+              // reverse the loop so items appear in descending order.
+              for (var i = events.length - 1; i >= 0; i--) { %>
+            <div class="event">
+              <div class="row">
+                <div class="columns small-6">
+                  <p class="description"><%= events[i].doorStatus %></p>
+                </div>
+                <div class="columns small-6">
+                  <p class="description"><%= events[i].doorInterface %></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="columns">
+                  <p class="time"><%= events[i].time %></p>
+                </div>
+              </div>
+            </div>
+            <% }} %>
+          </div>
         </div><!-- /column -->
       </div><!-- /row -->
       <!------------------------------- end log data ------------------------->

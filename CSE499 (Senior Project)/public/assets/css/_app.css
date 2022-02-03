@@ -37,9 +37,10 @@
 }
 
 .events {
-    padding-bottom: 1rem;
-    max-height: 50vh;
-    overflow: scroll;
+    max-height: 48vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .event {
@@ -47,7 +48,7 @@
 }
 
 .event:nth-of-type(even) {
-    background-color: #d9d9d9;
+    background-color: #eeeeee;
 }
 
 .event p.description {
@@ -59,5 +60,13 @@
 .event p.time {
     margin: 0;
     font-size: 0.75rem;
-    /* color: #888888; */
+}
+
+.event-labels {
+    padding: 0 0.5rem;
+}
+
+.event-label {
+    margin: 0;
+    font-size: 0.8rem;
 }
