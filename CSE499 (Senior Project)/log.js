@@ -3,28 +3,28 @@
 const fs = require('fs');
 
 class Log {
-    constructor(status, layer) {
+    constructor(status, doorInterface) {
         this.status = status;
-        this.layer = layer;
+        this.doorInterface = doorInterface;
     }
     
     greeting() {
-        return `${this.status, layer} connected.`;
+        return `${this.status, doorInterface} connected.`;
     }
 
     /**************************************************************************
      * LOG EVENT
      * @param {Bool} status 0: open, 1: closed
-     * @param {String} layer GPIO or websocket
+     * @param {String} doorInterface GPIO or websocket
      * @param {String} time
      *************************************************************************/
-    logEvent(status, layer, time) {
+    logEvent(status, doorInterface, time) {
         let doorStatus = status ? 'Closed' : 'Open';
         let obj = JSON.parse(fs.readFileSync('./public/assets/data/event-log.json', 'utf-8'));
 
         obj.events.push({
             doorStatus,
-            layer,
+            doorInterface,
             time
         });
 
