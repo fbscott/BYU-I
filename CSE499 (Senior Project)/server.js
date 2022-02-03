@@ -4,14 +4,14 @@ const EXPRESS    = require('express');
 const HTTP       = require('http');
 // const io         = require('socket.io')(SERVER);
 const { Server } = require('socket.io');
-const GPIO       = require('onoff').Gpio;
+const { Gpio }   = require('onoff');
 const LOG        = require('./log.js');
 
 const APP        = EXPRESS();
 const SERVER     = HTTP.createServer(APP);
 const IO         = new Server(SERVER);
-const SWITCH     = new GPIO(17, 'in', 'both');
-const RELAY      = new GPIO(23, 'out');
+const SWITCH     = new Gpio(17, 'in', 'both');
+const RELAY      = new Gpio(23, 'out');
 const PORT       = process.env.PORT || 8080;
 
 let log          = new LOG();
@@ -53,6 +53,8 @@ const emitChangeOnEvent = (websocket, err, val) => {
     websocket.emit('door-south', Number(!val));
 };
 
+let isServerWatching = true;
+
 // WebSocket connection
 // io.sockets.on('connection', socket => {
 IO.on('connection', socket => {
@@ -85,22 +87,32 @@ IO.on('connection', socket => {
         );
     });
 
-    // Read hardware state on connect
+    // emit change on initial page load
     SWITCH.read(function (err, value) {
         emitChangeOnEvent(socket, err, value);
     });
 
-    // Watch for hardware interrupts
+    // emit change on event (open/close with door contact)
     SWITCH.watch(function (err, value) {
         emitChangeOnEvent(socket, err, value);
-        // log.logEvent(value, 'Button', new Date().toLocaleString());
     });
+
+    // watch only the initial connection, otherwise duplicate log events occur
+    // on every subsequent connection
+    if(isServerWatching) {
+        // log event (open/close with door contact)
+        SWITCH.watch(function (err, value) {
+            log.logEvent(value, 'Button', new Date().toLocaleString());
+        });
+    }
+
+    isServerWatching = false;
 });
 
 // APP.listen(PORT, () => {
-//     console.log('Express server listening on port ' + PORT);
+//     console.log(`Express server listening on port ${PORT}`);
 // });
 
 SERVER.listen(PORT, () => {
-    console.log('HTTP server listening on port ' + PORT);
+    console.log(`HTTP server listening on port ${PORT}`);
 });
