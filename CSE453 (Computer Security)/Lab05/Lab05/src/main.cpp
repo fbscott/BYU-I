@@ -22,13 +22,13 @@ bool endsWith(string str, const char endingCharacter)              { return str[
 bool containsString(const string filePath, const string toFind) { return filePath.find(toFind) != std::string::npos;  }
 bool menu();
 bool isHomograph(const string firstFile, const string secondFile);
-string comparator(string runningFilePath, string secondFile, bool isConvertingForbiddenFile);
-string canonicalize(string str);
+string canonicalization(string runningFilePath, string secondFile, bool isConvertingForbiddenFile);
+string canonon(string str);
 void displayResults(bool areHomographs) { cout << "These paths are " << (areHomographs ? "" : "NOT ") << "homographs\n" << endl; }
 void removeFolderFromEnd(string &filePath, bool isConvertingForbiddenFile);
 void runManualTests();
 void runAutomatedTests();
-void testCaseLoop(char testPaths[][256], int size, string forbiddenPath);
+void testCaseLoop(const char **testPaths, int size, string forbiddenPath);
 
 const string WORKING_DIRECTORY = "/home/user/cse453/week05/";
 
@@ -70,10 +70,11 @@ void removeFolderFromEnd(string &filePath, bool isConvertingForbiddenFile)
 }
 
 /******************************************************************************
- * CANONICALIZE
+ * CANON
  * Convert all file paths to a consistent format.
  *****************************************************************************/
-string canonicalize(string str) {
+string canon(string str) 
+{
     
     transform(str.begin(), str.end(), str.begin(),
     [](unsigned char c)
@@ -85,16 +86,44 @@ string canonicalize(string str) {
         // convert to lower case
         return tolower(c);
     });
+   
+    // remove all './' since those don't matter
+    while (str[0] == '.' && str[1] == '/') 
+    {
+        
+        if (str[2] == '.')
+            str.erase(0,2); // remove the './'
+        else 
+        {
+            bool isFile = false;
+            // 2 different cases to check for:
+            // 1. './' is in front of an actual file, so remove the './' (ex. ./test.txt => test.txt)
+            // 2. It is in front of a folder, so keep the '/' (ex ./home/ => /home/)
+            for (int i = 2; i < str.length(); i++) 
+            {
+                if (str[i] == '.') 
+                {
+                    str.erase(0,2); // remove './'
+                    break;
+                }
+                if (str[i] == '/' && !isFile) // only remove the '.'
+                {
+                    str.erase(0,1);
+                    break;
+                }
+            }
+        }
+    }
     
     return str;
 }
 
 /******************************************************************************
- * COMPARATOR
+ * CANONICALIZATION
  * Loop over the second file, and use it to modfy the runningFilePath variable.
  * Compare the two at the end to see if they are homographs.
  *****************************************************************************/
-string comparator(string runningFilePath, string secondFile, bool isConvertingForbiddenFile)
+string canonicalization(string runningFilePath, string secondFile, bool isConvertingForbiddenFile)
 {
     string folderName = "";
     
@@ -114,11 +143,6 @@ string comparator(string runningFilePath, string secondFile, bool isConvertingFo
                 removeFolderFromEnd(runningFilePath, isConvertingForbiddenFile);
                 haveRemovedFromEnd = true;
                 i += 2;
-            }
-            else if (secondFile[i + 1] == '/')
-            {
-                i++;
-                continue; // we just ignore the './' case
             }
         }
         // we are iterating of a folder name
@@ -147,10 +171,13 @@ bool isHomograph(const string firstFile, const string secondFile)
     if (firstFile == secondFile)
         return true;
 
+    if (firstFile == "" || secondFile == "")
+        return false;
+
     bool isInCurrentDirectory = false;
     string secretFilePathFull = "";
     
-    if (containsString(firstFile, "home")) // full secret file path was passed in
+    if (containsString(firstFile, "/home/")) // full secret file path was passed in
         secretFilePathFull = firstFile;
     else if (!containsString(firstFile, "/")) // secret file is in the current directory
     {
@@ -161,7 +188,8 @@ bool isHomograph(const string firstFile, const string secondFile)
     // current dir, so we need to use it to modify the working directory to get
     // the actual full path by calling the Canaon function on it.
     else
-        secretFilePathFull = comparator(WORKING_DIRECTORY, firstFile, true);
+        secretFilePathFull = canonicalization(WORKING_DIRECTORY, firstFile, true);
+        
     if (secretFilePathFull == secondFile)
         return true;
 
@@ -169,8 +197,8 @@ bool isHomograph(const string firstFile, const string secondFile)
                               secretFilePathFull :// the generated one with canon function
                               WORKING_DIRECTORY);
   
-    runningFilePath = comparator(runningFilePath, secondFile, false);
- 
+    runningFilePath = canonicalization(runningFilePath, secondFile, false);
+    
     return secretFilePathFull == runningFilePath;
 }
 
@@ -191,7 +219,7 @@ void runManualTests()
     cout << "Please specify the second file name: ";
     cin >> secondPath;
 
-    displayResults(isHomograph(canonicalize(forbiddenPath), canonicalize(secondPath)));
+    displayResults(isHomograph(canon(forbiddenPath), canon(secondPath)));
 
     return;
 }
@@ -201,12 +229,12 @@ void runManualTests()
  * Loop through an array of test case paths and apply the canonicalization
  * function.
  *****************************************************************************/
-void testCaseLoop(char testPaths[][256], int size, string forbiddenPath)
+void testCaseLoop(const char **testPaths, int size, string forbiddenPath)
 {
     for (unsigned int i = 0; i < size; i++)
     {
         cout << "\nComparing " << forbiddenPath << " and " << testPaths[i] << "\n" << endl;
-        displayResults(isHomograph(canonicalize(forbiddenPath), canonicalize(testPaths[i])));
+        displayResults(isHomograph(canon(forbiddenPath), canon(testPaths[i])));
     }
 
     return;
@@ -221,7 +249,7 @@ void runAutomatedTests()
     // test case 01
     string forbiddenPath_01 = "/home/user/secret/password.txt";
 
-    char testCases_01[][256] = {
+    const char *testCases_01[] = {
         "./../../secret/password.txt",
         "./././././../../secret/password.txt",
         "../../secret/password.txt",
@@ -234,8 +262,7 @@ void runAutomatedTests()
     // test case 02
     string forbiddenPath_02 = "test.txt";
 
-    char testCases_02[][256] = {
-        ".\\..\\..\\cse453\\week05\\test.txt",
+    const char *testCases_02[] = {
         "../../cSE453/wEeK05/test.txt",
         "./../../cSE453/wEeK05/test.txt",
         "../test.txt",
@@ -248,7 +275,7 @@ void runAutomatedTests()
     // test case 03
     string forbiddenPath_03 = "/home/user/documents/login/password/password.txt";
 
-    char testCases_03[][256] = {
+    const char *testCases_03[] = {
         "../../documents/login/password/password.txt",
         "./../../documents/LOGIN/PASSWORD/password.txt",
         "../../../user/documents/login/password/password.txt",
