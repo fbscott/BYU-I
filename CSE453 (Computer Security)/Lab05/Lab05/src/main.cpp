@@ -24,7 +24,7 @@ bool menu();
 bool isHomograph(const string firstFile, const string secondFile);
 string canonicalization(string runningFilePath, string secondFile, bool isConvertingForbiddenFile);
 string canonon(string str);
-void displayResults(bool areHomographs) { cout << "These paths are " << (areHomographs ? "" : "NOT ") << "homographs\n" << endl; }
+void displayResults(bool areHomographs) { cout << (areHomographs ? "Yes - " : "NO - ") << "These paths are " << (areHomographs ? "" : "NOT ") << "homographs\n" << endl; }
 void removeFolderFromEnd(string &filePath, bool isConvertingForbiddenFile);
 void runManualTests();
 void runAutomatedTests();
