@@ -18,13 +18,14 @@ class Log {
      * @param {String} doorInterface GPIO or websocket
      * @param {String} time
      *************************************************************************/
-    logEvent(status, doorInterface, time) {
-        let doorStatus = status ? 'Closed' : 'Open';
+    logEvent(status, doorInterface, door, time) {
+        let doorStatus = status ? 'closed' : 'opened';
         let obj = JSON.parse(fs.readFileSync('./public/assets/data/event-log.json', 'utf-8'));
 
         obj.events.push({
             doorStatus,
             doorInterface,
+            door,
             time
         });
 

@@ -1,20 +1,21 @@
-// const url  = require('url');
-const PATH       = require('path');
-const EXPRESS    = require('express');
-const HTTP       = require('http');
-// const io         = require('socket.io')(SERVER);
-const { Server } = require('socket.io');
-const { Gpio }   = require('onoff');
-const LOG        = require('./log.js');
+// const url          = require('url');
+const PATH         = require('path');
+const EXPRESS      = require('express');
+const HTTP         = require('http');
+// const io           = require('socket.io')(SERVER);
+const { Server }   = require('socket.io');
+const { Gpio }     = require('onoff');
+const LOG          = require('./log.js');
 
-const APP        = EXPRESS();
-const SERVER     = HTTP.createServer(APP);
-const IO         = new Server(SERVER);
-const SWITCH     = new Gpio(17, 'in', 'both');
-const RELAY      = new Gpio(23, 'out');
-const PORT       = process.env.PORT || 8080;
+const APP          = EXPRESS();
+const SERVER       = HTTP.createServer(APP);
+const IO           = new Server(SERVER);
+const SWITCH_SOUTH = new Gpio(17, 'in', 'both');
+const RELAY        = new Gpio(23, 'out');
+const PORT         = process.env.PORT || 8080;
 
-let log          = new LOG();
+let log            = new LOG();
+let doorInterface  = 'button';
 
 // allow server to use anything that lives in /public
 APP.use(EXPRESS.static(PATH.join(__dirname + '/public')));
@@ -53,8 +54,6 @@ const emitChangeOnEvent = (websocket, err, val) => {
     websocket.emit('door-south', Number(!val));
 };
 
-let doorInterface = 'Button';
-
 // WebSocket connection
 // io.sockets.on('connection', socket => {
 IO.on('connection', socket => {
@@ -77,7 +76,7 @@ IO.on('connection', socket => {
             RELAY.writeSync(0);
         }, 1000);
 
-        doorInterface = 'App';
+        doorInterface = 'app';
     });
 
     socket.on('disconnect', () => {
@@ -90,20 +89,20 @@ IO.on('connection', socket => {
     });
 
     // emit change on initial page load
-    SWITCH.read(function (err, value) {
+    SWITCH_SOUTH.read(function (err, value) {
         emitChangeOnEvent(socket, err, value);
     });
 
     // emit change on event (open/close with door contact)
-    SWITCH.watch(function (err, value) {
+    SWITCH_SOUTH.watch(function (err, value) {
         emitChangeOnEvent(socket, err, value);
     });
 });
 
 // log event (open/close with door contact)
-SWITCH.watch(function (err, value) {
-    log.logEvent(value, doorInterface, new Date().toLocaleString());
-    doorInterface = 'Button';
+SWITCH_SOUTH.watch(function (err, value) {
+    log.logEvent(value, doorInterface, 'south', new Date().toLocaleString());
+    doorInterface = 'button';
 });
 
 // APP.listen(PORT, () => {
