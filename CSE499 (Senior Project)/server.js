@@ -22,16 +22,19 @@ APP.use(EXPRESS.static(PATH.join(__dirname + '/public')));
 // view engine
 APP.set('views', './views'); // object, directory
 APP.set('view engine', 'ejs'); // render .ejs files as views
-APP.get('/', (req, res) => {
-    res.sendFile(PATH.join(__dirname + '/public/index.htm'));
-});
-APP.get('/log', (req, res) => {
-    let _title = 'Pi Garage | Log';
 
+APP.get('/', (req, res) => {
+    // res.sendFile(PATH.join(__dirname + '/public/index.htm'));
+    res.render('pages/index', {
+        title: 'Pi Garage | Home'
+    });
+});
+
+APP.get('/log', (req, res) => {
     log.setData();
 
     res.render('pages/log', {
-        title: _title,
+        title: 'Pi Garage | Log',
         button_route: '/',
         events: log.events
     });
