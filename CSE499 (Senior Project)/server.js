@@ -26,7 +26,8 @@ APP.set('view engine', 'ejs'); // render .ejs files as views
 APP.get('/', (req, res) => {
     // res.sendFile(PATH.join(__dirname + '/public/index.htm'));
     res.render('pages/index', {
-        title: 'Pi Garage | Home'
+        title: 'Pi Garage | Home',
+        button_route: '/log'
     });
 });
 
