@@ -13,9 +13,18 @@ const IO           = new Server(SERVER);
 const SWITCH_SOUTH = new Gpio(17, 'in', 'both');
 const RELAY        = new Gpio(23, 'out');
 const PORT         = process.env.PORT || 8080;
+const DOOR_TIMEOUT = 1800000;
 
 let log            = new LOG();
 let doorInterface  = 'button';
+
+function triggerRelay() {
+    RELAY.writeSync(1);
+
+    setTimeout(() => {
+        RELAY.writeSync(0);
+    }, 1000);
+};
 
 // allow server to use anything that lives in /public
 APP.use(EXPRESS.static(PATH.join(__dirname + '/public')));
@@ -71,14 +80,9 @@ IO.on('connection', socket => {
     // get door status from the client
     socket.on('door-south', data => {
         // broadcast to all clients except the sender
-        // i.e., all other clients
         socket.broadcast.emit('door-south', data);
 
-        RELAY.writeSync(1);
-
-        setTimeout(() => {
-            RELAY.writeSync(0);
-        }, 1000);
+        triggerRelay();
 
         doorInterface = 'app';
     });
@@ -92,26 +96,37 @@ IO.on('connection', socket => {
         );
     });
 
-    // emit change on initial page load
+    // notify the client of the initial state of the door contact (open/closed)
+    // on connect
     SWITCH_SOUTH.read(function (err, value) {
         emitChangeOnEvent(socket, err, value);
     });
 
-    // emit change on event (open/close with door contact)
+    // notify the client when the door contact changes state (open/closed) on
+    // connect
     SWITCH_SOUTH.watch(function (err, value) {
         emitChangeOnEvent(socket, err, value);
     });
 });
 
-// log event (open/close with door contact)
+let autoCloseTimer = null;
+
+// log event (open/close with door contact) outside of IO connection, otherwise
+// duplicate log events result
 SWITCH_SOUTH.watch(function (err, value) {
     log.logEvent(value, doorInterface, 'south', new Date().toLocaleString());
     doorInterface = 'button';
-});
 
-// APP.listen(PORT, () => {
-//     console.log(`Express server listening on port ${PORT}`);
-// });
+    if (!value) {
+        autoCloseTimer = setTimeout(() => {
+            triggerRelay();
+
+            doorInterface = 'auto';
+        }, DOOR_TIMEOUT);
+    } else {
+        clearTimeout(autoCloseTimer);
+    }
+});
 
 SERVER.listen(PORT, () => {
     console.log(`HTTP server listening on port ${PORT}`);
