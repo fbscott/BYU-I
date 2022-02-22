@@ -13,7 +13,7 @@ const IO           = new Server(SERVER);
 const SWITCH_SOUTH = new Gpio(17, 'in', 'both');
 const RELAY        = new Gpio(23, 'out');
 const PORT         = process.env.PORT || 8080;
-const DOOR_TIMEOUT = 1800000;
+const DOOR_TIMEOUT = 1800000; // 30 minutes
 
 let log            = new LOG();
 let doorInterface  = 'button';
@@ -67,6 +67,8 @@ const emitChangeOnEvent = (websocket, err, val) => {
     websocket.emit('door-south', Number(!val));
 };
 
+let autoCloseTimer = null;
+
 // WebSocket connection
 // io.sockets.on('connection', socket => {
 IO.on('connection', socket => {
@@ -106,26 +108,25 @@ IO.on('connection', socket => {
     // connect
     SWITCH_SOUTH.watch(function (err, value) {
         emitChangeOnEvent(socket, err, value);
+
+        // set/clear auto-close timer on open/close event
+        if (!value) {
+            autoCloseTimer = setTimeout(() => {
+                triggerRelay();
+    
+                doorInterface = 'auto';
+            }, DOOR_TIMEOUT);
+        } else {
+            clearTimeout(autoCloseTimer);
+        }
     });
 });
 
-let autoCloseTimer = null;
-
-// log event (open/close with door contact) outside of IO connection, otherwise
-// duplicate log events result
 SWITCH_SOUTH.watch(function (err, value) {
+    // log event (open/close with door contact) outside of IO connection,
+    // otherwise duplicate log events result
     log.logEvent(value, doorInterface, 'south', new Date().toLocaleString());
     doorInterface = 'button';
-
-    if (!value) {
-        autoCloseTimer = setTimeout(() => {
-            triggerRelay();
-
-            doorInterface = 'auto';
-        }, DOOR_TIMEOUT);
-    } else {
-        clearTimeout(autoCloseTimer);
-    }
 });
 
 SERVER.listen(PORT, () => {
