@@ -115,3 +115,9 @@ footer {
 footer p { margin: 0; }
 
 strong { font-weight: bold; }
+
+@media (min-width: 737px) {
+   h1 {
+      font-size: 2rem;
+   }
+ }

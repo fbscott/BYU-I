@@ -70,3 +70,9 @@
     margin: 0;
     font-size: 0.8rem;
 }
+
+@media (min-width: 737px) {
+    #button {
+       position: initial;
+    }
+  }
