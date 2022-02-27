@@ -1,0 +1,82 @@
+  <%- include('../partials/page-head.ejs') %>
+  <title><%= title %></title>
+</head>
+<body>
+  <div id="container">
+    <div id="body">
+      <!------------------------------- page head ---------------------------->
+      <div class="bg">
+        <div class="row">
+          <div class="column large-12">
+            <h1>Raspberry Pi<br />Garage Door Opener</h1>
+          </div><!-- /column -->
+        </div><!-- /row -->
+      </div>
+      <!------------------------------- end page head ------------------------>
+      <!------------------------------- header ------------------------------->
+      <div class="row margin-2">
+        <div class="columns">
+          <h2>Home</h2>
+        </div><!-- /column -->
+      </div><!-- /row -->
+      <!------------------------------- end header --------------------------->
+      <!------------------------------- south door --------------------------->
+      <div class="row margin-3">
+        <div class="columns small-4">
+          <p class="button-description">South Door</p>
+        </div>
+        <div class="column small-8">
+          <label class="switch">
+            <input type="checkbox" id="door-south">
+            <span class="slider round"></span>
+          </label>
+        </div><!-- /column -->
+      </div><!-- /row -->
+      <!------------------------------- end south door ----------------------->
+      <!------------------------------- north door --------------------------->
+      <div class="row margin-3">
+        <div class="columns small-4">
+          <p class="button-description">North Door</p>
+        </div>
+        <div class="column small-8">
+          <label class="switch">
+            <input type="checkbox" id="door-north">
+            <span class="slider round"></span>
+          </label>
+        </div><!-- /column -->
+      </div><!-- /row -->
+      <!------------------------------- end north door ----------------------->
+      <!------------------------------- log button --------------------------->
+      <div id="button" class="row margin-2">
+        <div class="columns">
+          <button id="js-navigate" data-url="<%= button_route %>"><strong>EVENT LOG</strong></button>
+        </div><!-- /column -->
+      </div><!-- /row -->
+      <!------------------------------- end log button ----------------------->
+    </div><!-- /#body -->
+  </div><!-- /#container -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/assets/js/button-route.js"></script>
+  <script>
+    var socket = io('ws://192.168.1.207:8080/');
+
+    // on page load
+    window.addEventListener('load', function() {
+      let doorSouth = document.getElementById('door-south');
+
+      doorSouth.addEventListener('change', function() {
+        // send door status to server (0: open, 1: closed)
+        socket.emit('door-south', Number(this.checked));
+      });
+    });
+
+    // get button status from client
+    socket.on('door-south', function (data) {
+      // change checkbox according to push button on Raspberry Pi
+      document.getElementById('door-south').checked = data;
+      // send push button status to back to server
+      // socket.emit('door-south', data);
+    });
+  </script>
+</body>
+</html>

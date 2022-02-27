@@ -1,0 +1,78 @@
+#container {
+    min-height: 100%;
+    position: relative;
+}
+
+#body {
+    padding-bottom: 45px;
+}
+
+.bg {
+    /* height: 100%; */
+    background-color: #eeeeee;
+    padding: 2rem 0;
+    background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.3)
+    /* ), url(../img/andy-holmes-f6eWKcd8_dA-unsplash_edit.jpg); */
+    ), url(../img/real-estate-g7796df4d2_1920_edit.jpg);
+    background-size: cover;
+    background-position-y: 50%;
+}
+
+.button-description {
+    margin: 0;
+    white-space: nowrap;
+    font-size: 0.8rem;
+    position: absolute;
+    top: 50%;
+    transform: translate(0%, -50%);
+}
+
+#button {
+    position: absolute;
+    bottom: 0;
+    height: 45px;
+}
+
+.events {
+    max-height: 48vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.event {
+    padding: 0.5rem;
+}
+
+.event:nth-of-type(even) {
+    background-color: #eeeeee;
+}
+
+.event p.description {
+    margin: 0;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}
+
+.event p.time {
+    margin: 0;
+    font-size: 0.75rem;
+}
+
+.event-labels {
+    padding: 0 0.5rem;
+}
+
+.event-label {
+    margin: 0;
+    font-size: 0.8rem;
+}
+
+@media (min-width: 737px) {
+    #button {
+       position: initial;
+    }
+  }

@@ -1,0 +1,72 @@
+  <%- include('../partials/page-head.ejs') %>
+  <title><%= title %></title>
+</head>
+<body>
+  <div id="container">
+    <div id="body">
+      <!------------------------------- page head ---------------------------->
+      <div class="bg">
+        <div class="row">
+          <div class="column large-12">
+            <h1>Raspberry Pi<br />Garage Door Opener</h1>
+          </div><!-- /column -->
+        </div><!-- /row -->
+      </div>
+      <!------------------------------- end page head ------------------------>
+      <!------------------------------- header ------------------------------->
+      <div class="row margin-2">
+        <div class="columns">
+          <h2>Event Log</h2>
+        </div><!-- /column -->
+      </div><!-- /row -->
+      <!------------------------------- end header --------------------------->
+      <!------------------------------- log data ----------------------------->
+      <div class="row">
+        <div class="event-labels">
+          <div class="columns small-6">
+            <p class="event-label">Status</p>
+          </div>
+          <div class="columns small-6">
+            <p class="event-label">Interface</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="columns">
+          <div class="events">
+            <% if(events.length > 0) {
+              // reverse the loop so items appear in descending order.
+              for (var i = events.length - 1; i >= 0; i--) { %>
+            <div class="event">
+              <div class="row">
+                <div class="columns small-6">
+                  <p class="description"><%= events[i].door %> <%= events[i].doorStatus %></p>
+                </div>
+                <div class="columns small-6">
+                  <p class="description"><%= events[i].doorInterface %></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="columns">
+                  <p class="time"><%= events[i].time %></p>
+                </div>
+              </div>
+            </div>
+            <% }} %>
+          </div>
+        </div><!-- /column -->
+      </div><!-- /row -->
+      <!------------------------------- end log data ------------------------->
+      <!------------------------------- home button -------------------------->
+      <div id="button" class="row margin-2">
+        <div class="columns">
+          <button id="js-navigate" data-url="<%= button_route %>"><strong>HOME</strong></button>
+        </div><!-- /column -->
+      </div><!-- /row -->
+      <!------------------------------- end home button ---------------------->
+    </div><!-- /#body -->
+  </div><!-- /#container -->
+  <script src="../../assets/js/button-route.js"></script>
+</body>
+</html>
