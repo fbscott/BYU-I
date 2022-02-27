@@ -13,7 +13,7 @@ const IO           = new Server(SERVER);
 const SWITCH_SOUTH = new Gpio(17, 'in', 'both');
 const RELAY        = new Gpio(23, 'out');
 const PORT         = process.env.PORT || 8080;
-const DOOR_TIMEOUT = 1800000; // 30 minutes
+const DOOR_TIMEOUT = 300000; // 5 minutes
 
 let log            = new LOG();
 let doorInterface  = 'button';
