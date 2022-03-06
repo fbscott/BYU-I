@@ -10,49 +10,24 @@ const IO           = new Server(SERVER);
 const SWITCH_SOUTH = new Gpio(17, 'in', 'both');
 const RELAY        = new Gpio(23, 'out');
 const PORT         = process.env.PORT || 8080;
-// const DOOR_TIMEOUT = 300000; // 5 minutes
-const DOOR_TIMEOUT = 5000; // 5 seconds
+const DOOR_TIMEOUT = 300000; // 5 minutes
 
 let log            = new LOG();
 let doorInterface  = 'button';
+let autoCloseTimer = null;
 
 /******************************************************************************
  * TRIGGER RELAY
  * Trigger the relay to open/close the door (shorts the door circuit for 0.5
  * seconds).
  *****************************************************************************/
-function triggerRelay() {
-    RELAY.writeSync(1);
+const triggerRelay = () => {
+    RELAY.writeSync(1); // close (latch) relay
 
     setTimeout(() => {
-        RELAY.writeSync(0);
-    }, 500);
+        RELAY.writeSync(0); // open (unlatch) relay
+    }, 750); // 0.75 seconds
 };
-
-// allow server to use anything that lives in /public
-APP.use(EXPRESS.static(PATH.join(__dirname + '/public')));
-// view engine
-APP.set('views', './views'); // object, directory
-// APP.set('views', PATH.join(__dirname + '/views')); // object, directory
-APP.set('view engine', 'ejs'); // render .ejs files as views
-
-APP.get('/', (req, res) => {
-    // res.sendFile(PATH.join(__dirname + '/public/index.htm'));
-    res.render('pages/index', {
-        title: 'Pi Garage | Home',
-        button_route: '/log'
-    });
-});
-
-APP.get('/log', (req, res) => {
-    log.setData();
-
-    res.render('pages/log', {
-        title: 'Pi Garage | Log',
-        button_route: '/',
-        events: log.events
-    });
-});
 
 /******************************************************************************
  * EMIT CHANGE ON EVENT
@@ -61,7 +36,7 @@ APP.get('/log', (req, res) => {
  * @param {Int} val 0 or 1
  * @returns null on error
  *****************************************************************************/
-const emitChangeOnEvent = (websocket, err, val) => {
+ const emitChangeOnEvent = (websocket, err, val) => {
     if (err) {
         console.error('Error: ', err);
         return;
@@ -71,10 +46,30 @@ const emitChangeOnEvent = (websocket, err, val) => {
     websocket.emit('door-south', Number(!val));
 };
 
-let autoCloseTimer = null;
+// middleware: allow server to use anything that lives in /public (static assets)
+APP.use(EXPRESS.static(PATH.join(__dirname + '/public')));
+APP.set('views', './views'); // view engine (object, directory)
+APP.set('view engine', 'ejs'); // render .ejs files as views
+APP.get('/', (req, res) => {
+    // res.sendFile(PATH.join(__dirname + '/public/index.htm'));
+    res.render('pages/index', {
+        title: 'Pi Garage | Home',
+        button_route: '/log'
+    });
+});
+APP.get('/log', (req, res) => {
+    // read event log data
+    log.getData();
+
+    res.render('pages/log', {
+        title: 'Pi Garage | Log',
+        button_route: '/',
+        events: log.events,
+        users: log.users
+    });
+});
 
 // WebSocket connection
-// io.sockets.on('connection', socket => {
 IO.on('connection', socket => {
     log.logUser(
         new Date(socket.handshake.time).toLocaleString(),

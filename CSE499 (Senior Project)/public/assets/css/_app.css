@@ -43,43 +43,52 @@
     text-align: center;
 }
 
-.events {
-    max-height: 48vh;
+.logs {
+    max-height: 43vh;
     overflow-x: hidden;
     overflow-y: scroll;
     border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.event {
+.log {
     padding: 0.5rem;
 }
 
-.event:nth-of-type(even) {
+.log:nth-of-type(even) {
     background-color: #eeeeee;
 }
 
-.event p.description {
+.log p.description {
     margin: 0;
     font-size: 0.85rem;
     text-transform: uppercase;
+    white-space: nowrap;
 }
 
-.event p.time {
+.log p.time,
+.log p.address,
+.log p.agent {
     margin: 0;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
+    color: #838383;
+    padding-top: 0.25rem;
 }
 
-.event-labels {
+.log-labels {
     padding: 0 0.5rem;
 }
 
-.event-label {
+.log-label {
     margin: 0;
     font-size: 0.8rem;
 }
 
+.hide {
+    display: none;
+}
+
 @media (min-width: 737px) {
     #button {
-       position: initial;
+        position: initial;
     }
-  }
+}
