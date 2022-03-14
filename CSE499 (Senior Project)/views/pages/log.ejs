@@ -16,29 +16,35 @@
       <!------------------------------- header ------------------------------->
       <div class="row margin-2">
         <div class="columns">
-          <h2>Event Log</h2>
+          <form name="menu" action="">
+            <select name="options" id="options" class="margin-0">
+              <option value="event">View Event Log</option>
+              <option value="user">View User Log</option>
+            </select>
+          </form>
         </div><!-- /column -->
       </div><!-- /row -->
       <!------------------------------- end header --------------------------->
       <!------------------------------- log data ----------------------------->
       <div class="row">
-        <div class="event-labels">
+        <div class="log-labels">
           <div class="columns small-6">
-            <p class="event-label">Status</p>
+            <p class="log-label">Status</p>
           </div>
           <div class="columns small-6">
-            <p class="event-label">Interface</p>
+            <p id="js-log-label" class="log-label">Interface</p>
           </div>
         </div>
       </div>
 
       <div class="row">
         <div class="columns">
-          <div class="events">
-            <% if(events.length > 0) {
+          <!--------------------------- event logs --------------------------->
+          <div id="js-events" class="logs">
+            <% if(!!events && events.length > 0) {
               // reverse the loop so items appear in descending order.
               for (var i = events.length - 1; i >= 0; i--) { %>
-            <div class="event">
+            <div class="log">
               <div class="row">
                 <div class="columns small-6">
                   <p class="description"><%= events[i].door %> <%= events[i].doorStatus %></p>
@@ -52,9 +58,52 @@
                   <p class="time"><%= events[i].time %></p>
                 </div>
               </div>
+            </div><!-- /log -->
+            <% }
+              } else { %>
+            <div class="row">
+              <div class="columns">
+                <p class="center margin-0 padding-1">No Event Logs</p>
+              </div>
             </div>
-            <% }} %>
-          </div>
+            <% } %>
+          </div><!-- /logs -->
+          <!----------------------- end event logs --------------------------->
+          <!--------------------------- user logs ---------------------------->
+          <div id="js-users" class="logs hide">
+            <% if(!!users && users.length > 0) {
+                // reverse the loop so items appear in descending order.
+                for (var i = users.length - 1; i >= 0; i--) { %> %>
+            <div class="log">
+              <div class="row">
+                <div class="columns small-6">
+                  <p class="description"><%= users[i].status %></p>
+                </div>
+                <div class="columns small-6">
+                  <p class="description"><%= users[i].address %></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="column">
+                  <p class="time"> <%= users[i].time %></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="columns">
+                  <p class="agent"><%= users[i].agent %></p>
+                </div>
+              </div>
+            </div><!-- /log -->
+            <% }
+              } else { %>
+            <div class="row">
+              <div class="columns">
+                <p class="center margin-0 padding-1">No User Logs</p>
+              </div>
+            </div>
+            <% } %>
+          </div><!-- /logs -->
+          <!----------------------- end user logs ---------------------------->
         </div><!-- /column -->
       </div><!-- /row -->
       <!------------------------------- end log data ------------------------->
@@ -68,5 +117,25 @@
     </div><!-- /#body -->
   </div><!-- /#container -->
   <script src="../../assets/js/button-route.js"></script>
+  <script>
+    const menu = window.menu;
+
+    menu.options.addEventListener('change', e => {
+      let selection = e.target.value;
+      let events = document.getElementById('js-events');
+      let users = document.getElementById('js-users');
+      let logLabel = document.getElementById('js-log-label');
+
+      if (selection === 'event') {
+        users.classList.add('hide');
+        events.classList.remove('hide');
+        logLabel.classList.remove('hide');
+      } else {
+        events.classList.add('hide');
+        users.classList.remove('hide');
+        logLabel.classList.add('hide');
+      }
+    });
+  </script>
 </body>
 </html>

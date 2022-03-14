@@ -1,12 +1,9 @@
-// const url          = require('url');
 const PATH         = require('path');
 const EXPRESS      = require('express');
 const HTTP         = require('http');
-// const io           = require('socket.io')(SERVER);
 const { Server }   = require('socket.io');
 const { Gpio }     = require('onoff');
 const LOG          = require('./log.js');
-
 const APP          = EXPRESS();
 const SERVER       = HTTP.createServer(APP);
 const IO           = new Server(SERVER);
@@ -17,38 +14,20 @@ const DOOR_TIMEOUT = 300000; // 5 minutes
 
 let log            = new LOG();
 let doorInterface  = 'button';
+let autoCloseTimer = null;
 
-function triggerRelay() {
-    RELAY.writeSync(1);
+/******************************************************************************
+ * TRIGGER RELAY
+ * Trigger the relay to open/close the door (shorts the door circuit for 0.5
+ * seconds).
+ *****************************************************************************/
+const triggerRelay = () => {
+    RELAY.writeSync(1); // close (latch) relay
 
     setTimeout(() => {
-        RELAY.writeSync(0);
-    }, 1000);
+        RELAY.writeSync(0); // open (unlatch) relay
+    }, 750); // 0.75 seconds
 };
-
-// allow server to use anything that lives in /public
-APP.use(EXPRESS.static(PATH.join(__dirname + '/public')));
-// view engine
-APP.set('views', './views'); // object, directory
-APP.set('view engine', 'ejs'); // render .ejs files as views
-
-APP.get('/', (req, res) => {
-    // res.sendFile(PATH.join(__dirname + '/public/index.htm'));
-    res.render('pages/index', {
-        title: 'Pi Garage | Home',
-        button_route: '/log'
-    });
-});
-
-APP.get('/log', (req, res) => {
-    log.setData();
-
-    res.render('pages/log', {
-        title: 'Pi Garage | Log',
-        button_route: '/',
-        events: log.events
-    });
-});
 
 /******************************************************************************
  * EMIT CHANGE ON EVENT
@@ -57,7 +36,7 @@ APP.get('/log', (req, res) => {
  * @param {Int} val 0 or 1
  * @returns null on error
  *****************************************************************************/
-const emitChangeOnEvent = (websocket, err, val) => {
+ const emitChangeOnEvent = (websocket, err, val) => {
     if (err) {
         console.error('Error: ', err);
         return;
@@ -67,10 +46,30 @@ const emitChangeOnEvent = (websocket, err, val) => {
     websocket.emit('door-south', Number(!val));
 };
 
-let autoCloseTimer = null;
+// middleware: allow server to use anything that lives in /public (static assets)
+APP.use(EXPRESS.static(PATH.join(__dirname + '/public')));
+APP.set('views', './views'); // view engine (object, directory)
+APP.set('view engine', 'ejs'); // render .ejs files as views
+APP.get('/', (req, res) => {
+    // res.sendFile(PATH.join(__dirname + '/public/index.htm'));
+    res.render('pages/index', {
+        title: 'Pi Garage | Home',
+        button_route: '/log'
+    });
+});
+APP.get('/log', (req, res) => {
+    // read event log data
+    log.getData();
+
+    res.render('pages/log', {
+        title: 'Pi Garage | Log',
+        button_route: '/',
+        events: log.events,
+        users: log.users
+    });
+});
 
 // WebSocket connection
-// io.sockets.on('connection', socket => {
 IO.on('connection', socket => {
     log.logUser(
         new Date(socket.handshake.time).toLocaleString(),
@@ -108,17 +107,6 @@ IO.on('connection', socket => {
     // connect
     SWITCH_SOUTH.watch(function (err, value) {
         emitChangeOnEvent(socket, err, value);
-
-        // set/clear auto-close timer on open/close event
-        if (!value) {
-            autoCloseTimer = setTimeout(() => {
-                triggerRelay();
-    
-                doorInterface = 'auto';
-            }, DOOR_TIMEOUT);
-        } else {
-            clearTimeout(autoCloseTimer);
-        }
     });
 });
 
@@ -126,7 +114,21 @@ SWITCH_SOUTH.watch(function (err, value) {
     // log event (open/close with door contact) outside of IO connection,
     // otherwise duplicate log events result
     log.logEvent(value, doorInterface, 'south', new Date().toLocaleString());
+
+    // set interface back to button after event is logged
     doorInterface = 'button';
+
+    // set auto-close timer on open event
+    if (!value) {
+        autoCloseTimer = setTimeout(() => {
+            triggerRelay();
+
+            doorInterface = 'auto';
+        }, DOOR_TIMEOUT);
+    // clear auto-close timer on close event
+    } else {
+        clearTimeout(autoCloseTimer);
+    }
 });
 
 SERVER.listen(PORT, () => {
