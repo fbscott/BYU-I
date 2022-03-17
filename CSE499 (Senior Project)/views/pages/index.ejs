@@ -58,15 +58,36 @@
   <script src="/socket.io/socket.io.js"></script>
   <script src="/assets/js/button-route.js"></script>
   <script>
+    // listen on this URL and PORT
     var socket = io('ws://192.168.1.207:8080/');
+
+    /**************************************************************************
+     * Activate the Door (open/close)
+     * @param {Bool} canOpen
+     *************************************************************************/
+    function activateDoor(canOpen) {
+        // send door status to server (0: open, 1: closed)
+        socket.emit('door-south', Number(canOpen));
+    }
 
     // on page load
     window.addEventListener('load', function() {
       let doorSouth = document.getElementById('door-south');
 
       doorSouth.addEventListener('change', function() {
-        // send door status to server (0: open, 1: closed)
-        socket.emit('door-south', Number(this.checked));
+        if (this.checked) {
+          let canOpen = confirm('Are you sure you want to OPEN the door?');
+
+          if (canOpen) {
+            // open the door
+            activateDoor(this.checked);
+          } else {
+            document.getElementById('door-south').checked = false;
+          }
+        } else {
+          // close the door
+          activateDoor(this.checked);
+        }
       });
     });
 
