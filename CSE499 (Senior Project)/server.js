@@ -36,7 +36,7 @@ const triggerRelay = () => {
  * @param {Int} val 0 or 1
  * @returns null on error
  *****************************************************************************/
- const emitChangeOnEvent = (websocket, err, val) => {
+const emitChangeOnEvent = (websocket, err, val) => {
     if (err) {
         console.error('Error: ', err);
         return;
@@ -70,7 +70,7 @@ APP.get('/log', (req, res) => {
 });
 
 // WebSocket connection
-IO.on('connection', socket => {
+IO.on('connection', (socket) => {
     log.logUser(
         new Date(socket.handshake.time).toLocaleString(),
         socket.handshake.address.slice(7),
@@ -79,13 +79,17 @@ IO.on('connection', socket => {
     );
 
     // get door status from the client
-    socket.on('door-south', data => {
+    socket.on('door-south', (data, callback) => {
         // broadcast to all clients except the sender
         socket.broadcast.emit('door-south', data);
 
         triggerRelay();
 
         doorInterface = 'app';
+
+        callback({
+            status: 'OK'
+        });
     });
 
     socket.on('disconnect', () => {

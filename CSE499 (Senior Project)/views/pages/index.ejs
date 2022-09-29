@@ -58,24 +58,47 @@
   <script src="/socket.io/socket.io.js"></script>
   <script src="/assets/js/button-route.js"></script>
   <script>
-    var socket = io('ws://192.168.1.207:8080/');
+    var socket = io(`ws://${window.location.host}/`);
 
-    // on page load
+    /**************************************************************************
+     * Activate the Door (open/close)
+     * @param {Bool} canOpen
+     *************************************************************************/
+    function activateDoor(value) {
+      // send door status to server (0: open, 1: closed)
+      socket.emit('door-south', Number(value), (response) => {console.log(response)});
+    }
+
+    /**************************************************************************
+     * Add door event listeners on page load. On toggle change, emit the
+     * appropriate event to the server.
+     *************************************************************************/
     window.addEventListener('load', function() {
       let doorSouth = document.getElementById('door-south');
 
       doorSouth.addEventListener('change', function() {
-        // send door status to server (0: open, 1: closed)
-        socket.emit('door-south', Number(this.checked));
+        if (this.checked) {
+          let canOpen = confirm('Are you sure you want to OPEN the door?');
+          if (canOpen) {
+            // open the door
+            activateDoor(this.checked);
+          } else {
+            document.getElementById('door-south').checked = false;
+          }
+        } else {
+          // close the door
+          activateDoor(this.checked);
+        }
       });
     });
 
-    // get button status from client
-    socket.on('door-south', function (data) {
-      // change checkbox according to push button on Raspberry Pi
+    /**************************************************************************
+     * Listen for socket emit event from the server. I.e., door contact
+     * position: open/closed.
+     *************************************************************************/
+    socket.on('door-south', (data) => {
+      // change toggle accordingly
       document.getElementById('door-south').checked = data;
-      // send push button status to back to server
-      // socket.emit('door-south', data);
     });
   </script>
 </body>
