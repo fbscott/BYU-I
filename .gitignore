@@ -1,3 +1,6 @@
+# dev folders
+node_modules/
+
 # ignore the following sub folders
 **/__pycache__/
 **/venv/
