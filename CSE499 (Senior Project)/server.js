@@ -4,17 +4,19 @@ const HTTP         = require('http');
 const { Server }   = require('socket.io');
 const { Gpio }     = require('onoff');
 const LOG          = require('./log.js');
-const APP          = EXPRESS();
-const SERVER       = HTTP.createServer(APP);
-const IO           = new Server(SERVER);
-const SWITCH_SOUTH = new Gpio(17, 'in', 'both');
-const RELAY        = new Gpio(23, 'out');
-const PORT         = process.env.PORT || 8080;
-const DOOR_TIMEOUT = 300000; // 5 minutes
-
-let log            = new LOG();
-let doorInterface  = 'button';
-let autoCloseTimer = null;
+const APP           = EXPRESS();
+const SERVER        = HTTP.createServer(APP);
+const IO            = new Server(SERVER);
+const SWITCH_SOUTH  = new Gpio(17, 'in', 'both');
+const RELAY         = new Gpio(23, 'out');
+const PORT          = process.env.PORT || 8080;
+// const DOOR_TIMEOUT  = 300000; // 5 minutes
+const DOOR_TIMEOUT  = 30000; // 30 seconds
+let log             = new LOG();
+let doorInterface   = 'button';
+let autoCloseTimer  = null;
+let timer           = null;
+let doorStatusSouth = null;
 
 /******************************************************************************
  * TRIGGER RELAY
@@ -71,14 +73,14 @@ APP.get('/log', (req, res) => {
 
 // WebSocket connection
 IO.on('connection', (socket) => {
-    log.logUser(
-        new Date(socket.handshake.time).toLocaleString(),
-        socket.handshake.address.slice(7),
-        socket.handshake.headers['user-agent'],
-        'connected'
-    );
+    // log.logUser(
+    //     new Date(socket.handshake.time).toLocaleString(),
+    //     socket.handshake.address.slice(7),
+    //     socket.handshake.headers['user-agent'],
+    //     'connected'
+    // );
 
-    // get door status from the client
+    // client event
     socket.on('door-south', (data, callback) => {
         // broadcast to all clients except the sender
         socket.broadcast.emit('door-south', data);
@@ -93,46 +95,61 @@ IO.on('connection', (socket) => {
     });
 
     socket.on('disconnect', () => {
-        log.logUser(
-            new Date().toLocaleString(),
-            socket.handshake.address.slice(7),
-            socket.handshake.headers['user-agent'],
-            'disconnected'
-        );
+        // log.logUser(
+        //     new Date().toLocaleString(),
+        //     socket.handshake.address.slice(7),
+        //     socket.handshake.headers['user-agent'],
+        //     'disconnected'
+        // );
     });
 
     // notify the client of the initial state of the door contact (open/closed)
     // on connect
     SWITCH_SOUTH.read(function (err, value) {
-        emitChangeOnEvent(socket, err, value);
+        doorStatusSouth = value;
+        emitChangeOnEvent(socket, err, doorStatusSouth);
     });
 
     // notify the client when the door contact changes state (open/closed) on
     // connect
     SWITCH_SOUTH.watch(function (err, value) {
-        emitChangeOnEvent(socket, err, value);
+        doorStatusSouth = value;
+        emitChangeOnEvent(socket, err, doorStatusSouth);
     });
 });
 
 SWITCH_SOUTH.watch(function (err, value) {
-    // log event (open/close with door contact) outside of IO connection,
-    // otherwise duplicate log events result
-    log.logEvent(value, doorInterface, 'south', new Date().toLocaleString());
-
-    // set interface back to button after event is logged
-    doorInterface = 'button';
+    doorStatusSouth = value;
 
     // set auto-close timer on open event
-    if (!value) {
-        autoCloseTimer = setTimeout(() => {
-            triggerRelay();
+    if (!doorStatusSouth) {
+        let timeRemaining = (DOOR_TIMEOUT/1000);
 
-            doorInterface = 'auto';
-        }, DOOR_TIMEOUT);
+        timer = setInterval(() => {
+            console.log(--timeRemaining);
+        }, 1000);
+
+        autoCloseTimer = setTimeout(function (doorStatusSouth) {
+            if (!doorStatusSouth) { // if door is open
+                triggerRelay();
+                doorInterface = 'auto';
+            }
+
+            clearInterval(timer);
+        }, DOOR_TIMEOUT, doorStatusSouth);
     // clear auto-close timer on close event
     } else {
         clearTimeout(autoCloseTimer);
+        clearInterval(timer);
     }
+
+    // log event (open/close with door contact) outside of IO connection,
+    // otherwise duplicate log events result
+    // log.logEvent(doorStatusSouth, doorInterface, 'south', new Date().toLocaleString());
+    console.info({ doorStatusSouth, doorInterface });
+
+    // set interface back to button after event is logged
+    doorInterface = 'button';
 });
 
 SERVER.listen(PORT, () => {
